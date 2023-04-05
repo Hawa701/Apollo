@@ -9,7 +9,7 @@
 }
 
 :root {
-  --main-color: #295dc5;
+  --main-color: #577cff;
   --second-main-color: #deecf0;
 
   --main-bg-color: #fff;
@@ -34,7 +34,7 @@ body {
 section {
   position: relative;
   min-height: 100vh;
-  padding: 6.4rem 5% 1rem;
+  padding: 2rem 5% 1rem;
 }
 
 li {
@@ -210,7 +210,7 @@ input[type="range"] {
 /* apply */
 .apply-job {
   position: absolute;
-  top: 4.7rem;
+  top: 0.1rem;
   left: 100%;
   right: 0;
   width: 0%;
@@ -351,4 +351,14 @@ input[type="range"] {
 .info.seven h4,
 .info.nine h4 {
   margin-bottom: 1rem;
+}
+
+/* FOR TABLET */
+@media (max-width: 950px) {
+  body {
+    background-color: #295dc5;
+  }
+
+  .filter {
+  }
 }
