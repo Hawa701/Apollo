@@ -1,229 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- font link -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
     <!-- css link -->
     <link rel="stylesheet" href="/App/Style/Find Work.css" />
     <!-- icon link -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
     <title>Document</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="wrapper">
-      <!-- header design -->
-      <header class="header" id="header">
-        <div class="logo">
-          <a href="#">Apollo</a>
-        </div>
+        <!-- header design -->
+        <header class="header" id="header">
+            <div class="logo">
+                <a href="#">Apollo</a>
+            </div>
 
-        <div class="nav">
-          <ul class="links">
-            <li><a href="#" class="active">Find Work</a></li>
-            <li><a href="#">My Job</a></li>
-            <li><a href="#">Post a Job</a></li>
-            <li><a href="#">Message</a></li>
-          </ul>
-          <div class="notification">
-            <a href="#"><i class="fa-regular fa-bell"></i></a>
-          </div>
-        </div>
+            <div class="nav">
+                <ul class="links">
+                    <li><a href="#" class="active">Find Work</a></li>
+                    <li><a href="#">My Job</a></li>
+                    <li><a href="#">Post a Job</a></li>
+                    <li><a href="#">Message</a></li>
+                </ul>
+                <div class="notification">
+                    <a href="#"><i class="fa-regular fa-bell"></i></a>
+                </div>
+            </div>
 
-        <div class="profile">
-          <a href="#"> H </a>
-        </div>
-      </header>
+            <div class="profile">
+                <a href="#"> H </a>
+            </div>
+        </header>
 
-      <!-- section design -->
-      <section class="section">
-        <!-- filter -->
-        <div class="filter">
-          <div class="title">
-            <h2>Filter</h2>
-            <span class="clear">
+        <!-- section design -->
+        <section class="section">
+            <!-- filter -->
+            <div class="filter">
+                <div class="title">
+                    <h2>Filter</h2>
+                    <span class="clear">
               Clear all
               <i class="fa-regular fa-circle-xmark"></i>
             </span>
-          </div>
+                </div>
 
-          <h3>Experience Level</h3>
-          <input type="radio" name="experience" id="level" />
-          <span class="text"> Entry Level</span>
-          <br />
-          <input type="radio" name="experience" id="level" />
-          <span class="text">Intermediate</span>
-          <br />
-          <input type="radio" name="experience" id="level" />
-          <span class="text">Expert</span>
-          <br />
-          <hr />
+                <h3>Experience Level</h3>
+                <input type="radio" name="experience" id="level" />
+                <span class="text"> Entry Level</span>
+                <br />
+                <input type="radio" name="experience" id="level" />
+                <span class="text">Intermediate</span>
+                <br />
+                <input type="radio" name="experience" id="level" />
+                <span class="text">Expert</span>
+                <br />
+                <hr />
 
-          <h3>Availability</h3>
-          <input type="radio" name="availability" id="availability" />
-          <span class="text">Contract</span> <br />
-          <input type="radio" name="availability" id="availability" />
-          <span class="text">Full-Time</span> <br />
-          <hr />
+                <h3>Availability</h3>
+                <input type="radio" name="availability" id="availability" />
+                <span class="text">Contract</span> <br />
+                <input type="radio" name="availability" id="availability" />
+                <span class="text">Full-Time</span> <br />
+                <hr />
 
-          <h3>Pay (In Birr)</h3>
-          <input type="range" name="pay" id="pay" />
-          <hr />
+                <h3>Pay (In Birr)</h3>
+                <input type="range" name="pay" id="pay" />
+                <hr />
 
-          <h3>Number of proposals</h3>
-          <input type="radio" name="proposals" id="proposals" />
-          <span class="text">Less than 5</span> <br />
-          <input type="radio" name="proposals" id="proposals" />
-          <span class="text">5 to 10</span> <br />
-          <input type="radio" name="proposals" id="proposals" />
-          <span class="text">10 to 15</span> <br />
-          <input type="radio" name="proposals" id="proposals" />
-          <span class="text">15+</span> <br />
-          <hr />
+                <h3>Number of proposals</h3>
+                <input type="radio" name="proposals" id="proposals" />
+                <span class="text">Less than 5</span> <br />
+                <input type="radio" name="proposals" id="proposals" />
+                <span class="text">5 to 10</span> <br />
+                <input type="radio" name="proposals" id="proposals" />
+                <span class="text">10 to 15</span> <br />
+                <input type="radio" name="proposals" id="proposals" />
+                <span class="text">15+</span> <br />
+                <hr />
 
-          <h3>Token needed</h3>
-          <input type="radio" name="token" id="token" />
-          <span class="text">2 or less</span> <br />
-        </div>
+                <h3>Token needed</h3>
+                <input type="radio" name="token" id="token" />
+                <span class="text">2 or less</span> <br />
+            </div>
 
-        <!-- work -->
-        <div class="work">
-          <div class="search">
-            <h2>Search</h2>
-            <div class="search-bar">
-              <input type="text" placeholder="Search here" size="60%" />
-              <button type="submit">
+            <!-- work -->
+            <div class="work">
+                <div class="search">
+                    <h2>Search</h2>
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search here" size="60%" />
+                        <button type="submit">
                 <i class="fa-solid fa-magnifying-glass"></i>
               </button>
-            </div>
-            <span class="result">0 results</span>
-          </div>
-
-          <div class="job-container">
-            <div class="jobs">
-              <div class="title-block">
-                <h3 onclick="openApplyJob()">Job 1</h3>
-                <div class="bookmark" onclick="saveJob('bookmark-icon')">
-                  <i class="fa-regular fa-bookmark" id="bookmark-icon"></i>
+                    </div>
+                    <span class="result">0 results</span>
                 </div>
-              </div>
 
-              <div class="job-info">
-                <span>
+                <div class="job-container">
+                    <div class="jobs">
+                        <div class="title-block">
+                            <h3 onclick="openApplyJob()">Job 1</h3>
+                            <div class="bookmark" onclick="saveJob('bookmark-icon')">
+                                <i class="fa-regular fa-bookmark" id="bookmark-icon"></i>
+                            </div>
+                        </div>
+
+                        <div class="job-info">
+                            <span>
                   Payment:
-                  <span>5k - 7k</span>
-                  - <span>Intermediate</span>
-                  - Est. Time:
-                  <span>2 to 5 months</span>
-                  - Posted -
-                  <span>9 hours ago</span>
-                </span>
-              </div>
+                  <span>5k - 7k</span> - <span>Intermediate</span> - Est. Time:
+                            <span>2 to 5 months</span> - Posted -
+                            <span>9 hours ago</span>
+                            </span>
+                        </div>
 
-              <div class="description" onclick="openApplyJob()">
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Quas, ex ut. Minima natus blanditiis incidunt animi, assumenda
-                  repudiandae facere debitis a distinctio voluptate quibusdam
-                  odio itaque eveniet similique cupiditate magni! Provident
-                  expedita, nemo ad possimus, quod incidunt vel fugit nobis
-                  earum repellendus nulla ullam necessitatibus fuga voluptates
-                  laborum dolorem, vitae quasi delectus facere molestias maxime
-                  minus beatae perspiciatis est. Blanditiis quia rerum nemo
-                  repudiandae aut ea et porro, excepturi soluta?
-                </p>
-              </div>
+                        <div class="description" onclick="openApplyJob()">
+                            <p>
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas, ex ut. Minima natus blanditiis incidunt animi, assumenda repudiandae facere debitis a distinctio voluptate quibusdam odio itaque eveniet similique cupiditate magni! Provident expedita, nemo
+                                ad possimus, quod incidunt vel fugit nobis earum repellendus nulla ullam necessitatibus fuga voluptates laborum dolorem, vitae quasi delectus facere molestias maxime minus beatae perspiciatis est. Blanditiis quia rerum
+                                nemo repudiandae aut ea et porro, excepturi soluta?
+                            </p>
+                        </div>
 
-              <div id="tags">
-                <span class="tag">PHP</span>
-                <span class="tag">JS</span>
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-              </div>
+                        <div id="tags">
+                            <span class="tag">PHP</span>
+                            <span class="tag">JS</span>
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                        </div>
 
-              <div class="apply-info">
-                <div class="text">Proposals: <span>Less than 5</span></div>
-                <div class="text">Number of tokens: <span>6</span></div>
-              </div>
+                        <div class="apply-info">
+                            <div class="text">Proposals: <span>Less than 5</span></div>
+                            <div class="text">Number of tokens: <span>6</span></div>
+                        </div>
 
-              <hr />
+                        <hr />
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
 
-        <!-- apply jobs design -->
-        <div class="apply-job" id="apply-job">
-          <div class="top">
-            <i class="fa-solid fa-angle-right" onclick="closeApplyJob()"></i>
-            <a href="#" target="_blank">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i> Open job in
-              a new window
-            </a>
-          </div>
+            <!-- apply jobs design -->
+            <div class="apply-job" id="apply-job">
+                <div class="top">
+                    <i class="fa-solid fa-angle-right" onclick="closeApplyJob()"></i>
+                    <a href="#" target="_blank">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Open job in a new window
+                    </a>
+                </div>
 
-          <div class="all-job-information">
-            <div class="info one">
-              <h3>Job 1</h3>
-              <h4>Front-End Development</h4>
-              <p>Posted 17 hours ago</p>
-            </div>
-            <div class="info two">
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas,
-                ex ut. Minima natus blanditiis incidunt animi, assumenda
-                repudiandae facere debitis a distinctio voluptate quibusdam odio
-                itaque eveniet similique cupiditate magni! Provident expedita,
-                nemo ad possimus, quod incidunt vel fugit nobis earum
-                repellendus nulla ullam
-                <a href="#">https://demo.apts</a> necessitatibus fuga voluptates
-                laborum dolorem, vitae quasi delectus facere molestias maxime
-                minus beatae perspiciatis est. Blanditiis quia rerum nemo
-                repudiandae aut ea et porro, excepturi soluta?
-              </p>
-              <br />
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut,
-                magni consequatur. Tempore in ad sunt, commodi ratione
-                repudiandae impedit qui.
-              </p>
-              <br />
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Tempore quasi voluptatem rem, dolore esse officia magni,
-                possimus tenetur, corrupti velit error? Nemo aspernatur ab nobis
-                praesentium, fuga nulla mollitia maiores.
-              </p>
-              <br />
-              <a href="#">https://demo.apts</a><br />
-              <a href="#">https://demo.apts</a><br />
-              <a href="#">https://demo.apts</a>
-            </div>
-            <div class="info three">
-              <button class="apply-btn">Apply Now</button>
-              <button class="save-btn">Save Job</button>
-            </div>
-            <div class="info four">
-              <div class="price">
-                <h4>$150.00</h4>
-                <span>Fixed Price</span>
-              </div>
-              <div class="ex-level">
-                <h4>Expert</h4>
-                <span
-                  >Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                <div class="all-job-information">
+                    <div class="info one">
+                        <h3>Job 1</h3>
+                        <h4>Front-End Development</h4>
+                        <p>Posted 17 hours ago</p>
+                    </div>
+                    <div class="info two">
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas, ex ut. Minima natus blanditiis incidunt animi, assumenda repudiandae facere debitis a distinctio voluptate quibusdam odio itaque eveniet similique cupiditate magni! Provident expedita, nemo
+                            ad possimus, quod incidunt vel fugit nobis earum repellendus nulla ullam
+                            <a href="#">https://demo.apts</a> necessitatibus fuga voluptates laborum dolorem, vitae quasi delectus facere molestias maxime minus beatae perspiciatis est. Blanditiis quia rerum nemo repudiandae aut ea et porro, excepturi
+                            soluta?
+                        </p>
+                        <br />
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, magni consequatur. Tempore in ad sunt, commodi ratione repudiandae impedit qui.
+                        </p>
+                        <br />
+                        <p>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore quasi voluptatem rem, dolore esse officia magni, possimus tenetur, corrupti velit error? Nemo aspernatur ab nobis praesentium, fuga nulla mollitia maiores.
+                        </p>
+                        <br />
+                        <a href="#">https://demo.apts</a><br />
+                        <a href="#">https://demo.apts</a><br />
+                        <a href="#">https://demo.apts</a>
+                    </div>
+                    <div class="info three">
+                        <button class="apply-btn">Apply Now</button>
+                        <button class="save-btn">Save Job</button>
+                    </div>
+                    <div class="info four">
+                        <div class="price">
+                            <h4>$150.00</h4>
+                            <span>Fixed Price</span>
+                        </div>
+                        <div class="ex-level">
+                            <h4>Expert</h4>
+                            <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                   Fuga, maxime.</span
                 >
               </div>
@@ -231,31 +203,32 @@
             <div class="info five">
               <h4>Project type</h4>
               <span>One time project</span>
-            </div>
-            <div class="info six">
-              <h4>About the client</h4>
-            </div>
-            <div class="info seven">
-              <h4>Skills and Expertise</h4>
-              <div id="tags">
-                <span class="tag">PHP</span>
-                <span class="tag">JS</span>
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-              </div>
-            </div>
-            <div class="info eight">
-              <h4>Job link</h4>
-            </div>
-            <div class="info nine">
-              <h4>Activity on this job</h4>
-            </div>
-          </div>
+                        </div>
+                        <div class="info six">
+                            <h4>About the client</h4>
+                        </div>
+                        <div class="info seven">
+                            <h4>Skills and Expertise</h4>
+                            <div id="tags">
+                                <span class="tag">PHP</span>
+                                <span class="tag">JS</span>
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                            </div>
+                        </div>
+                        <div class="info eight">
+                            <h4>Job link</h4>
+                        </div>
+                        <div class="info nine">
+                            <h4>Activity on this job</h4>
+                        </div>
+                    </div>
+                </div>
+        </section>
         </div>
-      </section>
-    </div>
 
-    <!-- js link -->
-    <script src="/App/Script/Find Work.js"></script>
-  </body>
+        <!-- js link -->
+        <script src="/App/Script/Find Work.js"></script>
+</body>
+
 </html>

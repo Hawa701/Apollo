@@ -1,0 +1,93 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto';
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    border: 1px solid red;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.hero {
+    padding: 80px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.callToActionText {
+    margin-bottom: 20px;
+}
+
+.callToActionText h1 {
+    font-size: 60px;
+    font-weight: 100;
+    margin-bottom: 5px;
+}
+
+.callToActionText h1 span {
+    font-weight: bold;
+}
+
+.callToActionButton button {
+    padding: 10px 10px;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.getHired {
+    background-color: transparent;
+    margin-right: 30px;
+}
+
+.getHired:hover {
+    background-color: #f0f0f0;
+}
+
+.hire {
+    background-color: #577CFF;
+    color: white;
+}
+
+.hire:hover {
+    background-color: #295dc5;
+}
+
+.heroImage {
+    position: relative;
+    display: inline;
+    /* margin: 0 auto; */
+}
+
+.apolloImage {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    animation: MoveUpDown 4s linear infinite;
+}
+
+.heroImage {
+    width: 50%;
+}
+
+@keyframes MoveUpDown {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-30px);
+    }
+}
