@@ -1,6 +1,6 @@
 //toggling the apply job page
 function openApplyJob() {
-  document.getElementById("apply-job").style.width = "65%";
+  document.getElementById("apply-job").style.width = "67%";
   document.getElementById("apply-job").style.left = "unset";
 }
 
