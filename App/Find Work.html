@@ -12,7 +12,7 @@
       rel="stylesheet"
     />
     <!-- css link -->
-    <link rel="stylesheet" href="Find Work.css" />
+    <link rel="stylesheet" href="/App/Style/Find Work.css" />
     <!-- icon link -->
     <link
       rel="stylesheet"
@@ -115,8 +115,10 @@
           <div class="job-container">
             <div class="jobs">
               <div class="title-block">
-                <h3>Job 1</h3>
-                <i class="fa-regular fa-bookmark"></i>
+                <h3 onclick="openApplyJob()">Job 1</h3>
+                <div class="bookmark" onclick="saveJob('bookmark-icon')">
+                  <i class="fa-regular fa-bookmark" id="bookmark-icon"></i>
+                </div>
               </div>
 
               <div class="job-info">
@@ -131,7 +133,7 @@
                 </span>
               </div>
 
-              <div class="description">
+              <div class="description" onclick="openApplyJob()">
                 <p>
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                   Quas, ex ut. Minima natus blanditiis incidunt animi, assumenda
@@ -145,7 +147,7 @@
                 </p>
               </div>
 
-              <div class="tags">
+              <div id="tags">
                 <span class="tag">PHP</span>
                 <span class="tag">JS</span>
                 <span class="tag">HTML</span>
@@ -163,9 +165,9 @@
         </div>
 
         <!-- apply jobs design -->
-        <div class="apply-job">
+        <div class="apply-job" id="apply-job">
           <div class="top">
-            <i class="fa-solid fa-angle-left"></i>
+            <i class="fa-solid fa-angle-right" onclick="closeApplyJob()"></i>
             <a href="#" target="_blank">
               <i class="fa-solid fa-arrow-up-right-from-square"></i> Open job in
               a new window
@@ -235,6 +237,12 @@
             </div>
             <div class="info seven">
               <h4>Skills and Expertise</h4>
+              <div id="tags">
+                <span class="tag">PHP</span>
+                <span class="tag">JS</span>
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+              </div>
             </div>
             <div class="info eight">
               <h4>Job link</h4>
@@ -246,5 +254,8 @@
         </div>
       </section>
     </div>
+
+    <!-- js link -->
+    <script src="/App/Script/Find Work.js"></script>
   </body>
 </html>

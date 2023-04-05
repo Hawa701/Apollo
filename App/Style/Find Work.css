@@ -50,6 +50,19 @@ li {
   list-style: none;
 }
 
+#tags {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+#tags .tag {
+  background: var(--third-bg-color);
+  border-radius: 1rem;
+  padding: 0% 1rem;
+  margin-bottom: 0.6rem;
+}
+
 /* header design */
 .header {
   display: grid;
@@ -218,12 +231,12 @@ input[type="range"] {
   color: var(--third-text-color);
 }
 
-.job-container {
-  padding: 0 3rem;
+.jobs {
+  cursor: default;
 }
 
-.jobs {
-  cursor: pointer;
+.job-container {
+  padding: 0 3rem;
 }
 
 .jobs .title-block {
@@ -233,9 +246,11 @@ input[type="range"] {
 
 .title-block h3 {
   font-size: 2rem;
+  width: 90%;
+  cursor: pointer;
 }
 
-.title-block i {
+#bookmark-icon {
   font-size: 2rem;
   cursor: pointer;
 }
@@ -253,19 +268,7 @@ input[type="range"] {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
-
-.jobs .tags {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.tags .tag {
-  background: var(--third-bg-color);
-  border-radius: 1rem;
-  padding: 0% 1rem;
-  margin-bottom: 0.6rem;
+  cursor: pointer;
 }
 
 .apply-info {
@@ -288,16 +291,17 @@ input[type="range"] {
 
 /* apply */
 .apply-job {
-  display: none;
   position: absolute;
   top: 6.3rem;
+  left: 100%;
   right: 0;
-  width: 65%;
+  width: 0%;
   height: 100%;
   background: var(--main-bg-color);
   border-radius: 1.5rem;
   padding: 3rem 3%;
   overflow-y: scroll;
+  transition: 0.3s;
 }
 
 .apply-job .top {
@@ -319,8 +323,7 @@ input[type="range"] {
 
 .info {
   border: 1px solid var(--third-bg-color);
-  min-height: 10vh;
-  padding: 2rem;
+  padding: 2.4rem;
 }
 .info.one {
   grid-area: one;
@@ -359,7 +362,7 @@ input[type="range"] {
 .all-job-information {
   display: grid;
   grid-template-columns: 3fr 1fr;
-  grid-template-rows: repeat(10, 1fr);
+  grid-template-rows: repeat(8, 1fr);
   grid-template-areas:
     "one three"
     "two three"
@@ -368,11 +371,9 @@ input[type="range"] {
     "five six"
     "seven six"
     "seven eight"
-    "seven eight"
-    "seven eight"
-    "nine eight"
     "nine eight";
-  border-radius: 1rem;
+  border-radius: 1.5rem;
+  padding: 0;
 }
 
 .info h4 {
@@ -418,4 +419,8 @@ input[type="range"] {
   display: flex;
   justify-content: space-evenly;
   align-items: baseline;
+}
+
+.info.seven h4 {
+  margin-bottom: 1rem;
 }
