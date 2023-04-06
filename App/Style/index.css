@@ -10,6 +10,10 @@ img {
     height: auto;
 }
 
+section {
+    margin-bottom: 150px;
+}
+
 .container {
     /* border: 1px solid red; */
     max-width: 1300px;
@@ -90,4 +94,58 @@ img {
     50% {
         transform: translateY(-30px);
     }
+}
+
+.testimonialCards {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 150px;
+    row-gap: 50px;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.cardContent {
+    display: flex;
+    flex-direction: column;
+    max-width: 490px;
+    padding: 3rem 3.5rem 1.5rem 3.5rem;
+    /* background-color: var(--second-main-color); */
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 25px;
+}
+
+.testTitle {
+    text-align: center;
+    font-weight: 500;
+    font-size: 35px;
+    margin: 50px 0;
+}
+
+.tetText {
+    margin-bottom: 30px;
+}
+
+.testProfile {
+    display: flex;
+}
+
+.testProfile .headShot {
+    margin-right: 20px;
+    width: 60px;
+    height: 60px;
+}
+
+.headShot img {
+    border: 3px solid var(--main-color);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.getAppTitle {
+    text-align: center;
+    font-weight: 500;
+    font-size: 35px;
+    margin: 50px 0;
 }

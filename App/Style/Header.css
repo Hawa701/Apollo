@@ -70,6 +70,10 @@ header {
     border: none;
 }
 
+header .navShadow {
+    box-shadow: 0 0 1rem var(--third-bg-color);
+}
+
 .nav {
     display: flex;
     justify-content: space-between;
