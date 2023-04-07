@@ -203,3 +203,27 @@ section {
     border-radius: 50px;
     border: none;
 }
+
+@media(max-width: 775px) {
+    .getAppContainer {
+        text-align: center;
+        justify-content: center;
+    }
+    .appContent h2 {
+        text-align: center;
+    }
+    .hero {
+        justify-content: center;
+    }
+    .callToAction {
+        text-align: center;
+        /* margin-right: 45px; */
+        margin-bottom: 150px;
+    }
+    .callToAction h1 {
+        font-size: 40px;
+    }
+    .heroImage {
+        width: 70%;
+    }
+}
