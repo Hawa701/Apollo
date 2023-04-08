@@ -62,12 +62,39 @@ body {
   background-color: transparent;
   border: none;
   position: relative;
-  top: -55px;
+  top: -65px;
   left: -90px;
 }
 
+.logo-image {
+  margin-bottom: 25px;
+}
+
 .left .content .logo-image .logo {
-  animation: MoveUpDown 3s linear infinite;
+   animation: MoveUpDown 3s linear infinite;
+   z-index: 2;
+}
+
+.left .content .logo-image .shadow {
+  position: absolute;
+  width: 395px;
+  height: 32px;
+  right: 40px;
+  top: 370px;
+
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 60%;
+  z-index: 1;
+}
+
+@keyframes MoveUpDown {
+  0%,
+  100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-30px);
+  }
 }
 
 .left .content .logo-image {
@@ -91,9 +118,17 @@ body {
   height: 76px;
 }
 
+.text-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .text-content h2 {
   font-weight: 400;
-  font-size: 1.6rem;
+  font-size: 1.79rem;
+  margin: 2px;
 }
 
 .text-content h4 {
@@ -161,7 +196,8 @@ input {
   position: absolute;
   top: 620px;
   right: 150px;
-  color: var(--main-text-color);
+  color: var(--third-text-color);
+  font-weight: 600;
  }
 
 .sign-up-form h3>a:hover {
@@ -196,17 +232,25 @@ input {
   margin-top: 1rem;
 }
 
-.sign-up h1, p {
+.sign-up h1, h2 {
   margin: 5px;
 }
 
 .sign-up h1 {
   font-size: 1.9rem;
-  font-weight: 400;
+  font-weight: 700;
+  color: var(--main-color);
 }
 
-.sign-up p {
+.sign-up h1:hover {
+  color: var(--main-text-color);
+}
+
+.sign-up h2 {
   margin-bottom: 1.2rem;
+  font-weight: 400;
+  font-size: 1.3rem;
+  color: var(--main-color);
 }
 
 .sign-up .name {
@@ -226,12 +270,3 @@ input {
   margin-bottom: 1rem;
 }
 
-@keyframes MoveUpDown {
-  0%,
-  100% {
-      transform: translateY(0);
-  }
-  50% {
-      transform: translateY(-30px);
-  }
-}
