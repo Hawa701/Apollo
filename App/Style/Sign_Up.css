@@ -24,12 +24,13 @@
 body {
   background: var(--main-bg-color);
   color: var(--main-text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
 .container {
-  position: relative;
-  
-
 }
 
 .left {
@@ -45,34 +46,6 @@ body {
   top: 0px;
 }
 
-.left .content .back-btn {
-  background-color: transparent;
-  border: none;
-  position: absolute;
-  top: 35px;
-  left: 25px;
-}
-
-.left .content .logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  position: absolute;
-  top: 50px;
-  left: 200.17px;
-  transform: rotate(-15.86deg);
-}
-
-.left .content h2,h3,h4 {
-  position: relative;
-  top: 100px;
-  right: 20px;
-  color: var(--second-text-color);
-  font-weight: 400;
-  margin: 0.2rem;
-}
-
 .right {
   display: flex;
   justify-content: center;
@@ -83,6 +56,49 @@ body {
   height: max-content;
   left: 50%;
   top: 0px;
+}
+
+.left .content .back-btn {
+  background-color: transparent;
+  border: none;
+  position: relative;
+  top: -55px;
+  left: -90px;
+}
+
+.left .content .logo-image .logo {
+  animation: MoveUpDown 3s linear infinite;
+}
+
+.left .content .logo-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    bottom: 60px;
+}
+
+.left .content .text-content{
+  position: relative;
+  bottom: 75px;
+  right: -15px;
+  color: var(--second-text-color);
+  font-weight: 400;
+  margin: 0.2rem;
+
+  width: 500px;
+  height: 76px;
+}
+
+.text-content h2 {
+  font-weight: 400;
+  font-size: 1.6rem;
+}
+
+.text-content h4 {
+  margin-top: 10px;
+  font-weight: 400;
 }
 
 .sign-up {
@@ -103,6 +119,7 @@ body {
 }
 
 input {
+  background-color: var(--third-bg-color);
   width: 319px;
   height: 41px;
   top: 305px;
@@ -110,20 +127,12 @@ input {
   border-radius: 8px;
   
   margin: 5px;
-  padding: 2rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+
+  font-size: 1rem;
+  border: 1px solid #ccc;
 } 
-
-/* #email {
-  background-image: url('/image/icons8-at-20.png');
-  background-repeat: no-repeat;
-  background-position: right center;
-}
-
-#password {
-  background-image: url('/image/icons8-padlock-outline-20.png');
-  background-repeat: no-repeat;
-  background-position: right center;
-} */
 
 #email, #password, #confirm-password {
   width: 500px;
@@ -183,10 +192,21 @@ input {
   font-size: 1.3rem;
   color: var(--second-text-color);
 
-  font-family: 'Roboto';
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+.sign-up h1, p {
+  margin: 5px;
+}
+
+.sign-up h1 {
+  font-size: 1.9rem;
   font-weight: 400;
-  line-height: 23.44px;
-  margin-top: 1.5rem;
+}
+
+.sign-up p {
+  margin-bottom: 1.2rem;
 }
 
 .sign-up .name {
@@ -194,18 +214,6 @@ input {
   flex-direction: row;
 }
 
-.sign-up h1, p {
-  margin: 5px;
-}
-
-.sign-up p {
-  margin-bottom: 1.2rem;
-}
-
-.sign-up h1 {
-  font-size: 1.9rem;
-  font-weight: 400;
-}
 
 #country {
   width: 500px;
@@ -218,16 +226,12 @@ input {
   margin-bottom: 1rem;
 }
 
-
-/* #contry:active, #country:hover {
-  background-color: transparent;
-} */
-
-input {
-  background-color: var(--third-bg-color);
-  padding: 0.5rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 1rem;
+@keyframes MoveUpDown {
+  0%,
+  100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-30px);
+  }
 }
