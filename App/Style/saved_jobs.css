@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+}
+
+:root {
+    --main-color: #577CFF;
+    --second-main-color: #deecf0;
+    --main-bg-color: #fff;
+    --second-bg-color: #ededed;
+    --third-bg-color: #c8c9ca;
+    --main-text-color: #000;
+    --second-text-color: #fff;
+    --third-text-color: #737373;
+}
+
+body {
+    background-color: var(--second-bg-color);
+
+}
+
+/* Section Css */
+.section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--main-bg-color);
+    
+    position: relative;
+    width: 1015px;
+    height: 635px;
+    left: 260px;
+    top: 15px;
+}
+
+.jobs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    right: 504px;
+    bottom: 336.5px;
+}
+
+.first-job {
+    position: absolute;
+    width: 952px;
+    height: 170px;
+    left: 30px;
+    top: 70px;
+}
+
+.second-job {
+    position: absolute;
+    width: 952px;
+    height: 170px;
+    left: 30px;
+    top: 241px;
+}
+
+.third-job {
+    position: absolute;
+    width: 952px;
+    height: 170px;
+    left: 30px;
+    top: 413px;
+}
+
+.num-nav .pagination {
+    position: absolute;
+    bottom: 16px;
+    left: 305px;
+}
+
+.line {
+    position: absolute;
+    bottom: 47px;
+    left: 155px;
+
+    width: 700px;
+    height: 0px;
+
+    margin-bottom: 0.4rem;
+} 
+
+hr {
+    border: 1.2px solid var(--third-bg-color);
+}
+
+/* Job Container CSS */
+
+.job-container .job-header h1 {
+    font-size: 33px;
+    font-weight: 500;
+    line-height: 42px;
+
+    position: absolute;
+    top: 0px;
+    right: 415px;
+
+    margin-top: 5px;
+}
+
+.job-container .delete-job {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+
+    position: absolute;
+    top: 5px;
+    left: 920px;
+    cursor: pointer;
+}
+
+
+.job-title h3 {
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 22px;
+
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.job-info {
+    margin-bottom: 10px;
+}
+
+.job-info span {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 15px;
+    color: #737373;
+}
+
+.job-info .content {
+    color: #1E1E1E;
+}
+
+.job-description {
+    margin-bottom: 14px;
+}
+
+.job-description p {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 15px;
+    color: var(--main-text-color);
+}
+
+.tags {
+    display: flex;
+    margin-bottom: 9px;
+    gap: 1rem;  
+}
+
+.tags .tag {
+    background: var(--third-bg-color);
+    border-radius: 1rem;
+    padding: 0% 1rem;
+    color: #292929;
+}
+
+.time {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.7rem;
+}
+
+.proposal, .tokens {
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 11.7px;
+    color: #737373;
+}
+
+.time span {
+    color: #1E1E1E;
+}
+
+
+/* Pagination CSS */
+.pagination {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .pagination li {
+    margin-right: 10px;
+  }
+  
+  .pagination li:last-child {
+    margin-right: 0;
+  }
+  
+  .pagination a {
+    color: #333;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+  }
+  
+  .pagination a:hover,
+  .pagination a.active {
+    background-color: #333;
+    color: #fff;
+  }
