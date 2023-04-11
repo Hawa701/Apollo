@@ -33,8 +33,8 @@ body {
 
 section {
   position: relative;
-  min-height: 100vh;
-  padding: 2rem 5% 1rem;
+  max-height: 130vh;
+  padding: 2rem 5%;
 }
 
 li {
@@ -43,6 +43,7 @@ li {
 
 #tags {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 1rem;
 }
@@ -52,7 +53,6 @@ li {
   background: var(--third-bg-color);
   border-radius: 1rem;
   padding: 0% 1rem;
-  margin-bottom: 0.6rem;
 }
 
 /* section design */
@@ -67,6 +67,7 @@ li {
   background: var(--main-bg-color);
   border-radius: 0.8rem;
   padding: 7% 2rem;
+  display: block;
 }
 
 .filter .title {
@@ -111,15 +112,32 @@ input[type="range"] {
   background: var(--main-bg-color);
   border-radius: 0.8rem;
   padding: 1.3rem 1.3rem;
+  /* overflow-y: scroll; */
 }
 
 .work .search {
   padding: 0 0.8rem 1rem;
 }
 
-.search h2 {
+.search-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-title h2 {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
+}
+
+.search-title .filter-btn {
+  display: none;
+  padding-right: 1rem;
+  cursor: pointer;
+}
+
+.filter-btn {
+  color: var(--third-text-color);
 }
 
 .search .search-bar {
@@ -131,6 +149,7 @@ input[type="range"] {
   border: solid 1px var(--third-text-color);
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
+  width: 60%;
 }
 
 .search-bar button {
@@ -143,9 +162,8 @@ input[type="range"] {
   cursor: pointer;
 }
 
-.search .result {
+.result {
   font-size: 0.8rem;
-  color: var(--third-text-color);
 }
 
 .jobs {
@@ -192,6 +210,7 @@ input[type="range"] {
   font-size: 0.8rem;
   display: flex;
   gap: 2rem;
+  margin-top: 0.6rem;
 }
 
 .apply-info .text {
@@ -214,7 +233,7 @@ input[type="range"] {
   left: 100%;
   right: 0;
   width: 0%;
-  height: 90%;
+  height: 100%;
   background: var(--main-bg-color);
   border-radius: 1rem;
   padding: 2rem 3%;
@@ -331,12 +350,6 @@ input[type="range"] {
   font-weight: 500;
 }
 
-.info.three .btn:hover {
-  transform: scale(1.05);
-  transition: 0.4s;
-  box-shadow: 0 0 0.4rem var(--main-color);
-}
-
 .info.four {
   display: flex;
   justify-content: start;
@@ -353,12 +366,86 @@ input[type="range"] {
   margin-bottom: 1rem;
 }
 
-/* FOR TABLET */
+/* Break point 1 */
 @media (max-width: 950px) {
-  body {
-    background-color: #295dc5;
+  .section {
+    grid-template-columns: unset;
+    grid-template-rows: 1fr 3fr;
+    padding: 2rem;
+    max-height: 110vh;
   }
 
   .filter {
+    display: none;
+    padding: 1.4rem 2rem;
+  }
+
+  .filter-title {
+    margin-bottom: 0;
+  }
+
+  .filter h3 {
+    margin-bottom: 0.4rem;
+  }
+
+  .filter input {
+    margin-bottom: 0.6rem;
+  }
+
+  .filter-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .filter-box {
+    width: 100%;
+  }
+
+  .filter-container hr {
+    display: none;
+  }
+
+  .work {
+    height: 100vh;
+  }
+
+  .search-title .filter-btn {
+    display: block;
+  }
+
+  .search-bar input {
+    width: 100%;
+  }
+
+  .jobs .apply-job {
+    height: 100%;
+  }
+
+  .all-job-information {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .info.three,
+  .info.eight {
+    border-radius: unset;
+  }
+
+  .info.one {
+    border-top-right-radius: 1rem;
+  }
+  .info.three {
+    padding: 1rem 30%;
+  }
+  .info.nine {
+    border-bottom-right-radius: 1rem;
+  }
+}
+
+/* Break point 2 */
+@media (max-width: 680px) {
+  .filter-container {
+    flex-direction: column;
   }
 }

@@ -58,72 +58,92 @@
       <!-- section design -->
       <section class="section">
         <!-- filter -->
-        <div class="filter">
+        <div class="filter" id="filter">
           <div class="title">
             <h2>Filter</h2>
-            <span class="clear">
+            <span class="clear" onclick="clear()">
               Clear all
               <i class="fa-regular fa-circle-xmark"></i>
             </span>
           </div>
 
-          <h3>Experience Level</h3>
-          <input type="radio" name="experience" id="level" />
-          <span class="text"> Entry Level</span>
-          <br />
-          <input type="radio" name="experience" id="level" />
-          <span class="text">Intermediate</span>
-          <br />
-          <input type="radio" name="experience" id="level" />
-          <span class="text">Expert</span>
-          <br />
-          <hr />
+          <div class="filter-container">
+            <div class="filter-box one">
+              <h3>Experience Level</h3>
+              <input type="checkbox" name="experience" id="level" />
+              <span class="text"> Entry Level</span>
+              <br />
+              <input type="checkbox" name="experience" id="level" />
+              <span class="text">Intermediate</span>
+              <br />
+              <input type="checkbox" name="experience" id="level" />
+              <span class="text">Expert</span>
+              <br />
+            </div>
+            <hr />
 
-          <h3>Availability</h3>
-          <input type="radio" name="availability" id="availability" />
-          <span class="text">Contract</span> <br />
-          <input type="radio" name="availability" id="availability" />
-          <span class="text">Full-Time</span> <br />
-          <hr />
+            <div class="filter-box two">
+              <h3>Availability</h3>
+              <input type="checkbox" name="availability" id="availability" />
+              <span class="text">Contract</span> <br />
+              <input type="checkbox" name="availability" id="availability" />
+              <span class="text">Full-Time</span> <br />
+            </div>
+            <hr />
 
-          <h3>Pay (In Birr)</h3>
-          <input type="range" name="pay" id="pay" />
-          <hr />
+            <div class="filter-box three">
+              <h3>Pay (In Birr)</h3>
+              <input type="range" name="pay" id="pay" />
+            </div>
+            <hr />
 
-          <h3>Number of proposals</h3>
-          <input type="radio" name="proposals" id="proposals" />
-          <span class="text">Less than 5</span> <br />
-          <input type="radio" name="proposals" id="proposals" />
-          <span class="text">5 to 10</span> <br />
-          <input type="radio" name="proposals" id="proposals" />
-          <span class="text">10 to 15</span> <br />
-          <input type="radio" name="proposals" id="proposals" />
-          <span class="text">15+</span> <br />
-          <hr />
+            <div class="filter-box four">
+              <h3>Number of proposals</h3>
+              <input type="checkbox" name="proposals" id="proposals" />
+              <span class="text">Less than 5</span> <br />
+              <input type="checkbox" name="proposals" id="proposals" />
+              <span class="text">5 to 10</span> <br />
+              <input type="checkbox" name="proposals" id="proposals" />
+              <span class="text">10 to 15</span> <br />
+              <input type="checkbox" name="proposals" id="proposals" />
+              <span class="text">15+</span> <br />
+            </div>
+            <hr />
 
-          <h3>Token needed</h3>
-          <input type="radio" name="token" id="token" />
-          <span class="text">2 or less</span> <br />
+            <div class="filter-box five">
+              <h3>Token needed</h3>
+              <input type="checkbox" name="token" id="token" />
+              <span class="text">2 or less</span> <br />
+            </div>
+          </div>
         </div>
 
         <!-- work -->
         <div class="work">
           <div class="search">
-            <h2>Search</h2>
+            <div class="search-title">
+              <h2>Search</h2>
+              <span class="filter-btn" onclick="toggleFilter('filter-icon')">
+                Filter
+                <i class="fa-solid fa-filter" id="filter-icon"></i>
+              </span>
+            </div>
             <div class="search-bar">
-              <input type="text" placeholder="Search here" size="60%" />
+              <input type="text" placeholder="Search here" />
               <button type="submit">
                 <i class="fa-solid fa-magnifying-glass"></i>
               </button>
             </div>
-            <span class="result">132 results</span>
+            <span class="result">0 results</span>
           </div>
 
           <div class="job-container">
             <div class="jobs">
               <div class="title-block">
-                <h3 onclick="openApplyJob()">Woocommerce Custom Checkout</h3>
-                <div class="bookmark" onclick="saveJob('bookmark-icon')">
+                <h3 onclick="openApplyJob('68%')">
+                  Woocommerce Custom Checkout
+                </h3>
+                <div class="bookmark" onclick="saveJobIcon('bookmark-icon')">
                   <i class="fa-regular fa-bookmark" id="bookmark-icon"></i>
                 </div>
               </div>
@@ -140,7 +160,7 @@
                 </span>
               </div>
 
-              <div class="description" onclick="openApplyJob()">
+              <div class="description" onclick="openApplyJob('68%')">
                 <p>
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                   Quas, ex ut. Minima natus blanditiis incidunt animi, assumenda
@@ -219,8 +239,14 @@
               <a href="#">https://dummy.link</a>
             </div>
             <div class="info three">
-              <button class="btn apply">Apply Now</button>
-              <button class="btn save">Save Job</button>
+              <button id="ap-btn" class="btn apply">Apply Now</button>
+              <button
+                id="sv-btn"
+                class="btn save"
+                onclick="saveJobBtn('sv-btn')"
+              >
+                Save Job
+              </button>
             </div>
             <div class="info four">
               <div class="box price">
