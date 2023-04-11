@@ -1,4 +1,4 @@
-const totalPages = 10;
+/* const totalPages = 10;
 const pagination = document.querySelector('.pagination');
 
 for (let i = 1; i <= totalPages; i++) {
@@ -19,4 +19,4 @@ links.forEach(link => {
   if (pageNum === currentPage) {
     link.classList.add('active');
   }
-});
+}); */
