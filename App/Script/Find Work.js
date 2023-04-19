@@ -14,6 +14,7 @@ const jobArray = [
     date: "4/19/2023",
     description:
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas, ex ut. Minima natus blanditiis incidunt animi, assumenda repudiandae facere debitis a distinctio voluptate quibusdamodio itaque eveniet similique cupiditate magni! Provident expedita, nemo ad possimus, quod incidunt vel fugit nobis earum repellendus nulla ullam necessitatibus fuga voluptates laborum dolorem, vitae quasi delectus facere molestias maxime minus beatae perspiciatis est. Blanditiis quia rerum nemo repudiandae aut ea et porro, excepturi soluta?",
+    tag: [],
     proposals: "Less than 5",
     token: "6",
   },
@@ -26,6 +27,7 @@ const jobArray = [
     date: "4/19/2023",
     description:
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas, ex ut. Minima natus blanditiis incidunt animi, assumenda repudiandae facere debitis a distinctio voluptate quibusdamodio itaque eveniet similique cupiditate magni! Provident expedita, nemo ad possimus, quod incidunt vel fugit nobis earum repellendus nulla ullam necessitatibus fuga voluptates laborum dolorem, vitae quasi delectus facere molestias maxime minus beatae perspiciatis est. Blanditiis quia rerum nemo repudiandae aut ea et porro, excepturi soluta?",
+    tag: [],
     proposals: "5 to 10",
     token: "6",
   },
@@ -38,6 +40,7 @@ const jobArray = [
     date: "4/19/2023",
     description:
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas, ex ut. Minima natus blanditiis incidunt animi, assumenda repudiandae facere debitis a distinctio voluptate quibusdamodio itaque eveniet similique cupiditate magni! Provident expedita, nemo ad possimus, quod incidunt vel fugit nobis earum repellendus nulla ullam necessitatibus fuga voluptates laborum dolorem, vitae quasi delectus facere molestias maxime minus beatae perspiciatis est. Blanditiis quia rerum nemo repudiandae aut ea et porro, excepturi soluta?",
+    tag: [],
     proposals: "10 to 15",
     token: "6",
   },
@@ -50,14 +53,51 @@ const jobArray = [
     date: "4/19/2023",
     description:
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas, ex ut. Minima natus blanditiis incidunt animi, assumenda repudiandae facere debitis a distinctio voluptate quibusdamodio itaque eveniet similique cupiditate magni! Provident expedita, nemo ad possimus, quod incidunt vel fugit nobis earum repellendus nulla ullam necessitatibus fuga voluptates laborum dolorem, vitae quasi delectus facere molestias maxime minus beatae perspiciatis est. Blanditiis quia rerum nemo repudiandae aut ea et porro, excepturi soluta?",
+    tag: [],
     proposals: "15+",
     token: "6",
   },
 ];
 
+//tag array
+const tagArray = [
+  { tagid: 1, jobId: 1, tagName: "PHP" },
+  { tagid: 2, jobId: 1, tagName: "CSS" },
+  { tagid: 3, jobId: 1, tagName: "JS" },
+  { tagid: 4, jobId: 1, tagName: "HTML" },
+
+  { tagid: 5, jobId: 2, tagName: "PHP" },
+  { tagid: 6, jobId: 2, tagName: "CSS" },
+  { tagid: 7, jobId: 2, tagName: "HTML" },
+
+  { tagid: 8, jobId: 3, tagName: "Angular" },
+  { tagid: 9, jobId: 3, tagName: "React" },
+  { tagid: 10, jobId: 3, tagName: "Vue" },
+  { tagid: 11, jobId: 3, tagName: "JS" },
+
+  { tagid: 12, jobId: 4, tagName: "CSS" },
+  { tagid: 13, jobId: 4, tagName: "PHP" },
+];
+
 //loading the jobs in the container
 const jobLoader = () => {
   jobContainer.innerHTML = "";
+
+  //filling the tags
+  for (var i = 0; i < jobArray.length; i++) {
+    for (let j = 0; j < tagArray.length; j++) {
+      if (jobArray[i].jobId == tagArray[j].jobId) {
+        jobArray[i].tag.push(tagArray[j].tagName);
+      }
+    }
+  }
+
+  //check
+  // for (let i = 0; i < jobArray.length; i++) {
+  //   for (let j = 0; j < jobArray[i].tag.length; j++) {
+  //     console.log(jobArray[i].tag[j] + `${i}`);
+  //   }
+  // }
 
   for (var i = 0; i < jobArray.length; i++) {
     jobContainer.innerHTML += `<div class="jobs" id="${jobArray[i].id}">
@@ -86,7 +126,7 @@ const jobLoader = () => {
                 <p>
                   ${jobArray[i].description}
                 </p>
-              </div>
+              </div> 
 
               <div id="tags">
                 <span class="tag">PHP</span>
@@ -103,6 +143,15 @@ const jobLoader = () => {
               <hr />
             </div>`;
   }
+
+  //loading the tags
+  /* const tags = document.getElementById("tags");
+
+  for (let i = 0; i < jobArray.length; i++) {
+    for (let j = 0; j < jobArray[i].tag.length; j++) {
+      tags.innerHTML += `<span class="tag">${jobArray[i].tag[j]}</span>`;
+    }
+  } */
 };
 
 jobLoader();
@@ -134,7 +183,7 @@ const applyJobInfoLoader = (index) => {
             </div>
             <div class="info four">
               <div class="box price">
-                <h4>$${jobArray[index].payment}</h4>
+                <h4>${jobArray[index].payment} ETB</h4>
                 <span>Fixed Price</span>
               </div>
               <div class="box ex-level">
