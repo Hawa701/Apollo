@@ -112,7 +112,8 @@ input[type="range"] {
   background: var(--main-bg-color);
   border-radius: 0.8rem;
   padding: 1.3rem 1.3rem;
-  /* overflow-y: scroll; */
+  max-height: 115vh;
+  /* overflow-y: hidden; */
 }
 
 .work .search {
@@ -166,12 +167,14 @@ input[type="range"] {
   font-size: 0.8rem;
 }
 
-.jobs {
-  cursor: default;
-}
-
 .job-container {
   padding: 0 1.8rem;
+  max-height: 80%;
+  overflow-y: scroll;
+}
+
+.jobs {
+  cursor: default;
 }
 
 .jobs .title-block {
