@@ -24,50 +24,37 @@
 body {
   background: var(--main-bg-color);
   color: var(--main-text-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
 }
 
 .container {
+  display: flex;
+  align-items: stretch;
+  height: 100vh;
 }
 
 .left {
   background-color: var(--main-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  position: absolute;
-  width: 50%;
-  height: 764px;
-  left: 0px;
-  top: 0px;
+  width: 767px;
 }
 
 .right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-  position: absolute;
-  width: 50%;
-  height: max-content;
-  left: 50%;
-  top: 0px;
+  width: 767px;
 }
 
 .left .content .back-btn {
   background-color: transparent;
   border: none;
-  position: relative;
-  top: -65px;
-  left: -90px;
+   
+  margin-left: 40px;
+  margin-top: 35px;
 }
 
 .logo-image {
-  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
 }
 
 .left .content .logo-image .logo {
@@ -76,15 +63,14 @@ body {
 }
 
 .left .content .logo-image .shadow {
-  position: absolute;
   width: 395px;
   height: 32px;
-  right: 40px;
-  top: 370px;
-
   background: rgba(0, 0, 0, 0.1);
   border-radius: 60%;
   z-index: 1;
+
+  margin-top: -60px;
+  margin-bottom: 10px;
 }
 
 @keyframes MoveUpDown {
@@ -97,25 +83,10 @@ body {
   }
 }
 
-.left .content .logo-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    position: relative;
-    bottom: 60px;
-}
-
 .left .content .text-content{
-  position: relative;
-  bottom: 75px;
-  right: -15px;
   color: var(--second-text-color);
   font-weight: 400;
   margin: 0.2rem;
-
-  width: 500px;
-  height: 76px;
 }
 
 .text-content {
@@ -141,24 +112,19 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  position: absolute;
-  top: 60px;
+  margin-top: 3.5rem;
 }
 
 .sign-up-form {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 input {
   background-color: var(--third-bg-color);
-  width: 319px;
   height: 41px;
-  top: 305px;
-  left: 800px;
   border-radius: 8px;
   
   margin: 5px;
@@ -169,45 +135,37 @@ input {
   border: 1px solid #ccc;
 } 
 
-#email, #password, #confirm-password {
+.sign-up .name {
+  display: flex;
+}
+
+#email, #password, #confirm-password, #username {
   width: 500px;
 }
 
-#fname, #lname, #username {
+#fname, #lname {
   width: 245px;
 }
 
-#username {
-  position: relative;
-  top: 0px;
-  left: -127px;
+#country {
+  width: 500px;
+  height: 41px;
+  background-color: var(--third-bg-color);
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 1rem;
 }
 
 #privacy-policy {
   width: 50px;
   height: 17px;
-  margin-right: -0.7rem;
-
-  display: flex;
-  
-}
-
-.sign-up-form h3 {
-  position: absolute;
-  top: 620px;
-  right: 150px;
-  color: var(--third-text-color);
-  font-weight: 600;
- }
-
-.sign-up-form h3>a:hover {
-
+  margin-right: -0.7rem;  
 }
 
 .privacy-policy {
   display: flex;
-  position: relative;
-  left: 0px;
 }
 
 .privacy-policy p {
@@ -253,20 +211,56 @@ input {
   color: var(--main-color);
 }
 
-.sign-up .name {
-  display: flex;
-  flex-direction: row;
+#login {
+  color: var(--third-text-color);
+  font-weight: 600;
+
+  margin: 45px auto;
 }
+ 
 
-
-#country {
-  width: 500px;
-  height: 41px;
-  background-color: var(--third-bg-color);
-  padding: 0.5rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
+/* Alert Box CSS */
+.alert {
+  background-color: #f44336;
+  color: white;
+  padding: 20px;
   border-radius: 5px;
-  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 20px;
 }
 
+.closebtn {
+  color: var(--second-text-color);
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: var(--main-text-color);
+}
+
+/* Show Password */
+
+.passwords {
+   display: flex;
+   align-items: center;
+   margin-right: 0.8rem;
+}
+
+.far {
+  margin-left: -30px;
+  margin-top: -10px;
+}
+
+.passwords i {
+  color: var(--third-text-color);
+  cursor: pointer;
+}
+
+.passwords i:hover {
+  color: var(--main-text-color);
+}
