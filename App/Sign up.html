@@ -16,9 +16,10 @@
     <!-- box icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 
     <!-- css link -->
-    <link rel="stylesheet" href="/Style/Sign_Up.css" />
+    <link rel="stylesheet" href="./Style/Sign_Up.css" />
     <!-- icon link -->
     <link
       rel="stylesheet"
@@ -64,7 +65,7 @@
               <h1>Sign Up</h1>
                <h2>Sign up to find work you love</h2>
 
-             <form class="sign-up-form">
+             <form class="sign-up-form" onsubmit="return validateForm()">
 
               <div class="name">
 
@@ -79,9 +80,15 @@
 
               <input type="email" id="email" name="email" placeholder="Email" required>
 
-              <input type="password" id="password" name="password" placeholder="Password" required> 
+              <div id="pswd" class="passwords">
+                <input type="password" id="password" class="visibility" name="password" placeholder="Password" required> 
+                <i class="far fa-eye" id="togglePassword1"></i>
+              </div>
 
-              <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
+              <div id="confirm-pswd" class="passwords">
+                <input type="password" id="confirm-password" class="visibility" name="confirm-password" placeholder="Confirm Password" required> 
+                <i class="far fa-eye" id="togglePassword2"></i>
+              </div>
 
               <select name="country" id="country" class="country">
                 <option value="Ethiooia" selected>Ethiopia</option>
@@ -98,12 +105,11 @@
                 <p>Yes, i understand and agree to the <em>Appollo Terms or Service</em>, including the <em>user Agreement<br> and Privacy Policy</em></p>
               </div>
 
-
               <button type="submit">Sign Up</button>
             
-              <h3>Already have an account? <a href="#">Log In</a></h3>
-            
             </form> <!-- sign up form end-->
+
+            <h3 id="login">Already have an account? <a href="#">Log In</a></h3>
 
             </div> <!-- sign up end -->
 
@@ -111,5 +117,6 @@
 
    </div> <!-- container end-->
     
+   <script src="./Script/sign_up.js"></script>
 </body>
 </html>
