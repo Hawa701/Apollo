@@ -69,41 +69,49 @@
 
               <div class="name">
 
-                <input type="text" id="fname" name="fname" placeholder="First Name" required>
-
-                <input type="text" id="lname" name="lname" placeholder="Last Name" required>
-
+                <input type="text" id="fname" name="fname" placeholder="First Name">
+                
+                <input type="text" id="lname" name="lname" placeholder="Last Name">             
               </div>  <!-- name end-->
 
+              <div class="nameAlert">
+                <div id="fnameAlert" class="alert"><img src="https://img.icons8.com/material-sharp/15/FA5252/box-important--v1.png"/> First name required</div>
+                <div class="alert" id="lnameAlert"><img src="https://img.icons8.com/material-sharp/15/FA5252/box-important--v1.png"/> Last name required</div>
+              </div>
+
               <input type="username" id="username" name="username" placeholder="User-Name">
-                        
+              <div id="usernameAlert" class="alert"><img src="https://img.icons8.com/material-sharp/15/FA5252/box-important--v1.png"/> User name required</div>    
 
-              <input type="email" id="email" name="email" placeholder="Email" required>
-
+              <input type="email" id="email" name="email" placeholder="Email" >
+                <div class="alert" id="emailAlert"><img src="https://img.icons8.com/material-sharp/15/FA5252/box-important--v1.png"/> email required</div>
+              
               <div id="pswd" class="passwords">
-                <input type="password" id="password" class="visibility" name="password" placeholder="Password" required> 
+                <input type="password" id="password" class="visibility" name="password" placeholder="Password" >                
                 <i class="far fa-eye" id="togglePassword1"></i>
               </div>
+              <div class="alert" id="passwordAlert"><img src="https://img.icons8.com/material-sharp/15/FA5252/box-important--v1.png"/> Password required</div>    
 
               <div id="confirm-pswd" class="passwords">
-                <input type="password" id="confirm-password" class="visibility" name="confirm-password" placeholder="Confirm Password" required> 
+                <input type="password" id="confirm-password" class="visibility" name="confirm-password" placeholder="Confirm Password" > 
                 <i class="far fa-eye" id="togglePassword2"></i>
               </div>
+              <div class="alert" id="confirm-passwordAlert"><img src="https://img.icons8.com/material-sharp/15/FA5252/box-important--v1.png"/> Confirm Password required</div>
 
               <select name="country" id="country" class="country">
-                <option value="Ethiooia" selected>Ethiopia</option>
+                <option value="Ethiopia" selected>Ethiopia</option>
                 <option value="Kenya">Kenya</option>
                 <option value="Eritrea">Eritrea</option>
                 <option value="Somalia">Somalia</option>
                 <option value="Djibouti">Djibouti</option>
                 <option value="Sudan">Sudan</option>
-                <option value="South Sudan">South Sudan</option>
+              <option value="South Sudan">South Sudan</option>
               </select>
 
               <div class="privacy-policy">
                 <input type="checkbox" name="privacy-policy" id="privacy-policy"> 
                 <p>Yes, i understand and agree to the <em>Appollo Terms or Service</em>, including the <em>user Agreement<br> and Privacy Policy</em></p>
               </div>
+              <div class="alert" id="privacy-policyAlert"><img src="https://img.icons8.com/material-sharp/15/FA5252/box-important--v1.png"/> Please accept the Apollo Terms of Service before continuing</div>    
 
               <button type="submit">Sign Up</button>
             

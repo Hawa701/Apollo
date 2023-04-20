@@ -49,6 +49,10 @@ body {
   margin-top: 35px;
 }
 
+.left .content .back-btn:hover {
+  transform: translatey(-5%);
+}
+
 .logo-image {
   display: flex;
   flex-direction: column;
@@ -156,6 +160,7 @@ input {
   border: 1px solid #ccc;
   border-radius: 5px;
   margin-bottom: 1rem;
+  margin-top: 0.4rem;
 }
 
 #privacy-policy {
@@ -190,6 +195,10 @@ input {
   margin-top: 1rem;
 }
 
+.sign-up button:hover {
+  background-color: #0256fe;
+}
+
 .sign-up h1, h2 {
   margin: 5px;
 }
@@ -215,32 +224,56 @@ input {
   color: var(--third-text-color);
   font-weight: 600;
 
-  margin: 45px auto;
+  margin: 1.5rem auto;
+}
+
+#login a:hover {
+  text-decoration: underline;
+  font-weight: 800;
 }
  
 
 /* Alert Box CSS */
 .alert {
-  background-color: #f44336;
-  color: white;
-  padding: 20px;
-  border-radius: 5px;
-  text-align: center;
-  font-size: 18px;
-  margin-bottom: 20px;
+  color: #9b211b;
+  display: none;
+  align-items: center;
 }
 
-.closebtn {
-  color: var(--second-text-color);
-  float: right;
-  font-size: 22px;
-  line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
+.nameAlert {
+  display: flex;
+  justify-content: space-between;
 }
 
-.closebtn:hover {
-  color: var(--main-text-color);
+#fnameAlert {
+  height: 13px;
+  width: 218px;
+  border-radius: 11px;
+  margin-top: -8px;
+  margin-left: -10px;
+}
+
+#lnameAlert {
+  height: 13px;
+  width: 218px;
+  border-radius: 11px;
+  margin-top: -8px;
+  margin-bottom: 4px;
+  margin-left: 40px;
+}
+
+#usernameAlert, #emailAlert, #passwordAlert, #confirm-passwordAlert {
+  display: none;
+  height: 13px;
+  width: 218px;
+  border-radius: 11px;
+  margin-top: -8px;
+  margin-right: 270px;
+}
+
+#privacy-policyAlert {
+  margin-top: -0.2rem;
+  margin-bottom: -0.5rem;
 }
 
 /* Show Password */

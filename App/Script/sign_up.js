@@ -17,12 +17,24 @@
 } */
 
 function validateForm() {
-    const usernameInput = document.getElementById("username");
+    const usernameInput = document.querySelector("#username");
+    const fnameInput = document.querySelector('#fname');
+    const lnameInput = document.querySelector('#lname');
     const emailInput = document.getElementById("email");
     const passwordInput = document.getElementById("password");
     const confirmPasswordInput = document.getElementById("confirm-password");
     const agreeCheckbox = document.getElementById("privacy-policy");
-  
+
+    const alerts = document.querySelector('.alert');
+    const nameAlert = document.querySelector(".nameAlert");
+    const fnameAlert = document.querySelector('#fnameAlert');
+    const lnameAlert = document.querySelector('#lnameAlert');
+    const usernameAlert = document.querySelector('#usernameAlert');
+    const emailAlert = document.querySelector('#emailAlert');
+    const passwordAlert = document.querySelector('#passwordAlert');
+    const confirmPasswordAlert = document.querySelector('#confirm-passwordAlert');
+    const agreeeAlert = document.querySelector('#privacy-policyAlert');
+    
     const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
     // one or more lowercase letters, digits, dots, underscores, percent signs, plus signs, or hyphens, representing the local part of the email address
     // "@" symbol
@@ -63,9 +75,19 @@ function validateForm() {
         alert("Please agree to the terms and conditions");
         isValid = false; // prevent form submission
     }
-  
+
+    // Alert if there is no input
+    fnameInput.value == ''?fnameAlert.style.display = "flex": fnameAlert.style.display = "none"
+    lnameInput.value == ''?lnameAlert.style.display = "flex": lnameAlert.style.display = "none"
+    usernameInput.value == ''?usernameAlert.style.display = "flex": usernameAlert.style.display = "none"
+    emailInput.value == ''? emailAlert.style.display = "flex":  emailAlert.style.display = "none"
+    passwordInput.value == ''?passwordAlert.style.display = "flex": passwordAlert.style.display = "none"
+    confirmPasswordInput.value == ''?confirmPasswordAlert.style.display = "flex":confirmPasswordAlert.style.display = "none"
+    !(agreeCheckbox.checked)?agreeeAlert.style.display = "flex":agreeeAlert.style.display = "none"
+
     return isValid;
 }
+
  // password toggle
 const togglePassword = document.querySelector('#togglePassword1');
 const password = document.querySelector('#password');
