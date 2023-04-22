@@ -1,9 +1,13 @@
-const applyJob = document.getElementById("apply-job");
-const filterIcon = document.getElementById("filter");
-const jobContainer = document.getElementById("job-container");
-const applyJobInfo = document.getElementById("all-job-information");
-const jobs = document.getElementById("jobs");
+const jobContainer = document.getElementById("job-container"); //for targetting job-container
+const applyJob = document.getElementById("apply-job"); //for toggling apply job
+const applyJobInfo = document.getElementById("all-job-information"); //for filling job info in the apply job page
+const filterIcon = document.getElementById("filter"); //for filter button
+const clearBtn = document.getElementById("clear"); //for clear button
+const checkBoxes = document.querySelectorAll("[type=checkbox]"); //for targetting each checkbox
+const searchBtn = document.getElementById("search"); //for search button
+const resultLabel = document.getElementById("result"); //for result label
 
+//job array
 const jobArray = [
   {
     index: 0,
@@ -13,7 +17,7 @@ const jobArray = [
     experience: "Intermediate",
     date: "4/19/2023",
     description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas, ex ut. Minima natus blanditiis incidunt animi, assumenda repudiandae facere debitis a distinctio voluptate quibusdamodio itaque eveniet similique cupiditate magni! Provident expedita, nemo ad possimus, quod incidunt vel fugit nobis earum repellendus nulla ullam necessitatibus fuga voluptates laborum dolorem, vitae quasi delectus facere molestias maxime minus beatae perspiciatis est. Blanditiis quia rerum nemo repudiandae aut ea et porro, excepturi soluta?",
+      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas, ex ut. Minima natus blanditiis incidunt animi, assumenda repudiandae facere debitis a distinctio voluptate quibusdamodio itaque eveniet similique cupiditate magni! Provident expedita, nemo ad possimus, quod incidunt vel fugit nobis earum repellendus nulla ullam necessitatibus fuga voluptates laborum dolorem, vitae quasi delectus facere molestias maxime minus beatae perspiciatis est. Blanditiis quia rerum nemo repudiandae aut ea et porro, excepturi soluta? <br /><br /><a href="#">https://dummy.link</a><br /><a href="#">https://dummylink</a><br /><a href="#">https://dummy.link</a>',
     tag: [],
     proposals: "Less than 5",
     token: "6",
@@ -26,10 +30,10 @@ const jobArray = [
     experience: "Expert",
     date: "4/19/2023",
     description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas, ex ut. Minima natus blanditiis incidunt animi, assumenda repudiandae facere debitis a distinctio voluptate quibusdamodio itaque eveniet similique cupiditate magni! Provident expedita, nemo ad possimus, quod incidunt vel fugit nobis earum repellendus nulla ullam necessitatibus fuga voluptates laborum dolorem, vitae quasi delectus facere molestias maxime minus beatae perspiciatis est. Blanditiis quia rerum nemo repudiandae aut ea et porro, excepturi soluta?",
+      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas, ex ut. Minima natus blanditiis incidunt animi, assumenda repudiandae facere debitis a distinctio voluptate quibusdamodio itaque eveniet similique cupiditate magni! Provident expedita, nemo ad possimus, quod incidunt vel fugit nobis earum repellendus nulla ullam necessitatibus fuga voluptates laborum dolorem, vitae quasi delectus facere molestias maxime minus beatae perspiciatis est. Blanditiis quia rerum nemo repudiandae aut ea et porro, excepturi soluta? <br /><br /> <a href="#">https://dummy.link</a><br /><a href="#">https://dummylink</a><br /><br /> Dolor sit amet consectetur adipisicing elit. Quas, ex ut. Minima natus blanditiis incidunt animi, assumenda repudiandae facere debitis a distinctio voluptate quibusdamodio itaque eveniet similique cupiditate magni! Provident expedita, nemo ad possimus, quod incidunt vel fugit nobis earum repellendus nulla ullam necessitatibus fuga voluptates laborum dolorem, vitae quasi delectus facere molestias maxime minus beatae perspiciatis est. Blanditiis quia rerum nemo repudiandae aut ea et porro, excepturi soluta?',
     tag: [],
     proposals: "5 to 10",
-    token: "6",
+    token: "10",
   },
   {
     index: 2,
@@ -42,7 +46,7 @@ const jobArray = [
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas, ex ut. Minima natus blanditiis incidunt animi, assumenda repudiandae facere debitis a distinctio voluptate quibusdamodio itaque eveniet similique cupiditate magni! Provident expedita, nemo ad possimus, quod incidunt vel fugit nobis earum repellendus nulla ullam necessitatibus fuga voluptates laborum dolorem, vitae quasi delectus facere molestias maxime minus beatae perspiciatis est. Blanditiis quia rerum nemo repudiandae aut ea et porro, excepturi soluta?",
     tag: [],
     proposals: "10 to 15",
-    token: "6",
+    token: "4",
   },
   {
     index: 3,
@@ -55,7 +59,7 @@ const jobArray = [
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas, ex ut. Minima natus blanditiis incidunt animi, assumenda repudiandae facere debitis a distinctio voluptate quibusdamodio itaque eveniet similique cupiditate magni! Provident expedita, nemo ad possimus, quod incidunt vel fugit nobis earum repellendus nulla ullam necessitatibus fuga voluptates laborum dolorem, vitae quasi delectus facere molestias maxime minus beatae perspiciatis est. Blanditiis quia rerum nemo repudiandae aut ea et porro, excepturi soluta?",
     tag: [],
     proposals: "15+",
-    token: "6",
+    token: "5",
   },
 ];
 
@@ -92,21 +96,16 @@ const jobLoader = () => {
     }
   }
 
-  //check
-  // for (let i = 0; i < jobArray.length; i++) {
-  //   for (let j = 0; j < jobArray[i].tag.length; j++) {
-  //     console.log(jobArray[i].tag[j] + `${i}`);
-  //   }
-  // }
-
-  for (var i = 0; i < jobArray.length; i++) {
-    jobContainer.innerHTML += `<div class="jobs" id="${jobArray[i].id}">
+  //loading the job
+  for (var i = 0, suffix = 1; i < jobArray.length; i++, suffix++) {
+    jobContainer.innerHTML +=
+      `<div class="jobs" id="${jobArray[i].id}">
               <div class="title-block">
                 <h3 onclick="openApplyJob('68%', ${jobArray[i].index})">
                   ${jobArray[i].title}
                 </h3>
-                <div class="bookmark" onclick="saveJobIcon('bookmark-icon')">
-                  <i class="fa-regular fa-bookmark" id="bookmark-icon"></i>
+                <div class="bookmark" onclick="saveJobIcon('bookmark-icon${suffix}')">
+                  <i class="fa-regular fa-bookmark" id="bookmark-icon${suffix}"></i>
                 </div>
               </div>
 
@@ -126,16 +125,9 @@ const jobLoader = () => {
                 <p>
                   ${jobArray[i].description}
                 </p>
-              </div> 
-
-              <div id="tags">
-                <span class="tag">PHP</span>
-                <span class="tag">JS</span>
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-              </div>
-
-              <div class="apply-info">
+              </div> ` +
+      getTag(i) +
+      `<div class="apply-info">
                 <div class="text">Proposals: <span>${jobArray[i].proposals}</span></div>
                 <div class="text">Number of tokens: <span>${jobArray[i].token}</span></div>
               </div>
@@ -143,33 +135,31 @@ const jobLoader = () => {
               <hr />
             </div>`;
   }
-
-  //loading the tags
-  /* const tags = document.getElementById("tags");
-
-  for (let i = 0; i < jobArray.length; i++) {
-    for (let j = 0; j < jobArray[i].tag.length; j++) {
-      tags.innerHTML += `<span class="tag">${jobArray[i].tag[j]}</span>`;
-    }
-  } */
 };
+
+//Function that loads that tags in a container
+function getTag(i) {
+  let tags = '<div id="tags">';
+  for (let j = 0; j < jobArray[i].tag.length; j++) {
+    tags += `<span class="tag">${jobArray[i].tag[j]}</span>`;
+  }
+  tags += `</div>`;
+  return tags;
+}
 
 jobLoader();
 
-//loading the apply job values
+//loading the apply job data
 const applyJobInfoLoader = (index) => {
   applyJobInfo.innerHTML = "";
-  applyJobInfo.innerHTML = `<div class="info one">
+  applyJobInfo.innerHTML =
+    `<div class="info one">
               <h3>${jobArray[index].title}</h3>
               <h4>Front-End Development</h4>
               <p>${jobArray[index].date}</p>
             </div>
             <div class="info two">
               <p>${jobArray[index].description}</p>
-              <br />
-              <a href="#">https://dummy.link</a><br />
-              <a href="#">https://dummy.link</a><br />
-              <a href="#">https://dummy.link</a>
             </div>
             <div class="info three">
               <button id="ap-btn" class="btn apply">Apply Now</button>
@@ -204,12 +194,9 @@ const applyJobInfoLoader = (index) => {
             </div>
             <div class="info seven">
               <h4>Skills and Expertise</h4>
-              <div id="tags">
-                <span class="tag">PHP</span>
-                <span class="tag">JS</span>
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-              </div>
+              ` +
+    getTag(index) +
+    `
             </div>
             <div class="info eight">
               <h4>Job link</h4>
@@ -234,17 +221,6 @@ function closeApplyJob() {
   applyJob.style.width = "0%";
 }
 
-//toggling the filter btn
-function toggleFilter(iconID) {
-  if (document.getElementById(iconID).className == "fa-solid fa-filter") {
-    document.getElementById(iconID).className = "fa-solid fa-square-minus";
-    filterIcon.style.display = "inline-block";
-  } else {
-    document.getElementById(iconID).className = "fa-solid fa-filter";
-    filterIcon.style.display = "none";
-  }
-}
-
 //saving a job (icon)
 function saveJobIcon(iconID) {
   if (document.getElementById(iconID).className == "fa-regular fa-bookmark") {
@@ -265,7 +241,84 @@ function saveJobBtn(btnID) {
   }
 }
 
-//Clearing the filter section
-function clear() {
-  //document.getElementsById("level") ... = "checked";
+//toggling the filter btn
+function toggleFilter(iconID) {
+  if (document.getElementById(iconID).className == "fa-solid fa-filter") {
+    document.getElementById(iconID).className = "fa-solid fa-square-minus";
+    filterIcon.style.display = "inline-block";
+  } else {
+    document.getElementById(iconID).className = "fa-solid fa-filter";
+    filterIcon.style.display = "none";
+  }
+}
+
+//making the clear button functional
+clearBtn.addEventListener("click", clearFilters);
+
+//clear selected filters button
+function clearFilters() {
+  console.log(checkBoxes);
+  for (let i = 0; i < checkBoxes.length; i++) {
+    if (checkBoxes[i].type == "checkbox") {
+      checkBoxes[i].checked = false;
+    }
+  }
+}
+
+//searching
+searchBtn.addEventListener("click", search);
+
+function search() {
+  var searchInput = document.getElementById("search-input").value;
+  var result = 0;
+
+  jobContainer.innerHTML = "";
+
+  for (let i = 0, suffix = 1; i < jobArray.length; i++, suffix++) {
+    if (jobArray[i].title.toLowerCase().includes(searchInput.toLowerCase())) {
+      //counting results
+      result++;
+
+      jobContainer.innerHTML +=
+        `<div class="jobs" id="${jobArray[i].id}">
+              <div class="title-block">
+                <h3 onclick="openApplyJob('68%', ${jobArray[i].index})">
+                  ${jobArray[i].title}
+                </h3>
+                <div class="bookmark" onclick="saveJobIcon('bookmark-icon${suffix}')">
+                  <i class="fa-regular fa-bookmark" id="bookmark-icon${suffix}"></i>
+                </div>
+              </div>
+
+              <div class="job-info">
+                <span>
+                  Payment:
+                  <span>${jobArray[i].payment}ETB</span>
+                  - <span>${jobArray[i].experience}</span>
+                  - Est. Time:
+                  <span>2 to 5 months</span>
+                  - Posted -
+                  <span>${jobArray[i].date}</span>
+                </span>
+              </div>
+
+              <div class="description" onclick="openApplyJob('68%', ${jobArray[i].index})">
+                <p>
+                  ${jobArray[i].description}
+                </p>
+              </div> ` +
+        getTag(i) +
+        `<div class="apply-info">
+                <div class="text">Proposals: <span>${jobArray[i].proposals}</span></div>
+                <div class="text">Number of tokens: <span>${jobArray[i].token}</span></div>
+              </div>
+
+              <hr />
+            </div>`;
+    }
+  }
+  if (result == 0) {
+    jobContainer.innerHTML = '<p align="center" > No results were found';
+  }
+  resultLabel.innerHTML = result;
 }

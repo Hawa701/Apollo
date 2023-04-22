@@ -188,7 +188,7 @@ input[type="range"] {
   cursor: pointer;
 }
 
-#bookmark-icon {
+.title-block i {
   font-size: 1.3rem;
   cursor: pointer;
 }

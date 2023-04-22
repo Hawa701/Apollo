@@ -61,7 +61,7 @@
         <div class="filter" id="filter">
           <div class="title">
             <h2>Filter</h2>
-            <span class="clear" onclick="clear()">
+            <span class="clear" id="clear">
               Clear all
               <i class="fa-regular fa-circle-xmark"></i>
             </span>
@@ -129,12 +129,12 @@
               </span>
             </div>
             <div class="search-bar">
-              <input type="text" placeholder="Search here" />
-              <button type="submit">
+              <input type="text" placeholder="Search here" id="search-input" />
+              <button id="search">
                 <i class="fa-solid fa-magnifying-glass"></i>
               </button>
             </div>
-            <span class="result">0 results</span>
+            <span class="result"> <span id="result">0</span> results</span>
           </div>
 
           <div class="job-container" id="job-container">
