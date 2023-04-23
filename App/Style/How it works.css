@@ -1,0 +1,91 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+  scroll-behavior: smooth;
+  font-family: "Roboto", sans-serif;
+}
+
+:root {
+  --main-color: #577cff;
+  --second-main-color: #deecf0;
+
+  --main-bg-color: #fff;
+  --second-bg-color: #ededed;
+  --third-bg-color: #c8c9ca;
+  --fourth-bg-color: #dfdfdf;
+
+  --main-text-color: #000;
+  --second-text-color: #fff;
+  --third-text-color: #737373;
+}
+
+body {
+  background: var(--second-bg-color);
+  color: var(--main-text-color);
+  font-size: 0.84rem;
+}
+
+section {
+  height: 100vh;
+  padding: 0;
+  margin: 2rem 5rem;
+  border-radius: 0.6rem;
+  background: var(--main-bg-color);
+  display: flex;
+}
+
+/* title block */
+.section .title-block {
+  width: 40%;
+  padding: 2rem 3rem;
+}
+
+.title-block h1 {
+  font-size: 2.3rem;
+}
+
+.title-block .title-container {
+  width: 100%;
+  padding-left: 1.5rem;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-container .title {
+  margin-bottom: 1.5rem;
+}
+
+/* info block */
+.section .info-block {
+  padding: 1rem;
+  width: 100%;
+  max-height: 100%;
+  overflow-y: scroll;
+  border-left: solid 1px var(--third-text-color);
+}
+
+.info-block h2 {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.7rem;
+}
+
+.info-block .info-container {
+  padding: 0 2.5rem 2.5rem;
+  text-align: justify;
+}
+
+.info-container p {
+  font-size: 0.9rem;
+  text-indent: 15px;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--main-color);
+  font-weight: 600;
+}
