@@ -24,178 +24,104 @@ body {
     height: 100vh;
 }
 
-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.welcome-wrapper {
+.token-wrap {
+     border: 1px solid rgba(128, 128, 128, 0.438);
+    /* box-shadow: 0 0 1rem var(--main-color); */
     border-radius: 11px;
-    height: 580px;
-    width: 1500px;
-    border-top: none; 
-    border-bottom: none; 
-    margin: auto;
-    margin-top: 1rem;
-
-    display: flex;
-    justify-content: center;
-}
-
-.welcome-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
 
-    margin-top: 3rem;
+    margin: 1.5rem auto;
+    background-color: var(--main-bg-color);
+
+    height: 620px;
+    width: 1150px;
 }
 
-.welcome-content h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 1rem auto;
-    color: var(--main-text-color);
-}
-
-.welcome-content .welcome strong {
-    color: var(--main-color);
-    margin-left: 0.4rem;
-}
-
-.welcome-content p {
-    font-size: 1.1rem;
+.token-wrap h1 {
+    margin: 1.5rem;
     font-weight: 400;
-    padding-left: 0.7rem;
-    color: var(--third-text-color);
 }
 
+.token-form {
+    border-radius: 11px;
+    margin: 1.3rem 1.5rem;
+        
+    height: 510px;
+}
 
-.introcution {
+label, p {
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+.display {
+    border-radius: 4px;
+    border: var(--third-text-color) 1px solid;
+    width: 200px;
+    height: 28px;
+
+    margin: 0.8rem 0px;
+}
+
+#amount-to-buy {
+    margin: 0.8rem 0px;
+}
+
+select {
+    width: 280px;
+    height: 33px;
+}
+
+.statements {
+    margin-top: 1.5rem;
+    margin-bottom: 0.9rem;
+}
+
+.statement-1 {
+    margin-bottom: 0.9rem;
+    color: rgb(92, 86, 86);
+}
+
+.statement-2 {
+    color: rgb(92, 86, 86);
+}
+
+.statements a {
+    color: #1a45df;
+}
+
+.statements a:hover {
+    color: #062492;
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    height: 33px;
+}
+
+.btn {
+    padding: 0.4rem 1rem;
     font-size: 1rem;
-    font-weight: 500;
-    padding-left: 0.5rem;
+    font-weight: 400;
+    border-radius: 11px;
+    letter-spacing: .1rem;
+} 
+
+.buy-btn {
+    margin: 0px 1.4rem;
+    background-color: var(--main-color);
     color: var(--second-text-color);
+
+    width: 145px;
 }
 
-.logo {
-      background-color: var(--main-bg-color);
-      border-top-left-radius: 11px;
-      border-bottom-left-radius: 11px;
+.buy-btn:hover {
+    background-color: #1a45df;
 }
 
-.logo img {
-    animation: MoveUpDown 3s linear infinite;
-    padding-right: 5.79rem;
-}
-
-@keyframes MoveUpDown {
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-30px);
-    }
-  }
-
-.navigation {
-    margin: 3rem;
-}
-
-.navigation nav ul{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 3rem;
-}
-
-.navigation nav ul li {
-    font-size: 1.7rem;
-    color: var(--main-text-color);
-    cursor: pointer;
-}
-
-.explanation-wrapper {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: center;
-}
-
-.explanation-wrapper .explanation-box {
-    border-radius: 1.2rem;
-    height: 378px;
-    width: 740px;
-    margin: 0.5rem auto;
-    box-shadow: 0 0 1rem var(--main-color);
-}
-
-.explanation-box h2 {
-    padding-top: 0.5rem;
-
-    display: flex;
-    justify-content: center;
-    margin: 0.5rem auto;
-    color: var(--main-color);
-}
-
-.explanation-box p {
-    padding-left: 1rem;
-    padding-top: 0.6rem;
-
-    letter-spacing: -.36px;
-    line-height: 1.2em;
-
-    display: flex;
-    font-size: 1.2rem;
-    font-weight: 300;
-    text-decoration: none;
-    color: var(--main-text-color);
-}
-
-.explanation-box ol {
-    padding-top: 0.7rem;
-    padding-left: 0.5rem;
-
-    display: flex;
-    flex-direction: column;
-}
-
-.explanation-box ol li {
-    margin-top: 0.5rem;
-    letter-spacing: -.36px;
-    line-height: 1.2em;
-    font-size: 1.2rem;
-    font-weight: 300;
-    color: var(--main-text-color);
-
-    list-style-type:decimal;
-    margin-left: 1.8rem;
-    padding-left: 0.2rem;
-}
-
-.navigation {
-    display: flex;
-    flex-direction: column;
-}
-
-.navigation h2 {
-    padding-top: 0.5rem;
-
-    display: flex;
-    justify-content: center;
-    margin: 0.5rem auto;
-}
-
-.navigation h2 strong {
-    color: var(--main-color);
-    padding-left: 0.3rem;
-}
-
-.payment-method {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    align-items: center;
-    gap: 1.5rem;
-    padding-top: 1.5rem;
+.cancel-btn {
+    margin-right: 2.5rem;
+    width: 100px;
 }
