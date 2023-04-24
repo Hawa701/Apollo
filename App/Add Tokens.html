@@ -67,88 +67,53 @@
     <!-- Section design -->
     <section class="section">
 
-      <div class="welcome-wrapper">
+      <div class="token-wrap">
+        <h1>Buy Tokens</h1>
 
-        <div class="logo">
-          <img src="image/hero-image.png" alt="">
-        </div>
+        <form action="#" class="token-form">
 
-        <div class="welcome-content">
-          <h1 class="welcome">Welcome to <strong>Apollo Token Page!</strong> </h1>
-          <p class="introcution">Here, we'll introduce you to our token system and guide you through the process of purchasing, using, and managing your Apollo Tokens.</p>
-        
-          <div class="navigation">
+          <label for="avilable-tokens">Your avialable Tokens</label>
+          <div class="token-amout display" id="avilable-tokens"></div>
 
-            <h2>Purchase <strong>Apollo Token</strong></h2>
-            <!-- <p>You Can Pay using:</p> -->
-            <div class="payment-method">
-              <a href="#"><img src="https://img.icons8.com/color/76/null/paypal.png"/></a>
-              <a href="#"><img src="https://img.icons8.com/color/76/null/mastercard.png"/></a>
-              <a href="#"><img src="https://img.icons8.com/fluency/76/null/stripe.png"/></a>
-              <a href="#"><img src="https://img.icons8.com/nolan/76/apple-pay.png"/></a>
-              <a href="#">telebirr</a>
-            </div>
+          <label for="amount-to-buy">Select the amout to buy</label>
+          <br>
+          <select name="" id="amount-to-buy">
+            <option value="10">10 for 100bir</option>
+            <option value="20">20 for 150bir</option>
+            <option value="40">40 for 300bir</option>
+            <option value="60">60 for 450bir</option>
+            <option value="80">80 for 600bir</option>
+            <option value="100">100 for 750bir</option>
+            <option value="150">150 for 1,100bir</option>
+            <option value="200">200 for 1,500bir</option>
+            <option value="250">250 for 1,850bir</option>
+            <option value="300">300 for 2,250bir</option>
+            <option value="custome">Custome amout</option>
+          </select>
+          <br>
+
+          <label for="amount-tobe-charged">You account will be charged</label>
+          <div class="account-charge display"></div>
+
+          <label for="new-balance">Your new Token balance will be</label>
+          <div class="account-balance display"></div>
+
+          <label for="expire-date">These Tokens will expire on</label>
+          <div class="date display"></div>
+
+          <div class="statements">
+            <p class="statement-1">This Token will expire 1year from today. unused Tokens rollover to the next month. <a href="#">Learn more</a></p>
+            <p class="statement-2">You're authorizing Apollo to change your account. if you have suffieicent funds, we will withdraw from your account balance. if not, the full amount will be charged to your primary billing method. <a href="#">Learn more</a></p>
           </div>
-        </div> <!-- welocme content end -->       
 
-      </div> <!-- welcome wrapper end-->
-
-      <div class="explanation-wrapper">
-
-        <div class="explanation-box">
-          <div class="explanation" id="explanation">
-            <h2>What are Apollo Tokens?</h2>
-            <p>Apollo Tokens are our platform's digital currency, designed to simplify the payment process between clients and freelancers. By using Apollo Tokens, you can easily manage your budget, track your expenses, and streamline your transactions on our platform.</p>
+          <div class="buttons">
+            <button type="byt" class="buy-btn btn">Buy Token</button>
+            <button type="cancel" class="cancel-btn btn">Cancel</button>
           </div>
-        </div>
 
-        <div class="explanation-box">
-          <div class="whyUseTokens" id="whyUseTokens">
-            <h2>Why use Apollo Tokens?</h2>
-            <ol>
-              <li>Faster transactions: Apollo Tokens allow for quicker and more efficient payments between clients and freelancers.</li>
-              <li>Reduced fees: Save on transaction fees by using Apollo Tokens for all your projects.</li>
-              <li>Secure payments: Our robust security system ensures that your tokens are safe and protected.</li>
-              <li>Easy budget management: Keep track of your expenses by using a single currency for all your projects on the platform.</li>
-              <li>Exclusive benefits: Unlock special discounts and offers available only to Apollo Token users.</li>
-            </ol>
-          </div>
-        </div>
+        </form> <!-- form end -->
 
-        <div class="explanation-box">
-          <div class="how-to-puchase" id="how-to-puchase">
-            <h2>How to Purchase Apollo Tokens</h2>
-            <p>To purchase Apollo Tokens, follow these simple steps:</p>
-            <ol>
-              <li><a href="#">Log-in</a> to your Apollo Freelance account.</li>
-              <li>Navigate to the "Token Management" section in your dashboard.</li>
-              <li>Select the desired amount of tokens you'd like to purchase.</li>
-              <li>Choose your preferred payment method (credit/debit card, PayPal, telebir etc.).</li>
-              <li>Confirm your purchase and receive your Apollo Tokens instantly!</li>     
-            </ol> 
-          </div>
-        </div>
-
-        <div class="explanation-box">
-          <div class="how-to-use-tokens" id="how-to-use-tokens">
-            <h2>How to Use Apollo Tokens</h2>
-            <p>Using Apollo Tokens is easy! When you're ready to make a payment on the platform, simply choose the "Pay with Apollo Tokens" option. You'll see the amount of tokens required for the transaction, and after confirming, the tokens will be transferred from your account to the freelancer's account.</p>
-          </div>
-        </div>
-
-        <div class="explanation-box">
-          <div class="how-to-check-balance" id="how-to-check-balance">
-            <h2>How to Check Your Apollo Token Balance</h2>
-            <P>To check your Apollo Token balance:</P>
-            <ol>
-              <li><a href="#">Log-in</a> to your Apollo Freelance account.</li>
-              <li>Navigate to the "Token Management" section in your dashboard.</li>
-              <li>Your current token balance will be displayed on the screen.</li>
-            </ol>
-          </div>
-        </div>
-
-      </div> <!-- explanation wrapper end-->
+      </div> <!-- token wrap end -->
 
     </section> <!-- section end -->
 
