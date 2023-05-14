@@ -28,55 +28,70 @@ body {
   font-size: 0.84rem;
 }
 
-section {
-  height: 100vh;
-  padding: 0;
-  margin: 2rem 5rem;
-  border-radius: 0.6rem;
-  background: var(--main-bg-color);
+.wrapper {
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: var(--second-bg-color);
+}
+
+.wrapper .section {
   display: flex;
 }
 
 /* title block */
 .section .title-block {
   width: 40%;
-  padding: 2rem 3rem;
+  max-height: 130vh;
+  padding: 6% 0;
+  background-color: var(--main-bg-color);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .title-block h1 {
   font-size: 2.3rem;
+  width: 100%;
+  padding-left: 2rem;
 }
 
 .title-block .title-container {
   width: 100%;
-  padding-left: 1.5rem;
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
 }
 
 .title-container .title {
-  margin-bottom: 1.5rem;
+  width: 100%;
+  font-size: 0.9rem;
+  height: 2.7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* info block */
 .section .info-block {
   padding: 1rem;
   width: 100%;
-  max-height: 100%;
-  overflow-y: scroll;
-  border-left: solid 1px var(--third-text-color);
+  max-height: 130vh;
+  background-color: var(--main-bg-color);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  box-shadow: inset 3px 0 10px var(--second-bg-color);
 }
 
 .info-block h2 {
   text-align: center;
-  padding: 2rem;
+  padding: 3rem;
   font-size: 1.7rem;
 }
 
 .info-block .info-container {
   padding: 0 2.5rem 2.5rem;
+  height: 80vh;
   text-align: justify;
+  overflow-y: scroll;
 }
 
 .info-container p {
@@ -88,4 +103,18 @@ section {
 a {
   color: var(--main-color);
   font-weight: 600;
+}
+
+/* Break Point 1 */
+@media (max-width: 825px) {
+  .section .title-block {
+    width: 50%;
+  }
+}
+
+/* Break Point 2 */
+@media (max-width: 742px) {
+  .section .title-block {
+    width: 60%;
+  }
 }

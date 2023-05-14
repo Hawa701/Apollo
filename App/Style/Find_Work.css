@@ -10,7 +10,7 @@
 
 :root {
   --main-color: #577cff;
-  --second-main-color: #deecf0;
+  --second-main-color: #f0e6de;
 
   --main-bg-color: #fff;
   --second-bg-color: #ededed;
@@ -19,6 +19,14 @@
   --main-text-color: #000;
   --second-text-color: #fff;
   --third-text-color: #737373;
+}
+
+::-webkit-scrollbar {
+  width: 7px; /* Width of the scrollbar */
+}
+::-webkit-scrollbar-thumb {
+  background: var(--second-bg-color);
+  border-radius: 10px;
 }
 
 html {
@@ -33,6 +41,7 @@ body {
 
 section {
   position: relative;
+  width: 100%;
   max-height: 130vh;
   padding: 2rem 5%;
 }
@@ -56,7 +65,7 @@ li {
 }
 
 /* section design */
-.section {
+form {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 2rem;
@@ -67,7 +76,16 @@ li {
   background: var(--main-bg-color);
   border-radius: 0.8rem;
   padding: 7% 2rem;
+  padding-right: 0.7rem;
   display: block;
+  max-height: 115vh;
+  /* overflow-y: scroll; */
+}
+
+.filter-container {
+  overflow-y: scroll;
+  max-height: 100vh;
+  padding-right: 1rem;
 }
 
 .filter .title {
@@ -102,9 +120,78 @@ li {
   border: 1.2px solid var(--third-bg-color);
 }
 
-input[type="range"] {
+/* *Range styles */
+.price-input {
   width: 100%;
-  height: 6px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.price-input .field {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.field.min {
+  justify-content: flex-start;
+}
+.field.max {
+  justify-content: flex-end;
+}
+
+.field .value {
+  border-radius: 5px;
+  text-align: center;
+  border: none;
+  width: 3.21rem;
+  margin-bottom: 0;
+  outline: none;
+}
+
+/* slider */
+
+.slider {
+  position: relative;
+  height: 5px;
+  border-radius: 5px;
+  background-color: var(--third-bg-color);
+}
+
+.slider .progress {
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  height: 5px;
+  border-radius: 5px;
+  background-color: var(--main-color);
+}
+
+/* range */
+.range-input {
+  position: relative;
+}
+
+.range-input input {
+  position: absolute;
+  top: -5px;
+  height: 5px;
+  width: 100%;
+  background: none;
+  pointer-events: none;
+  -webkit-appearance: none;
+  appearance: none; /* idk */
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  height: 0.8rem;
+  width: 0.8rem;
+  border-radius: 50%;
+  pointer-events: auto;
+  -webkit-appearance: none;
+  background-color: var(--main-color);
 }
 
 /* work */
@@ -113,7 +200,6 @@ input[type="range"] {
   border-radius: 0.8rem;
   padding: 1.3rem 1.3rem;
   max-height: 115vh;
-  /* overflow-y: hidden; */
 }
 
 .work .search {
@@ -141,19 +227,22 @@ input[type="range"] {
   color: var(--third-text-color);
 }
 
-.search .search-bar {
+.search .search-bar,
+.search .search-bar form {
   display: flex;
+  width: 100%;
 }
 
-.search-bar input {
+.search-bar .search-input {
   padding-left: 1rem;
   border: solid 1px var(--third-text-color);
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
   width: 60%;
+  height: 2rem;
 }
 
-.search-bar button {
+.search-bar .search-btn {
   background: var(--main-color);
   border-style: none;
   color: var(--second-text-color);
@@ -180,17 +269,34 @@ input[type="range"] {
 .jobs .title-block {
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  padding: 0;
+  gap: 0;
 }
 
-.title-block h3 {
+.title-block .headerBtn {
+  text-align: left;
+  width: 90%;
+  background-color: var(--main-bg-color);
+  border: none;
+  cursor: pointer;
+}
+
+.headerBtn h3 {
   font-size: 1.3rem;
   width: 90%;
+}
+
+.title-block .bookmarkBtn {
+  width: 1.3rem;
+  background-color: var(--main-bg-color);
+  border: none;
+  text-align: right;
   cursor: pointer;
 }
 
-.title-block i {
+.bookmarkBtn i {
   font-size: 1.3rem;
-  cursor: pointer;
 }
 
 .jobs .job-info {
@@ -202,11 +308,11 @@ input[type="range"] {
 .jobs .description {
   margin-bottom: 1rem;
   line-height: 1rem;
+  text-align: justify;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  cursor: pointer;
 }
 
 .apply-info {
@@ -231,6 +337,7 @@ input[type="range"] {
 
 /* apply */
 .apply-job {
+  display: none;
   position: absolute;
   top: 0.1rem;
   left: 100%;
@@ -334,6 +441,13 @@ input[type="range"] {
   font-weight: 800;
 }
 
+.info.three form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .info.three .btn.apply {
   background: var(--main-color);
   color: var(--second-text-color);
@@ -369,9 +483,31 @@ input[type="range"] {
   margin-bottom: 1rem;
 }
 
+.message {
+  position: sticky;
+  right: 1rem;
+  left: 73vw;
+  bottom: 1rem;
+  width: 25vw;
+  height: 5rem;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 1rem var(--main-color);
+  font-size: 1rem;
+  color: var(--second-text-color);
+  background-color: var(--main-color);
+}
+
+.message i {
+  font-size: 1.4rem;
+}
+
 /* Break point 1 */
 @media (max-width: 950px) {
-  .section {
+  form {
     grid-template-columns: unset;
     grid-template-rows: 1fr 3fr;
     padding: 2rem;
@@ -411,13 +547,14 @@ input[type="range"] {
 
   .work {
     height: 100vh;
+    width: 100%;
   }
 
   .search-title .filter-btn {
     display: block;
   }
 
-  .search-bar input {
+  .search-bar form .search-input {
     width: 100%;
   }
 
@@ -444,11 +581,22 @@ input[type="range"] {
   .info.nine {
     border-bottom-right-radius: 1rem;
   }
+  .message {
+    width: 50vw;
+    left: 47vw;
+    bottom: 1.5rem;
+  }
 }
 
 /* Break point 2 */
 @media (max-width: 680px) {
   .filter-container {
     flex-direction: column;
+  }
+  .work {
+    width: 100%;
+  }
+  .message {
+    width: 45vw;
   }
 }
