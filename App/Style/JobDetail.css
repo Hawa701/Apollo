@@ -1,0 +1,196 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto';
+    font-weight: 400;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+h1 {
+    font-size: 1.7em;
+}
+
+section {
+    /* margin-bottom: 10px; */
+}
+
+.container {
+    /* border: 1px solid red; */
+    max-width: 1022px;
+    margin: 0 auto;
+}
+
+.mainContainer {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid rgb(213, 213, 213);
+    border-radius: 10px;
+    padding: 25px;
+    margin-top: 30px;
+    margin-bottom: 300px;
+}
+
+.jobDetails {
+    width: 70%;
+    border-right: 1px solid rgb(213, 213, 213);
+}
+
+.jobTitle h2 {
+    margin-bottom: 35px;
+}
+
+.jobDescription {
+    border-top: 1px solid rgb(213, 213, 213);
+    border-bottom: 1px solid rgb(213, 213, 213);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.jobPriceExpertise {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    border-bottom: 1px solid rgb(213, 213, 213);
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+}
+
+.jobPriceExpertise div {
+    margin-bottom: 25px;
+    max-width: 200px;
+    text-align: center;
+}
+
+.jobPriceExpertise div h4 {
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.jobPriceExpertise div p {
+    font-weight: 400;
+}
+
+.projectType {
+    border-bottom: 1px solid rgb(213, 213, 213);
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+}
+
+.jobActions {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    margin-top: 25px;
+    text-align: left;
+    padding: 0 20px;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-bottom: 1px solid rgb(213, 213, 213);
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+}
+
+button {
+    cursor: pointer;
+}
+
+.applyBtn {
+    background-color: #577CFF;
+    color: white;
+    font-weight: 500;
+    border-radius: 20px;
+    border: none;
+    padding: 10px 70px;
+    font-size: 15px;
+}
+
+.saveBtn {
+    background-color: transparent;
+    color: #577CFF;
+    font-weight: 500;
+    border-radius: 20px;
+    border: 3px solid #577CFF;
+    padding: 10px 70px;
+    font-size: 15px;
+}
+
+.aboutClient {
+    border-bottom: 1px solid rgb(213, 213, 213);
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+}
+
+.aboutClient div {
+    padding: 10px 0;
+}
+
+.aboutClient h4 {
+    font-weight: 500;
+    /* margin-bottom: 10px; */
+}
+
+.skillsNeeded {
+    border-bottom: 1px solid rgb(213, 213, 213);
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+}
+
+.skillsNeeded h4 {
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.skillList {
+    display: flex;
+    /* justify-content: space-between; */
+    flex-wrap: wrap;
+}
+
+.skill {
+    margin-top: 10px;
+    padding: 4px 6px;
+    background-color: #e7ecff;
+    text-decoration: underline;
+    border-radius: 10px;
+    border: none;
+    margin-right: 10px;
+}
+
+.jobActivity h4 {
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.jobActivity p {
+    margin: 8px 0px;
+}
+
+.jobLink h4 {
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.jobLink input {
+    padding: 7px;
+    border-radius: 5px;
+    border: none;
+    background-color: #eaeeff;
+    margin-bottom: 10px;
+}
+
+.jobLink p {
+    color: #577CFF;
+    cursor: pointer;
+}
