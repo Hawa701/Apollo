@@ -26,13 +26,9 @@ body {
 .main-section {
     background-color: var(--main-bg-color);
     margin: 16px auto;
-    max-width: 1300px;
+    max-width: 1050px;
     padding: 20px 46px;
     border-radius: 11px;
-}
-
-.edit-job {
-    
 }
 
 
@@ -78,7 +74,7 @@ hr {
 }
 
 
-.job-title h3 {
+.job-title h3, .applicants h3, .job-info h3 {
     font-size: 19px;
     font-weight: 600;
     line-height: 22px;
@@ -312,6 +308,11 @@ hr {
     border-radius: 11px;
     padding: 3rem 3%;
     overflow-y: scroll;
-    transition: 0.3s;
 }
 
+.job-info span, .tokens {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 15px;
+    color: #737373;
+}
