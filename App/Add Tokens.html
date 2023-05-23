@@ -75,10 +75,10 @@
           <label for="avilable-tokens">Your avialable Tokens</label>
           <div class="token-amout display" id="avilable-tokens"></div>
 
-          <label for="amount-to-buy">Select the amout to buy</label>
+          <label for="amount-to-buy">Select the amount to buy</label>
           <br>
           <select name="" id="amount-to-buy">
-            <option value="10">10 for 100bir</option>
+            <option value="10">10 for 75bir</option>
             <option value="20">20 for 150bir</option>
             <option value="40">40 for 300bir</option>
             <option value="60">60 for 450bir</option>
@@ -88,18 +88,25 @@
             <option value="200">200 for 1,500bir</option>
             <option value="250">250 for 1,850bir</option>
             <option value="300">300 for 2,250bir</option>
-            <option value="custome">Custome amout</option>
+            <option value="custome" id="custom-amount">Custom amount</option>
           </select>
           <br>
 
+          <div class="input">
+            <label for="input-custom-amount">Custom amount</label>
+          <br>
+            <input type="text" name="input" id="input-custom-amount" min="1" max="75000" step="1" maxlength="5">
+          <br>
+          </div>
+
           <label for="amount-tobe-charged">You account will be charged</label>
-          <div class="account-charge display"></div>
+          <div class="account-charge display" id="amoutCharged"></div>
 
           <label for="new-balance">Your new Token balance will be</label>
-          <div class="account-balance display"></div>
+          <div class="account-balance display" id="accountBalance"></div>
 
           <label for="expire-date">These Tokens will expire on</label>
-          <div class="date display"></div>
+          <div class="date display" id="expireDate"></div>
 
           <div class="statements">
             <p class="statement-1">This Token will expire 1year from today. unused Tokens rollover to the next month. <a href="#">Learn more</a></p>
@@ -107,8 +114,8 @@
           </div>
 
           <div class="buttons">
-            <button type="byt" class="buy-btn btn">Buy Token</button>
             <button type="cancel" class="cancel-btn btn">Cancel</button>
+            <button type="submit" class="buy-btn btn">Buy Token</button>
           </div>
 
         </form> <!-- form end -->
