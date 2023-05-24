@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+}
+
+:root {
+    --main-color: #577CFF;
+    --second-main-color: #deecf0;
+    --main-bg-color: #fff;
+    --second-bg-color: #ededed;
+    --third-bg-color: #c8c9ca;
+    --main-text-color: #000;
+    --second-text-color: #fff;
+    --third-text-color: #737373;
+}
+
+body {
+    background-color: var(--second-bg-color);
+}
+
+.main-section {
+    background-color: var(--main-bg-color);
+    margin: 16px auto;
+    max-width: 1050px;
+    padding: 20px 46px;
+    border-radius: 11px;
+}
+
+
+/* main Section Css */
+
+.section {
+    background-color: var(--main-bg-color);
+    margin: 16px auto;
+    max-width: 857px;
+    padding: 20px 46px;
+    border-radius: 11px;
+}
+
+.line {
+    width: 700px;
+    height: 0px;
+    margin: 20px auto;
+}
+
+hr {
+    border: 1.2px solid var(--third-bg-color);
+    margin-bottom: 14px;
+}
+
+
+/* Job Container CSS */
+
+.job-container .job-header h1 {
+    font-size: 33px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+    margin: 0px auto 20px;
+}
+
+.job-header {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.job-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.job-container .delete-job {
+    cursor: pointer;
+}
+
+.job-title h3,
+.applicants h3,
+.job-info h3 {
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 22px;
+    margin-top: 4px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.job-description {
+    margin: 20px 0;
+    cursor: pointer;
+}
+
+.job-description p {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 15px;
+    color: var(--main-text-color);
+}
+
+.applicants {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.7rem;
+}
+
+.numberOf-applicants {
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 11.7px;
+    color: #737373;
+}
+
+.applicants span {
+    color: #1E1E1E;
+}
+
+
+/* Pagination CSS */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.pagination li {
+    margin-right: 10px;
+    color: #333;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+}
+
+.pagination li:last-child {
+    margin-right: 0;
+}
+
+.pagination li:hover,
+.pagination li.active {
+    background-color: var(--third-bg-color);
+    color: #fff;
+}
+
+.apply-info {
+    display: flex;
+    gap: 2rem;
+}
+
+.apply-info .text {
+    color: var(--third-text-color);
+}
+
+.text span {
+    color: var(--main-text-color);
+}
+
+.jobsList hr {
+    margin: 1rem 0;
+    border: 1.2px solid var(--third-bg-color);
+}
+
+
+/* job status CSS */
+
+.job-status {
+    /* border: 1px red solid; */
+    border-radius: 11px;
+    background-color: var(--main-bg-color);
+    margin: 16px auto;
+    max-width: 800px;
+    padding: 15px 10px;
+}
+
+.job {
+    margin-top: 0.9rem;
+    cursor: pointer;
+    /* border: blue 1px solid; */
+    border-radius: 11px;
+    grid-area: two;
+}
+
+
+/* .exit-btn {
+    position: fixed;
+    left: 360px;
+    top: 120px;
+} */
+
+.exit-btn img:hover {
+    cursor: pointer;
+}
+
+.edit-delete {
+    /* border: red 1px solid; */
+    border-radius: 11px;
+    /*  display: flex;
+    flex-direction: column;
+    justify-content: center; */
+    padding: 15px;
+    margin-top: 0.3rem;
+    grid-area: three;
+}
+
+.edit button,
+.delete button {
+    margin: 3px;
+    padding: 0.45rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    border-radius: 11px;
+    width: 130px;
+}
+
+.delete button {
+    background-color: #1341e8;
+    color: var(--second-text-color);
+}
+
+.delete button:hover {
+    background-color: #062492;
+}
+
+.edit button {
+    color: #062492;
+    border: none;
+}
+
+.edit button:hover {
+    background-color: var(--third-bg-color);
+    border: 1px solid var(--third-bg-color);
+    color: var(--main-text-color);
+}
+
+.persons {
+    /* border: 1px solid var(--third-text-color); */
+}
+
+.job-info {
+    /* border: 1px solid red; */
+    border-radius: 11px;
+    margin-top: 0.8rem;
+}
+
+.applicants {
+    /* border: 1px solid purple; */
+    border-radius: 11px;
+    margin-top: 0.8rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.job-description {
+    /* border: 1px solid black; */
+    border-radius: 11px;
+    margin-top: 0.8rem;
+}
+
+.job-Status-header {
+    grid-area: one;
+    /* border: 1px solid black; */
+    border-radius: 11px;
+}
+
+.job-status {
+    display: grid;
+    grid-template-columns: 3.5fr 0.5fr;
+    grid-template-rows: 0.1fr 4fr;
+    grid-template-areas: "one one one one" "two two two three";
+    border-radius: 1.5rem;
+    gap: 0.5rem;
+}
+
+.applicants h3 {
+    margin-bottom: 0.5rem;
+}
+
+.numberOf-applicants {
+    font-size: 0.9rem;
+    font-weight: 300;
+    /* margin-bottom: -0.2rem; */
+}
+
+.persons {
+    font-weight: 300;
+    font-size: 0.8rem;
+}
+
+.job-status {
+    position: absolute;
+    top: 4.9rem;
+    left: 350px;
+    width: 0%;
+    height: 100%;
+    background: var(--main-bg-color);
+    border-radius: 11px;
+    padding: 3rem 3%;
+    overflow-y: scroll;
+}
+
+.job-info span,
+.tokens {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 15px;
+    color: #737373;
+}
