@@ -20,299 +20,433 @@
 }
 
 body {
-    background-color: var(--second-bg-color);
 }
-
-.main-section {
-    background-color: var(--main-bg-color);
-    margin: 16px auto;
-    max-width: 1050px;
-    padding: 20px 46px;
-    border-radius: 11px;
-}
-
-
-/* main Section Css */
-.section {
-    background-color: var(--main-bg-color);
-    margin: 16px auto;
-    max-width: 857px;
-    padding: 20px 46px;
-    border-radius: 11px;
-}
-
-.line {
-    width: 700px;
-    height: 0px;
-
-    margin: 20px auto;
-} 
-
-hr {
-    border: 1.2px solid var(--third-bg-color);
-    margin-bottom: 14px;
-}
-
-/* Job Container CSS */
-
-.job-container .job-header h1 {
-    font-size: 33px;
-    font-weight: 500;
-    line-height: 42px;
-    text-align: center;
-
-    margin: 0px auto 20px;
-}
-
-.job-title {
-    display: flex;
-    justify-content: space-between;
-}
-
-.job-container .delete-job {
-    cursor: pointer;
-}
-
-
-.job-title h3, .applicants h3, .job-info h3 {
-    font-size: 19px;
-    font-weight: 600;
-    line-height: 22px;
-
-    margin-top: 4px;
-    margin-bottom: 10px;
-
-    cursor: pointer;
-}
-
-.job-description {
-    margin-bottom: 14px;
-    cursor: pointer;
-}
-
-.job-description p {
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 15px;
-    color: var(--main-text-color);
-}
-
-.applicants {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 0.7rem;
-}
- 
-.numberOf-applicants {
-    font-size: 10px;
-    font-weight: 400;
-    line-height: 11.7px;
-    color: #737373;
-}
-
-.applicants span {
-    color: #1E1E1E;
-}
-
-
-/* Pagination CSS */
-
-.pagination {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-  
-.pagination li {
-    margin-right: 10px;
-    color: #333;
-    text-decoration: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    background-color: #f2f2f2;
-}
-  
-.pagination li:last-child {
-    margin-right: 0;
-}
-  
-.pagination li:hover,
-.pagination li.active {
-    background-color: var(--third-bg-color);
-    color: #fff;
-}
-
-
-.apply-info {
-    display: flex;
-    gap: 2rem;
-}
-
-.apply-info .text {
-    color: var(--third-text-color);
-}
-
-.text span {
-    color: var(--main-text-color);
-}
-
-.jobs hr {
-    margin: 1rem 0;
-    border: 1.2px solid var(--third-bg-color);
-}
-
-
-/* job status CSS */
 
 .job-status {
-    /* border: 1px red solid; */
-    border-radius: 11px;
     background-color: var(--main-bg-color);
-
     margin: 16px auto;
-    max-width: 800px;
-    padding: 15px 10px;
-}
-
-.job {
-    margin-top: 0.3rem;
-    /* border: blue 1px solid; */
+    max-width: 1200px;
+    /* max-height: 650px; */
     border-radius: 11px;
+    padding: 10px 15px;
 
-    grid-area: two;
-}
-
-/* .exit-btn {
-    position: fixed;
-    left: 360px;
-    top: 120px;
-} */
-
-.exit-btn img:hover {
-    cursor: pointer;
-}
-
-.edit-delete {
-    /* border: red 1px solid; */
-    border-radius: 11px;
-
-   /*  display: flex;
+    display: flex;
     flex-direction: column;
-    justify-content: center; */
-    padding: 15px;
-
-    margin-top: 0.3rem;
-
-    grid-area: three;
 }
 
-.edit button, .delete button {
-    margin: 3px;
-    padding: 0.45rem 1rem;
-    font-size: 0.9rem;
-    font-weight: 400;
-    border-radius: 11px;
 
-    width: 130px;
-}
-
-.delete button {
-    background-color: #1341e8;
-    color: var(--second-text-color);
-}
-
-.delete button:hover {
-    background-color: #062492;
-}
-
-.edit button {
-    color: #062492;
-    border: none;
-}
-
-.edit button:hover {
-    background-color: var(--third-bg-color);
-    border: 1px solid var(--third-bg-color);
-    color: var(--main-text-color);
-}
-
-.persons {
-    /* border: 1px solid var(--third-text-color); */
+.job-description  {
+    grid-area: one;
+    border-bottom: 1px solid rgb(213, 213, 213);
+    padding: 0 0.8rem;
+    padding-bottom: 20px;
 }
 
 .job-info {
-    /* border: 1px solid red; */
-    border-radius: 11px;
-    margin-top: 0.8rem;
+    grid-area: two;
+    padding: 0 0.8rem;
+    border-bottom: 1px solid rgb(213, 213, 213);
+    padding-bottom: 20px;
+}
 
+.edit-delete {
+    grid-area: three;
+    padding: 0.8rem;
+    padding-bottom: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .applicants {
-    /* border: 1px solid purple; */
-    border-radius: 11px;
-    margin-top: 0.8rem;
-
-    display: flex;
-    flex-direction: column;
+    grid-area: four;
+    width: 800px;
+    padding: 15px 25px;
+    border-left: 1px solid rgb(213, 213, 213);
 }
 
-.job-description {
-    /* border: 1px solid black; */
-    border-radius: 11px;
-    margin-top: 0.8rem;
-}
-
-.job-Status-header {
-    grid-area: one;
-    /* border: 1px solid black; */
-    border-radius: 11px;
-}
-
-.job-status {
+.main-content {
     display: grid;
-    grid-template-columns: 3.5fr 0.5fr;
-    grid-template-rows: 0.1fr 4fr;
-    grid-template-areas: "one one one one" "two two two three";
-    border-radius: 1.5rem;
+    grid-template-columns: 1fr, 3fr;
+    grid-template-rows: 2fr, 1.5fr, 0.5fr;
+    grid-template-areas: "one four four four"
+                         "two four four four"
+                         "three four four four";
 
-    gap: 0.5rem;
+   border: var(--third-bg-color) 1px solid; 
+   padding: 10px 15px;
+   padding-bottom: 2px;
+   border-radius: 11px;
 }
 
-.applicants h3 {
-    margin-bottom: 0.5rem;
+/* buttons style */
+
+
+.edit button, .delete button {
+   color: var(--main-bg-color);
+   font-weight: 500;
+   border-radius: 20px;
+   padding: 5px 20px;
+   font-size: 15px;
+   border: 3px solid var(--main-color);
+
+   cursor: pointer;
 }
 
-.numberOf-applicants {
-    font-size: 0.9rem;
+.delete button {
+   background-color: var(--main-color);
+}
+
+.delete button:hover {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
     font-weight: 300;
-
-    margin-bottom: -0.2rem;
 }
 
-.persons  {
+.edit button {
+   color: #577CFF;
+   margin-right: 15px;
+   width: 102px;
+   border: 3px solid #577cff;
+   background-color: transparent;
+}
+
+.edit button:hover {
+   background-color: var(--main-color);
+   color: var(--main-bg-color);
+}
+
+/* buttons style end */
+
+.job-status h1 {
+    font-size: 1.7rem;
+    font-weight: 400;
+
+    margin-bottom: 25px;
+    margin-top: -10px;
+}
+
+.job-status h3 {
+    font-size: 1.2rem;
+    font-weight: 450;
+
+    margin-bottom: 0.8rem;
+}
+
+.job-info h3 {
+    margin-bottom: 0.4rem;
+        padding-top: 10px;
+}
+
+.job-title h3 {
+    margin-top: 1.1rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+
+    margin-bottom: 1rem;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgb(213, 213, 213);
+}
+
+.job-status p {
     font-weight: 300;
-    font-size: 0.8rem;
-}
-
-.job-status {
-    position: absolute;
-    top: 4.9rem;
-    left: 350px;
-    
-    width: 0%;
-    height: 100%;
-    background: var(--main-bg-color);
-    border-radius: 11px;
-    padding: 3rem 3%;
-    overflow-y: scroll;
+    color: var(--main-color);
 }
 
 .job-info span, .tokens {
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 15px;
-    color: #737373;
+    font-size: 0.85rem;
+    font-weight: 300;
+
+    margin-bottom: 0.8rem;
 }
+
+.job-info span .content, .tokens span {
+    color: var(--main-color);
+}
+
+/* Applicants style */
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 75%;
+}
+
+.navigation .links {
+    display: flex;
+    font-size: 0.9rem;
+    gap: 2rem;
+}
+
+
+.links a {
+    color: var(--main-text-color);
+    font-weight: 400;
+}
+
+.links a span {
+    color: var(--main-color);
+}
+
+.navigation .links a::after {
+    content: "";
+    position: absolute;
+    background: var(--main-color);
+    left: 0;
+    height: 2px;
+    width: 0;
+    bottom: -13px;
+    transition: 0.1s;
+}
+
+.navigation .links a:hover,
+.navigation .links .active {
+    color: var(--main-color);
+}
+
+.navigation .links a:hover::after,
+.navigation .links .active::after {
+    width: 100%;
+}
+
+
+/* search and sort design */
+
+.searchSort {
+    display: flex;
+    margin-top: 1.5rem;
+}
+
+.search {
+    display: flex;
+    padding: 0.2rem;
+}
+
+.search input {
+    height: 27.5px;
+    width: 250px;
+    border: 1px solid var(--main-color);
+    border-radius: 2px;
+}
+
+.search-img {
+    margin-left: -3.5px;
+    margin-top: -2.3px;
+}
+
+.sort {
+    margin-left: 250px;
+    display: flex;
+}
+
+.sort select {
+    height: 27.5px;
+    width: 200px;
+    margin-left: 5px;
+
+    font-size: 0.9rem;
+    font-weight: 380;
+
+    background-color: transparent;
+    border-radius: 2px;
+    border: 1px var(--main-color) solid;
+    padding-left: 10px;
+}
+
+.search input {
+    padding-left: 10px;
+}
+
+.sort label {
+    margin-top: 4.8px;
+    font-size: 0.85rem;
+    font-weight: 350;
+}
+
+/* profile style */
+
+.profile-wrapper {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.profiles {
+    margin: 5px;
+    border-bottom: 1px solid rgb(213, 213, 213);
+    padding-bottom: 2px;
+}
+
+.profiles:hover {
+    background-color: var(--second-main-color);
+    border-radius: 11px;
+}
+
+.profile-header {
+    display: flex;
+    margin: 5px;
+}
+
+.first-profile {
+    border-top: 1px solid rgb(213, 213, 213);
+}
+
+.third-profile {
+    border-bottom: none;
+}
+
+/* photo style */
+
+.photo {
+    display: flex;
+    z-index: 1;
+    margin-top: 15px;
+}
+
+.photo img {
+    border-radius: 50%;
+    border: 2px solid var(--main-color);
+}
+  
+.online-indicator {
+    margin-top: 35px;
+    margin-left: -12px;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background-color: green;
+    border: 2px solid var(--main-bg-color);
+    z-index: 2;
+} 
+
+/* profile info style */
+.profile-info {
+    font-size: 0.8rem;
+    font-weight: 300;
+
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+.profile-info .name {
+    color: var(--main-color);
+    margin-bottom: 5px;
+    font-weight: 400;
+}
+
+.profile-info .profession {
+    margin-bottom: 2.5px;
+    white-space: nowrap;
+
+}
+
+.profile-info .country {
+    font-size: 0.7rem;
+    color: var(--third-text-color);
+}
+
+/* actions style */
+
+.actions {
+    display: flex;
+    padding: 10px;
+    margin: 15px;
+    margin-left: 180px;
+}
+
+.actions .like, .actions .dislike {
+    margin-right: 20px;
+    border-radius: 50%;
+    border: 1.7px solid var(--main-color);
+    height: 22px;
+    width: 22px;
+    margin-top: 4px;
+    padding: 1px;
+}
+
+.actions .like:hover, .actions .dislike:hover {
+    border: 2px solid #0337f3;
+}
+
+.actions .message, .actions .hire {
+   color: var(--main-bg-color);
+   font-weight: 400;
+   border-radius: 20px;
+   padding: 5px 10px;
+   font-size: 12px;
+   border: 2px solid #577cff;
+
+   width: 82px;
+   height: 30px;
+   cursor: pointer;
+}
+
+.actions .message {
+    margin-right: 20px;
+    background-color: transparent;
+    color: var(--main-color);
+}
+
+.actions .hire {
+    background-color: var(--main-color);
+}
+
+.actions .message:hover {
+    background-color: var(--main-color);
+    color: var(--main-bg-color);
+}
+
+.actions .hire:hover {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+}
+
+/* profile body style */
+
+.body {
+    margin: 5px;
+    margin-left: 90px;
+
+    margin-top: 15px;
+}
+
+.body .price {
+    font-size: 0.8rem;
+    font-weight: 300;
+    margin-bottom: 5px;
+}
+
+.body .price .bir {
+    color: var(--main-color);
+    font-weight: 600;
+}
+
+.body .cover-letter span {
+    font-size: 0.8rem;
+    font-weight: 300;
+}
+
+.body .cover-letter .cover-letter-content {
+
+    color: var(--main-color);
+}
+
+.rating span {
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+.rating .rate {
+    color: var(--main-color);
+}
+
+.rating .five {
+    font-size: 0.65rem;
+}
+
+.rating span img {
+    margin-bottom: -5px;
+}
+
