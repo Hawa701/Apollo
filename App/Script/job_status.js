@@ -1,4 +1,4 @@
-function openJobStatus() {
+/* function openJobStatus() {
     document.getElementById("job-status").style.width = "65%";
     document.getElementById("job-status").style.left = "350px";
     document.getElementById("main-section").style.backgroundColor = "rgba(0, 0, 0, 0.5)";
@@ -12,4 +12,4 @@ function closeJobStatus() {
 
   window.onload = function(){
     closeJobStatus();
-  }
+  } */
