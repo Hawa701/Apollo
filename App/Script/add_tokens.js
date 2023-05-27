@@ -50,8 +50,6 @@ window.onload =  function() {
     
 });
 
-  showCustom();
-
   inputAmount.addEventListener('keyup',function(e){
     accountCharge.innerHTML = (parseInt(e.target.value)*7.5) + ' bir';
   })
