@@ -1,3 +1,27 @@
+<?php
+//to be changed
+$job_id = 2;
+$current_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+// Get the current date and time as a DateTime object
+// $current_date = new DateTime();
+
+// // Get another date as a DateTime object
+// $another_date = new DateTime('2022-01-01 12:00:00');
+
+// // Calculate the difference between the two dates
+// $diff = $current_date->diff($another_date);
+
+include('Connect.php');
+
+$conn = new Connect;
+$connect = $conn->getConnection();
+
+$sql = "SELECT * FROM job WHERE Job_ID = $job_id;";
+$result = mysqli_query($connect, $sql);
+$row = mysqli_fetch_assoc($result);
+// echo $row['Job_Title'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,29 +64,29 @@
         </div> -->
     </header>
     <main class="container">
-        <h1>Job Details</h1>
+        <h1>Job Detail</h1>
         <section class="mainContainer">
             <section class="jobDetails">
                 <div class="jobTitle">
-                    <h2>This is the job title</h2>
-                    <p>Posted {time} ago</p>
+                <?php echo "<h2>" . $row['Job_Title'] . "</h2>";?>                    
+                <p>Posted {time} ago</p>
                 </div>
                 <div class="jobDescription">
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum alias vel, corporis similique quod natus doloremque recusandae aperiam omnis est provident ducimus deserunt eum obcaecati vitae dolores non quasi hic quia facere
-                        nostrum? Illum maxime ullam dicta tempora exercitationem</p>
+                    <?php echo "<p>" . $row['Description'] . "</p>";?>                    
                 </div>
                 <div class="jobPriceExpertise">
                     <div>
-                        <h4>Birr 500</h4>
+                      <h4>Birr <?php echo "<span>" . $row['Payment'] . "</span>";?></h4>   
                         <h5>Fixed Price</h5>
                     </div>
                     <div>
-                        <h4>Intermidiate</h4>
+                     <?php echo "<h4>" . $row['Experience'] . "</h4>";?>                    
                         <h5>I am looking for a mix of experience and value</h5>
                     </div>
                     <div>
-                        <h4>Contract-to-hire</h4>
-                        <h5>This job has the potential to turn into a full time role</h5>
+                        <?php echo "<h4>" . $row['Employment'] . "</h4>";?>   
+                        <?php echo ($row['Employment'] == "Contract") ? "<h5>This job has the potential to turn into a full time role</h5>" : "<h5>This job is a full time role</h5>";?>                    
+                        <h5></h5>
                     </div>
                 </div>
                 <div class="projectType">
@@ -83,7 +107,8 @@
                 </div>
                 <div class="jobActivity">
                     <h4>Activity on this Job</h4>
-                    <p>Proposals: <span class="numProposal">20 to 50</span></p>
+                    <!-- <p>Proposals: <span class="numProposal"><?php echo ($row['Proposal'] > 5) ? "Less than 5" : ($row['Proposal'] < 10 && $row['Proposal'] > 15)? "10-15":($row['Proposal'] < 20 && $row['Proposal'] > 50)? "20-50":($row['Proposal'] < 50)?"50+":"" ;?></span></p> -->
+                    <p>Proposals: <span class="numInterviewing">6</span></p>
                     <p>Interviewing: <span class="numInterviewing">0</span></p>
                     <p>Invites Sent: <span class="numInvites">0</span></p>
                     <p>Unansnwered Invites: <span class="numUnansweredInvites">0</span></p>
@@ -93,8 +118,8 @@
                 <div class="actions">
                     <button class="applyBtn">Apply Now</button>
                     <button class="saveBtn">Save Job</button>
-                    <p>Send a proposal for: 6 Connects</p>
-                    <p>Available Connects: 21</p>
+                    <p>Send a proposal for: <?php echo $row['Token'];?> Token</p>
+                    <p>Available Token: 21</p>
                 </div>
                 <div class="aboutClient">
                     <h4>About the Client</h4>
@@ -123,12 +148,19 @@
                 </div>
                 <div class="jobLink">
                     <h4>JOB LINK</h4>
-                    <input readonly type="text" value="the job usl goes here sgsgadfsgasfgasfsfda" name="job link">
-                    <p>Copy Link</p>
+                    <input id="URL" readonly type="text" value=<?php echo $current_url ?> name="job link">
+                    <p onclick="copyToClipboard()">Copy Link</p>
                 </div>
             </section>
         </section>
     </main>
+    <script>
+		function copyToClipboard() {
+			var copyText = document.getElementById("URL");
+			copyText.select();
+			document.execCommand("copy");
+		}
+	</script>
 </body>
 
 </html>

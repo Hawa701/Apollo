@@ -194,3 +194,23 @@ button {
     color: #577CFF;
     cursor: pointer;
 }
+
+@media(max-width: 769px) {
+    h1 {
+        text-align: center;
+    }
+}
+
+@media(max-width: 426px) {
+    .mainContainer {
+        flex-direction: column;
+    }
+    .jobDetails {
+        width: 100%;
+        border-right: none;
+    }
+    .jobActions {
+        width: 100%;
+        text-align: center;
+    }
+}
