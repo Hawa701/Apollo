@@ -50,6 +50,7 @@ body {
 hr {
     border: 1.2px solid var(--third-bg-color);
     margin-bottom: 14px;
+    object-fit: contain;
 }
 
 
