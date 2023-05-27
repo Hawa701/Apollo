@@ -4,11 +4,12 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: "Roboto", sans-serif;
+    font-family: "Roboto",sans-serif;
 }
 
 :root {
-    --main-color: #577CFF;
+    --main-color: #4268f5;
+    --third-main-color:#1f4be7;
     --second-main-color: #deecf0;
     --main-bg-color: #fff;
     --second-bg-color: #ededed;
@@ -17,16 +18,13 @@
     --second-text-color: #fff;
     --third-text-color: #737373;
 }
-
 body {
     background: var(--main-bg-color);
     color: var(--main-text-color);
-    height: 100vh;
 }
 
-.token-wrap {
-     border: 1px solid rgba(128, 128, 128, 0.438);
-    /* box-shadow: 0 0 1rem var(--main-color); */
+.Postajob-wrap {
+    border: 1px solid rgba(128, 128, 128, 0.438);
     border-radius: 11px;
     display: flex;
     flex-direction: column;
@@ -34,76 +32,62 @@ body {
     margin: 1.5rem auto;
     background-color: var(--main-bg-color);
 
-    height: 620px;
+    height: 155vh;
     width: 1150px;
-
-    padding: ;
 }
 
-.token-wrap h1 {
+.Postajob-wrap h1 {
     margin: 1.5rem;
+    font-size: 1.7rem;
     font-weight: 400;
 }
 
-.token-form {
+.Postajob-form {
     border-radius: 11px;
     margin: 1.3rem 1.5rem;
-        
-    height: 510px;
+    height: 500px;
 }
 
-label, p {
+label {
+
     font-size: 0.9rem;
+    font-size: 1.1rem;
     font-weight: 300;
 }
 
-.display {
-    border-radius: 4px;
-    border: var(--third-text-color) 1px solid;
-    width: 200px;
-    height: 28px;
-
-    margin: 0.8rem 0px;
-}
-
-#amount-to-buy {
-    margin: 0.8rem 0px;
-}
-
 select,input {
-    width: 280px;
-    height: 33px;
-
+    height: 41px;
+    padding: 0.5rem;
+    font-size: 1rem;
+    width: 400px;
+    height: 45px;
     color: var(--third-text-color);
 }
 
-.statements {
-    margin-top: 1.5rem;
-    margin-bottom: 0.9rem;
+textarea {
+    padding: 0.5rem;
+    font-size: 1rem;
+    width:550px;
+    height: 100px;
+    color: var(--third-text-color);
 }
 
-.statement-1 {
-    margin-bottom: 0.9rem;
-    color: rgb(92, 86, 86);
+#job-title-alert,#job-position-alert,#job-desc-alert,#job-payment-alert,#job-proposal-alert,#deadline-alert
+ {
+    color: red;
+    font-size: .82rem;
+    display:none;
+    flex-direction: column;
 }
 
-.statement-2 {
-    color: rgb(92, 86, 86);
+.display {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
-
-.statements a {
-    color: #1a45df;
-}
-
-.statements a:hover {
-    color: #062492;
-}
-
 .buttons {
     display: flex;
     justify-content: flex-end;
 }
-
 .btn {
     padding: 0.45rem 1rem;
     font-size: 1rem;
@@ -111,19 +95,19 @@ select,input {
     border-radius: 11px;
 } 
 
-.buy-btn {
+.go {
     margin-right: 2.5rem;
-    background-color: #1341e8;
+    background-color: var(--main-color);
     color: var(--second-text-color);
 
     width: 145px;
 }
 
-.buy-btn:hover {
-    background-color: #062492;
+.go:hover {
+    background-color: var(--third-main-color);
 }
 
-.cancel-btn {
+.clear-btn {
     margin: 0px 1.4rem;
     width: 100px;
     background-color: transparent;
@@ -131,30 +115,8 @@ select,input {
     border: none;
 }
 
-.cancel-btn:hover {
+.clear:hover {
     background-color: var(--third-bg-color);
     border: 1px solid var(--third-bg-color);
     color: var(--main-text-color);
-}
-
-.input {
-    display: none;
-}
-
-#input-custom-amount {
-    width: 280px;
-    height: 33px;
-
-    color: var(--third-text-color);
-
-    border-radius: 4px;
-    border: 1px solid;
-
-    margin: 0.8rem 0px;
-}
-
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }

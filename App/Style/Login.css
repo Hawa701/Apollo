@@ -1,0 +1,245 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: "Roboto", sans-serif;
+  }
+  
+  :root {
+    --main-color: #295dc5;
+    --second-main-color: #deecf0;
+  
+    --main-bg-color: #fff;
+    --second-bg-color: #ededed;
+    --third-bg-color: #c8c9ca;
+  
+    --main-text-color: #000;
+    --second-text-color: #fff;
+    --third-text-color: #737373;
+  }
+  
+  body {
+    background: var(--main-bg-color);
+    color: var(--main-text-color);
+  }
+  
+  .container {
+    display: flex;
+    align-items: stretch;
+    height: 100vh;
+  }
+  
+  .left {
+    background-color: var(--main-color);
+    width: 767px;
+  }
+  
+  .right {
+    width: 767px;
+  }
+  
+  .left .content .back-btn {
+    background-color: transparent;
+    border: none;
+     
+    margin-left: 40px;
+    margin-top: 35px;
+  }
+  
+  .left .content .back-btn:hover {
+    transform: translatey(-5%);
+  }
+  
+  .logo-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+  }
+  
+  .left .content .logo-image .logo {
+     animation: MoveUpDown 3s linear infinite;
+     z-index: 2;
+  }
+  
+  .left .content .logo-image .shadow {
+    width: 395px;
+    height: 32px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 60%;
+    z-index: 1;
+  
+    margin-top: -60px;
+    margin-bottom: 10px;
+  }
+  
+  @keyframes MoveUpDown {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-30px);
+    }
+  }
+  
+  .left .content .text-content{
+    color: var(--second-text-color);
+    font-weight: 400;
+    margin: 0.2rem;
+  }
+  
+  .text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .text-content h2 {
+    font-weight: 400;
+    font-size: 1.79rem;
+    margin: 2px;
+  }
+  
+  .text-content h4 {
+    margin-top: 10px;
+    font-weight: 400;
+  }
+
+  .log-in {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10rem;
+  }
+  
+  .log-in-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  input {
+    background-color: var(--third-bg-color);
+    height: 41px;
+    border-radius: 8px;
+    margin: 5px;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+  }
+  #texts, #password{
+    margin-top: 10px;
+    width: 450px;
+  }
+  #Remember {
+    width: 50px;
+    height: 17px;
+    margin-right: -0.7rem;  
+  }
+  .remember-forget {
+    display: flex;
+    justify-content: space-between;
+  }
+  .remember-forget label {
+    font-size: 0.7rem;
+  }
+
+  
+  .remember-forget a {
+    color: var(--third-text-color);
+    font-size: 0.7rem;
+  }
+  
+  .log-in #loginbtn {
+    background-color: var(--main-color);
+    padding: 5px;
+    border-radius: 0.5rem;
+    width: 450px;
+    height: 41px;
+    font-size: 1.3rem;
+    color: var(--second-text-color);
+  
+    font-weight: 500;
+    margin-top: 1rem;
+  }
+  
+  .log-in #loginbtn:hover {
+    background-color: #0256fe;
+  }
+  .log-in h1, h2 {
+    margin: 5px;
+  }
+  
+  .log-in h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--main-color);
+  }
+  
+  .log-in h1:hover {
+    color: var(--main-text-color);
+  }
+  
+  .log-in h2 {
+    margin-bottom: 1.2rem;
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: var(--main-color);
+  }
+
+  #signup {
+    color: var(--third-text-color);
+    font-weight: 600;
+    margin: 1.5rem auto;
+  }
+  
+  #signup a:hover {
+    text-decoration: underline;
+    font-weight: 800;
+  }
+
+/* alerts  */
+  .alert {
+    color: #9b211b;
+    display: none;
+    align-items: center;
+  }
+
+  #UEAlert,#passwordAlert{
+    display: none;
+  height: 13px;
+  width: 218px;
+  border-radius: 11px;
+  margin-top: -8px;
+  margin-right: 270px;
+  }
+  /* Show Password */
+
+.passwords {
+  display: flex;
+  align-items: center;
+  margin-right: 0.8rem;
+}
+
+.far {
+ margin-left: -30px;
+ margin-top: -10px;
+}
+
+.passwords i {
+ color: var(--third-text-color);
+ cursor: pointer;
+}
+
+.passwords i:hover {
+ color: var(--main-text-color);
+}

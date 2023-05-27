@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style/Login.css"/>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Login</title>
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="left">
+
+            <div class="content">
+
+              <button class="back-btn"><img src="https://img.icons8.com/ios-filled/25/FFFFFF/back.png"/> </button>
+              
+              <div class="logo-image">
+                <img src="image/signin-image.png" alt="" class="logo">
+                <div class="shadow"></div>
+              </div> <!-- logo image end -->
+              
+              <div class="text-content">
+
+              <h2>One Small step for your Career,</h2>
+              <h2>one giant leap for your Life</h2>
+              <h4>Create the balance that you've always Wanted</h4>
+
+              </div> <!-- text content end -->
+
+            </div> <!-- content end -->
+            `
+          </div> <!-- left end-->
+          <div class="right">
+
+            <div class="log-in">
+
+              <h1>Hello Again!</h1>
+               <h2>Log in and Stay Connected</h2>
+
+             <form class="log-in-form" onsubmit="return validateForm()">
+
+
+              <input type="text" id="texts" name="texts" placeholder="Username or Email ...">
+              <div id="UEAlert" class="alert"><img src="https://img.icons8.com/material-sharp/15/FA5252/box-important--v1.png"/> Enter a valid username or email</div>    
+
+              
+              <div id="pswd" class="passwords">
+                <input type="password" id="password" class="visibility" name="password" placeholder="Password" >                
+                <i class="far fa-eye" id="togglePassword"></i></div><!-- passwords end -->
+              <div class="alert" id="passwordAlert"><img src="https://img.icons8.com/material-sharp/15/FA5252/box-important--v1.png"/> Password required</div>    
+
+              <div class="remember-forgot">
+                
+                  <label><input type="checkbox" name="Remember" id="Remember"/> 
+                   Remember Me</label>
+                  <a href="#">Forgot Password?</a>
+              </div><!-- remember-forgot end -->
+              <button id="loginbtn" type="submit">Log in</button>
+            </form> <!-- log-in form end-->
+
+            <h3 id="signup">New to Apollo? <a href="#">Sign Up</a></h3>
+
+            </div> <!-- log-in end -->
+
+          </div> <!-- right end-->
+        </div><!-- Container ends -->
+    
+    
+    </div>
+</body>
+</html>
+<script src="Script/login.js"></script>

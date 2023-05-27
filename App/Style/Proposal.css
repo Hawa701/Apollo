@@ -1,0 +1,29 @@
+/* 
+.wrapper2 hr {
+    margin: 0rem 10rem 0rem 10rem;
+} */
+.wrapper2 .upper {
+    margin: 0rem 6rem 0rem 6rem;
+    
+}
+.upper .links {
+    display: flex;
+    justify-content: space-evenly;
+}
+#loweractive , #lowerrequested , #lowerdeclined {
+    display: flex;
+    flex-direction: column;
+}
+.active_field, .request_field, .decline_field {
+    color: black;
+    border: 1px solid blue;
+    border-radius: 20px;
+    padding-top: 20px;
+    margin: 1.5em 20em 0em 6em;
+    padding: 10px;  
+    
+}
+.active_field .title, .request_field .title , .decline_field .title  {
+    text-decoration: underline;
+}
+ 
