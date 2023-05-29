@@ -1,58 +1,85 @@
 <?php
-// Get form data
-
 include('Connect.php');
 $conn = new Connect;
+$error = null;
 
+if($_SERVER['REQUEST_METHOD'] == "POST"){
 
-if(isset($_POST['fname'])){
-  $first_name = $_POST['fname'];
-}
-else {
-  echo "sotnfdklalf";
-}
-
-if(isset($_POST['lname'])){
-  $last_name = $_POST['lname'];
+  // Validate form data
+  if(isset($_POST['fname'])){
+    $first_name = htmlspecialchars($_POST['fname']);
+  }
+  else {
+    echo "First name is required.";
+    exit();
   }
 
-if(isset($_POST['username'])){
-  $username = $_POST['username'];
-}
+  if(isset($_POST['lname'])){
+    $last_name = htmlspecialchars($_POST['lname']);
+  }
+  else {
+    echo "Last name is required.";
+    exit();
+  }
 
-if(isset($_POST['email'])){
-  $email = $_POST['email'];
-}
+  if(isset($_POST['username'])){
+    $username = htmlspecialchars($_POST['username']);
+  }
+  else {
+    echo "Username is required.";
+    exit();
+  }
 
-if(isset($_POST['password'])){
-  $password = $_POST['password'];
-}
+  if(isset($_POST['email'])){
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      echo "Invalid email format";
+      exit();
+    }
+  }
+  else {
+    echo "Email is required.";
+    exit();
+  }
 
-if(isset($_POST['country'])){
-  $country = $_POST['country'];
-}
+  if(isset($_POST['password'])){
+    $password = htmlspecialchars($_POST['password']);
+  }
+  else {
+    echo "Password is required.";
+    exit();
+  }
 
- 
-if($_SERVER['REQUEST_METHOD'] == "POST"){
+  if(isset($_POST['country'])){
+    $country = htmlspecialchars($_POST['country']);
+  }
+
+  // Hash the password
+  $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
   $conn = new Connect;
   $connect = $conn->getConnection();
 
-  // Datbase Connection
-  if($connect->connect_error){
-      die('connection Failed: ' . $connect->connect_error);
-  }
-  else{
-    $query = $connect->prepare("insert into profile(Firstname, Lastname, Username, Email, Password, Country) values(?,?,?,?,?,?)");
-    $query->bind_param("ssssss", $first_name, $last_name, $username, $email, $password, $country);
+  // Check for duplicate entries
+  $query = $connect->prepare("SELECT * FROM profile WHERE Email = ? OR Username = ?");
+  $query->bind_param("ss", $email, $username);
+  $query->execute();
+  $result = $query->get_result();
+
+ 
+  if($result->num_rows == 0){
+    // Insert data into database
+    $query = $connect->prepare("INSERT INTO profile(Firstname, Lastname, Username, Email, Password, Country) VALUES(?,?,?,?,?,?)");
+    $query->bind_param("ssssss", $first_name, $last_name, $username, $email, $hashed_password, $country);
     $query->execute();
-    echo "Registered sucessfully...";
+    echo "Registered successfully...";
     $query->close();
     $connect->close();
+  } else {
+    $error = "Email or username already exists.";
   }
 }
 ?>
-
 
 
 
@@ -171,6 +198,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 <p>Yes, i understand and agree to the <em>Appollo Terms or Service</em>, including the <em>user Agreement<br> and Privacy Policy</em></p>
               </div>
               <div class="alert" id="privacy-policyAlert"><img src="https://img.icons8.com/material-sharp/15/FA5252/box-important--v1.png"/> Please accept the Apollo Terms of Service before continuing</div>    
+
+              <?php
+                  if($error!= null) {
+                    echo "<div>{$error}</div>";
+                  }
+              ?>
 
               <button type="submit">Sign Up</button>
             
