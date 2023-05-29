@@ -24,7 +24,7 @@ body {
 
 .job-status {
     background-color: var(--main-bg-color);
-    margin: 16px auto;
+    margin: 15px auto;
     max-width: 1200px;
     /* max-height: 650px; */
     border-radius: 11px;
@@ -32,25 +32,23 @@ body {
 
     display: flex;
     flex-direction: column;
+
 }
 
 
 .job-description  {
-    grid-area: one;
     border-bottom: 1px solid rgb(213, 213, 213);
     padding: 0 0.8rem;
     padding-bottom: 20px;
 }
 
 .job-info {
-    grid-area: two;
     padding: 0 0.8rem;
     border-bottom: 1px solid rgb(213, 213, 213);
     padding-bottom: 20px;
 }
 
 .edit-delete {
-    grid-area: three;
     padding: 0.8rem;
     padding-bottom: 0;
 
@@ -59,26 +57,42 @@ body {
     align-items: center;
 }
 
+.left-container {
+    font-size: 0.95rem;
+    /* width: 25%; */
+}
+
 .applicants {
-    grid-area: four;
-    width: 800px;
+    
+    height: 500px;
     padding: 15px 25px;
     border-left: 1px solid rgb(213, 213, 213);
+
+    overflow-y: auto;
+    box-sizing: content-box;
+    scrollbar-width: none;
 }
+
 
 .main-content {
     display: grid;
-    grid-template-columns: 1fr, 3fr;
-    grid-template-rows: 2fr, 1.5fr, 0.5fr;
-    grid-template-areas: "one four four four"
-                         "two four four four"
-                         "three four four four";
+    grid-template-columns: 25% 75%;
 
    border: var(--third-bg-color) 1px solid; 
    padding: 10px 15px;
    padding-bottom: 2px;
    border-radius: 11px;
 }
+
+ @media (max-width: 600px) {
+    .main-content {
+      grid-template-columns: 100%;
+    }
+
+    .applicants {
+
+    }
+  } 
 
 /* buttons style */
 
@@ -227,7 +241,7 @@ body {
 .search input {
     height: 27.5px;
     width: 250px;
-    border: 1px solid var(--main-color);
+    border: 0.5px solid var(--main-color);
     border-radius: 2px;
 }
 
@@ -270,7 +284,6 @@ body {
 .profile-wrapper {
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
 }
 
 .profiles {
@@ -286,6 +299,7 @@ body {
 
 .profile-header {
     display: flex;
+    flex-wrap: wrap;
     margin: 5px;
 }
 
@@ -347,7 +361,112 @@ body {
     color: var(--third-text-color);
 }
 
+/* media style */
+/* 
+@media (max-width: 700px) {
+    .profile-header .profile-info, .profile-header .actions, .profile-header .like, .profile-header .dislike, .profile-header .message, .profile-header .hire {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .profile-header .actions {
+    }
+} */
+
 /* actions style */
+
+@media (max-width: 1200px) {
+
+    .left-container {
+        font-size: 0.75rem;
+        /* width: 25%; */
+    }
+
+    .edit button, .delete button {
+
+        margin-right: 5px;
+        width: 80px;
+        height: 40px;
+        font-size: 0.65rem;
+        border: 1px solid #577cff;
+     }
+     
+    .profile-header .profile-info, .profile-header .actions, .profile-header .like, .profile-header .dislike, .profile-header .message, .profile-header .hire {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .profile-header .actions {
+        margin-top: 0.8rem;
+    }
+
+    .navigation .links {
+        font-size: 0.9rem;
+        gap: 150px;
+        margin-top: 0.5rem;
+    }
+
+    .search input {
+        height: 24px;
+        width: 135px;
+        font-size: 0.75rem;
+    }
+
+    
+.sort {
+    margin-left: -15px;
+}
+
+.sort select {
+    height: 25px;
+    width: 135px;
+
+    font-size: 0.75rem;
+    margin-top: 0.2rem;
+}
+}
+
+@media (max-width: 530px) { /* less than 450*/
+    .profile-header .profile-info, .profile-header .actions, .profile-header .like, .profile-header .dislike, .profile-header .message, .profile-header .hire {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .profile-header .actions {
+        margin-top: 0.8rem;
+    }
+
+    .navigation .links {
+        font-size: 0.9rem;
+        gap: 7rem;
+        margin-top: 0.5rem;
+    }
+
+    .search input {
+        height: 24px;
+        width: 135px;
+        font-size: 0.75rem;
+    }
+
+    
+.sort {
+    margin-left: -15px;
+}
+
+.sort select {
+    height: 25px;
+    width: 135px;
+
+    font-size: 0.75rem;
+    margin-top: 0.2rem;
+}
+
+.edit button, .delete button {
+    margin-right: 55px;
+ }
+}
+
+
 
 .actions {
     display: flex;
