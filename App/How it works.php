@@ -10,16 +10,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
   <!-- css link -->
-  <link rel="stylesheet" href="./Style/How it works.css?v=9.0" />
+  <link rel="stylesheet" href="./Style/How it works.css?v=9.1" />
   <title>How it Works</title>
 </head>
 
 <body>
+
+  <?php
+  include('header.php');
+  ?>
+
   <div class="wrapper">
     <!-- header design -->
-    <?php
-    //include('header.php');
-    ?>
 
     <section class="section">
       <div class="title-block">

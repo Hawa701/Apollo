@@ -416,7 +416,7 @@ function isChecked($value)
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
   <!-- css link -->
-  <link rel="stylesheet" href="./Style/Find_Work.css?v=1.30" />
+  <link rel="stylesheet" href="./Style/Find_Work.css?v=1.32" />
   <!-- icon link -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -428,8 +428,10 @@ function isChecked($value)
   <div class="wrapper">
     <!-- header design -->
     <?php
-    //include('header.php');
+    include('header.php');
     ?>
+
+
 
     <!-- section design -->
     <section class="section">
