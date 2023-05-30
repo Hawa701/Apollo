@@ -1,7 +1,17 @@
 <?php
 //to be changed
-$job_id = 2;
+// $job_id = 2;
+date_default_timezone_set('Africa/Addis_Ababa');
+$current_time = date("h:i A");
 $current_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$url_parts = parse_url($current_url);
+
+// Parse the query string
+parse_str($url_parts['query'], $query);
+
+// Get the job ID and profile ID
+$job_id = $query['Job_ID'];
+$profile_id = $query['Profile_ID'];
 // Get the current date and time as a DateTime object
 // $current_date = new DateTime();
 
@@ -20,6 +30,47 @@ $sql = "SELECT * FROM job WHERE Job_ID = $job_id;";
 $result = mysqli_query($connect, $sql);
 $row = mysqli_fetch_assoc($result);
 // echo $row['Job_Title'];
+
+function fetchPerson(){
+    $conn = new Connect;
+$connect = $conn->getConnection();
+
+$job_id = 2;
+
+$sql = "SELECT * FROM job WHERE Job_ID = $job_id;";
+$result = mysqli_query($connect, $sql);
+$row = mysqli_fetch_assoc($result);
+
+$person = $row['Profile_ID'];
+$sql = "SELECT * FROM profile WHERE Profile_ID = $person;";
+$result = mysqli_query($connect, $sql);
+$row = mysqli_fetch_assoc($result);
+return $row;
+}
+
+
+function fetchTags(){
+    $conn = new Connect;
+$connect = $conn->getConnection();
+$job_id = 2;
+
+    $sql = "SELECT Tag_Name FROM table_name WHERE Job_Id = '" . $job_id . "'";
+    $result = mysqli_query($connect, $sql);
+      if (!$result) {
+        // If the query failed, log the error message and return an empty array
+        error_log("SQL query failed: " . mysqli_error($connect));
+        return [];
+    }
+
+    $rows = [];
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $rows[] = $row;
+    }
+
+    return $rows;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +120,7 @@ $row = mysqli_fetch_assoc($result);
             <section class="jobDetails">
                 <div class="jobTitle">
                 <?php echo "<h2>" . $row['Job_Title'] . "</h2>";?>                    
-                <p>Posted {time} ago</p>
+                <p>Posted <?php echo $row['Date'] ?></p>
                 </div>
                 <div class="jobDescription">
                     <?php echo "<p>" . $row['Description'] . "</p>";?>                    
@@ -95,31 +146,48 @@ $row = mysqli_fetch_assoc($result);
                 <div class="skillsNeeded">
                     <h4>Skills and Experties</h4>
                     <div class="skillList">
-                        <h5 class="skill">Web Application</h5>
+                        <?php 
+                        $rows=fetchTags();
+                        // $rows = fetchTags();
+
+// Loop through the rows using a foreach loop
+foreach ($rows as $row) {
+    $tag_name = $row['Tag_Name'];
+    echo"<h5 class='skill'>$tag_name</h5>";
+}
+                        ?>
+                        <!-- <h5 class="skill">Web Application</h5>
                         <h5 class="skill">Database Managment</h5>
                         <h5 class="skill">Css</h5>
                         <h5 class="skill">HTML</h5>
                         <h5 class="skill">Web Development</h5>
                         <h5 class="skill">JavaScript</h5>
                         <h5 class="skill">Bootstrap</h5>
-                        <h5 class="skill">Wordpress</h5>
+                        <h5 class="skill">Wordpress</h5> -->
                     </div>
                 </div>
                 <div class="jobActivity">
                     <h4>Activity on this Job</h4>
-                    <!-- <p>Proposals: <span class="numProposal"><?php echo ($row['Proposal'] > 5) ? "Less than 5" : ($row['Proposal'] < 10 && $row['Proposal'] > 15)? "10-15":($row['Proposal'] < 20 && $row['Proposal'] > 50)? "20-50":($row['Proposal'] < 50)?"50+":"" ;?></span></p> -->
-                    <p>Proposals: <span class="numInterviewing">6</span></p>
+                    <p>Proposals: <span class="numProposal"><?php echo ($row['Proposals'] <= 50) ? "50+" :
+     ($row['Proposals'] < 50 && $row['Proposals'] > 20 ) ? "20-50" :
+     ($row['Proposals'] <= 20 && $row['Proposals'] > 10 ) ? "10-15" :
+     ($row['Proposals'] <= 10 && $row['Proposals'] > 5 ) ? "5-10" :
+     "Less than 5";?></span></p>
+                    <!-- <p>Proposals: <span class="numInterviewing">6</span></p> -->
                     <p>Interviewing: <span class="numInterviewing">0</span></p>
                     <p>Invites Sent: <span class="numInvites">0</span></p>
                     <p>Unansnwered Invites: <span class="numUnansweredInvites">0</span></p>
                 </div>
             </section>
+            <?php
+                        $person = fetchPerson();
+                        ?>
             <section class="jobActions">
                 <div class="actions">
                     <button class="applyBtn">Apply Now</button>
                     <button class="saveBtn">Save Job</button>
                     <p>Send a proposal for: <?php echo $row['Token'];?> Token</p>
-                    <p>Available Token: 21</p>
+                    <p>Available Token: <?php echo $person['token'];?></p>
                 </div>
                 <div class="aboutClient">
                     <h4>About the Client</h4>
@@ -129,8 +197,13 @@ $row = mysqli_fetch_assoc($result);
                         <i class="fa-solid fa-star" style="color: #577cff;"></i>
                         <i class="fa-solid fa-star" style="color: #577cff;"></i> 5 of 4 reviews</h5>
                     <div>
-                        <h4>Kenya</h4>
-                        <h5>2:40 AM</h5>
+                        <?php
+                        $person = fetchPerson();
+
+                       echo '<h4>'.$person['Country'].'</h4>'
+                        ?>
+                        
+                        <h5><?php echo $current_time?></h5>
                     </div>
                     <div>
                         <h4>5 jobs posted</h4>
@@ -140,11 +213,10 @@ $row = mysqli_fetch_assoc($result);
                         <h4>Birr 13k total spent</h4>
                         <h5>4 hires, 0 active</h5>
                     </div>
-                    <div>
-                        <h4>$10.00 /hr avg hourly rate paid</h4>
-                        <h5>1 hour</h5>
-                    </div>
-                    <h5 style="margin-top: 10px;">Member since Jul 19, 2022</h5>
+                    
+                    <h4 style="margin-top: 10px;">Member since <?php
+                       echo '<h5>'.$person['member_since'].'</h5>'
+                        ?></h4>
                 </div>
                 <div class="jobLink">
                     <h4>JOB LINK</h4>
