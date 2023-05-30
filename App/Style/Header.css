@@ -1,146 +1,220 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    font-family: "Roboto", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
 }
 
 :root {
-    --main-color: #577CFF;
-    --second-main-color: #deecf0;
-    --main-bg-color: #fff;
-    --second-bg-color: #ededed;
-    --third-bg-color: #c8c9ca;
-    --main-text-color: #000;
-    --second-text-color: #fff;
-    --third-text-color: #737373;
+  --main-color: #577cff;
+  --second-main-color: #deecf0;
+  --main-bg-color: #fff;
+  --second-bg-color: #ededed;
+  --third-bg-color: #c8c9ca;
+  --main-text-color: #000;
+  --second-text-color: #fff;
+  --third-text-color: #737373;
 }
 
 li {
-    list-style: none;
+  list-style: none;
 }
 
 header {
-    position: sticky;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: grid;
-    grid-template-columns: 1fr 5fr 1fr;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    background: var(--main-bg-color);
-    /* box-shadow: 0 0 1rem var(--third-bg-color); */
-    padding: 20px 4%;
-    z-index: 100;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 4rem;
+  padding: 0 2rem;
+  background: var(--main-bg-color);
+  z-index: 100;
 }
 
 .logo a {
-    font-size: 2rem;
-    font-weight: 500;
-    color: var(--main-color);
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--main-color);
 }
 
-.signInnUp {
-    display: flex;
-    justify-content: space-between;
-}
-
-.signInnUp .signup {
-    background-color: var(--main-color);
-    color: #fff;
-}
-
-.signInnUp .login {
-    background-color: transparent;
-}
-
-.signInnUp .login:hover {
-    background-color: var(--second-bg-color);
-}
-
-.signInnUp button {
-    font-size: 15px;
-    padding: 8px 18px;
-    border-radius: 50px;
-    cursor: pointer;
-    border: none;
-}
-
-header .navShadow {
-    box-shadow: 0 0 1rem var(--third-bg-color);
-}
-
-.nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 75%;
-    border-right: solid 1px var(--main-text-color);
+/* nav */
+.header .nav {
+  width: 100%;
 }
 
 .nav .links {
-    /* padding: 1.5rem 0 0; */
-    display: flex;
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: var(--main-text-color);
-    gap: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding-left: 4rem;
 }
 
 .links a {
-    color: var(--main-text-color);
-    font-weight: 400;
-    position: relative;
+  position: relative;
+  color: var(--main-text-color);
+  font-size: 1.2rem;
 }
 
 .links a::after {
-    content: "";
-    position: absolute;
-    background: var(--main-color);
-    left: 0;
-    height: 2px;
-    width: 0;
-    bottom: -13px;
-    transition: 0.1s;
+  content: "";
+  position: absolute;
+  background: var(--main-color);
+  left: 0;
+  width: 0;
+  height: 2px;
+  bottom: -13px;
+  transition: 0.1s;
 }
 
 .links a:hover,
 .links .active {
-    color: var(--main-color);
+  color: var(--main-color);
 }
 
 .links a:hover::after,
 .links .active::after {
-    width: 100%;
+  width: 100%;
 }
 
-.notification {
-    padding: 0 2%;
+/* signiniup */
+.header .signInnUp {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.7rem;
+  width: 30%;
+  border-left: black 1px solid;
+  padding-left: 1rem;
+}
+
+.signInnUp button {
+  width: 100%;
+  height: 2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  border: none;
+}
+
+.signInnUp .login {
+  border: var(--main-color) 2px solid;
+  background-color: var(--main-bg-color);
+  color: var(--main-color);
+}
+
+.signInnUp .login:hover {
+  background-color: var(--main-color);
+  color: var(--second-text-color);
+}
+
+.signInnUp .signup {
+  background-color: var(--main-color);
+  color: var(--second-text-color);
+}
+
+/* notifProf */
+.header .notifProf {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.3rem;
+  width: 15%;
+  border-left: black 1px solid;
+}
+
+.notifProf .notification {
+  padding: 0 2%;
 }
 
 .notification i {
-    font-size: 2rem;
-    color: var(--main-text-color);
+  font-size: 1.3rem;
+  color: var(--main-text-color);
 }
 
-.profile {
-    background: var(--second-main-color);
-    width: 4.1rem;
-    height: 4.1rem;
-    text-align: center;
-    justify-content: center;
-    border-radius: 50%;
-    margin: 0 2rem;
-    padding: 10%;
-    cursor: pointer;
+.notifProf .profile {
+  display: flex;
+  width: 2.2rem;
+  height: 2.1rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  padding: 0 5%;
+  background: var(--second-main-color);
+  cursor: pointer;
 }
 
 .profile a {
-    font-size: 2rem;
-    color: var(--main-text-color);
-    font-weight: 500;
+  font-size: 1.4rem;
+  color: var(--main-text-color);
+  font-weight: 500;
+}
+
+/* menu */
+.header .menu-icon {
+  display: none;
+  font-size: 1.5rem;
+}
+
+.header .menu {
+  display: none;
+  padding: 0 0 1rem 0;
+  position: fixed;
+  flex-direction: column;
+  right: 0;
+  top: 4rem;
+  width: 45%;
+  height: 15rem;
+  border-bottom-left-radius: 10px;
+  background-color: var(--main-bg-color);
+}
+.header .menu.visible {
+  display: flex;
+}
+
+.menu .menu-links {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  padding-left: 1rem;
+  gap: 2px;
+}
+
+.menu-links a {
+  padding-left: 0.5rem;
+  color: var(--main-text-color);
+  font-size: 1rem;
+}
+.menu-links a:hover {
+  color: var(--main-color);
+}
+
+.menu-links span {
+  color: var(--third-text-color);
+  width: 90%;
+  font-size: 0.8rem;
+  padding-top: 1rem;
+}
+
+.menu-links hr {
+  width: 90%;
+  color: var(--third-text-color);
+  margin-bottom: 0.5rem;
+}
+
+/* phone design */
+@media (max-width: 720px) {
+  .header .nav,
+  .header .notifProf,
+  .header .signInnUp {
+    display: none;
+  }
+  .header .menu-icon {
+    display: block;
+  }
 }

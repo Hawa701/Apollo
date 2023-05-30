@@ -2,6 +2,7 @@
 
 $profileID = $_REQUEST['profileId'];
 $jobID = $_REQUEST['jobId'];
+// $status = '';
 
 // $profileID = 1;
 // $jobID = 3;
@@ -103,6 +104,8 @@ function loadJob($profileId, $jobId)
       $proposals = $row['Proposals'];
       $token = $row['Token'];
       $clientId = $row['Profile_ID'];
+      // global $status;
+      // $status = $row['Status'];
     }
   }
 
@@ -198,9 +201,46 @@ function applyJob($pId, $jId)
 {
   $conn = new Connect;
   $connect = $conn->getConnection();
+
+  //checks if job already exists in table or not
   $checkQuery = "SELECT * FROM applied_jobs WHERE Profile_ID = $pId AND Job_ID = $jId";
   $result = mysqli_query($connect, $checkQuery);
   $count = $result->num_rows;
+
+  // //getting the job status
+  // $statusQuery = "CALL `getStatus`($jId)";
+  // $result = $connect->query($statusQuery);
+  //? $statusQuery = "SELECT * FROM job WHERE Job_ID = $jId AND `Status` = 'Interviewing'";
+  //? $result = mysqli_query($connect, $statusQuery);
+  //? $statusCount = $result->num_rows;
+
+  //? if ($statusCount == 0) {
+  //?   echo "<script>
+  //?         alert(\"Sorry, but this job has already hired!\")
+  //?       </script>";
+
+  //?   $currentPage = $_SERVER['PHP_SELF'];
+  //?   $profileId = "profileId=$pId";
+  //?   $jobId = "jobId=$jId";
+  //?   header("Location: $currentPage?$profileId&$jobId");
+  //?   exit();
+  //? } else {
+
+  // if ($result->num_rows > 0) {
+  //   while ($row = $result->fetch_assoc()) {
+  //     $status = $row['Status'];
+  //   }
+  // }
+
+  // if ($status == 'Interviewing') {
+  //   echo "<script>
+  //         alert(\"Interviewing!\")
+  //       </script>";
+  // } else {
+  //   echo "<script>
+  //         alert(\"Hired!\")
+  //       </script>";
+  // }
 
   if ($count > 0) {
     $query = "CALL withdrawJob($pId, $jId)";
@@ -215,6 +255,7 @@ function applyJob($pId, $jId)
   $jobId = "jobId=$jId";
   header("Location: $currentPage?$profileId&$jobId");
   exit();
+  // ?}
 }
 
 function saveJob($pId, $jId)
@@ -250,7 +291,7 @@ function saveJob($pId, $jId)
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- CSS link -->
-  <link rel="stylesheet" href="./Style/Apply_Job.css?v=0.11" />
+  <link rel="stylesheet" href="./Style/Apply_Job.css?v=0.13" />
 
   <!-- icon link -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -259,10 +300,14 @@ function saveJob($pId, $jId)
 </head>
 
 <body>
+  <?php
+  include('header.php');
+  ?>
   <div class="wrapper">
 
     <!-- call php function -->
     <?php
+
     loadJob($profileID, $jobID);
 
     if (isset($_POST['apply'])) {
@@ -293,7 +338,7 @@ function saveJob($pId, $jId)
   </div>
 
   <!-- JS link -->
-  <script src="./Script/Apply_Job.js?v=0.12"></script>
+  <script src="./Script/Apply_Job.js?v=0.13"></script>
 </body>
 
 </html>
