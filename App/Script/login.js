@@ -1,26 +1,34 @@
-function validateForm(){
-    const texts = document.getElementById("texts");
-    const passwordInput = document.getElementById("password");
-    const alerts = document.querySelector('.alert');
-    const passwordAlert = document.querySelector('#passwordAlert');
-    
-    let isValid=true
-    if (texts.value == ''){
-        UEAlert.style.display = "flex"
-        UEAlert.style.display = "none"
-    }
 
-         
-    if (passwordInput.value == ''){
-        passwordAlert.style.display = "flex"
-         passwordAlert.style.display = "none"
-    }
-    return isValid
-}
+
+
+
+
+
+    const texts = document.querySelector('#texts');
+    const password = document.querySelector('#password');
+    const loginbtn = document.querySelector('#loginbtn');
+    let emailpattern = new RegExp('[a-zA-Z0-9]+@[a-z]+\.[a-z]{2,3}');// email pattern that uses small & capital letter & . & @
+    
+    
+/*     
+loginbtn.addEventListener('click', function(e) {
+        if(!emailpattern.test(texts.value) || texts.value == ''){
+            alert ('Incorrect email ')
+            e.preventDefault();
+        }
+        if(password.value == ''){
+            alert ('Incorrect password')
+            e.preventDefault();
+        }
+        
+})   
+ */    
+
+
+
 
  // password toggle
  const icon = document.querySelector('#togglePassword');
- const password = document.querySelector('#password');
  
  icon.addEventListener('click', function () {
     if (password.getAttribute('type') === 'password'){
@@ -32,7 +40,4 @@ function validateForm(){
         icon.style.color='#737373'
     } 
     
-/*     const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-     password.setAttribute('type', type);
-     this.classList.toggle('fa-eye-slash');
- */ });
+});

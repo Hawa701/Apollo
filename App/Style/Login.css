@@ -135,6 +135,7 @@
     padding: 0.5rem;
     font-size: 1rem;
     border: 1px solid #ccc;
+    /* color:red; */
   }
   #texts, #password{
     margin-top: 10px;
@@ -145,9 +146,12 @@
     height: 17px;
     margin-right: -0.7rem;  
   }
-  .remember-forget {
+ .log-in #remfor {
+    width: 100%;
+    padding: 0 1rem;
     display: flex;
     justify-content: space-between;
+    /* background-color: red; */
   }
   .remember-forget label {
     font-size: 0.7rem;
@@ -167,7 +171,7 @@
     height: 41px;
     font-size: 1.3rem;
     color: var(--second-text-color);
-  
+    border:none;
     font-weight: 500;
     margin-top: 1rem;
   }
@@ -207,27 +211,19 @@
     font-weight: 800;
   }
 
-/* alerts  */
-  .alert {
-    color: #9b211b;
-    display: none;
-    align-items: center;
-  }
 
-  #UEAlert,#passwordAlert{
-    display: none;
-  height: 13px;
-  width: 218px;
-  border-radius: 11px;
-  margin-top: -8px;
-  margin-right: 270px;
-  }
   /* Show Password */
 
 .passwords {
   display: flex;
   align-items: center;
   margin-right: 0.8rem;
+}
+
+.error {
+  font-size: 1rem;
+  font-family: monospace;
+  color:red;
 }
 
 .far {
@@ -242,4 +238,14 @@
 
 .passwords i:hover {
  color: var(--main-text-color);
+}
+
+@media(max-width:800px){
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: 100vh;
+  }
+
 }

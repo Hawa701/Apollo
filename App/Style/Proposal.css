@@ -1,10 +1,10 @@
-/* 
-.wrapper2 hr {
-    margin: 0rem 10rem 0rem 10rem;
-} */
+@media (max-width:3000px){
 .wrapper2 .upper {
     margin: 0rem 6rem 0rem 6rem;
     
+}
+hr {
+    width:80%;
 }
 .upper .links {
     display: flex;
@@ -21,9 +21,16 @@
     padding-top: 20px;
     margin: 1.5em 20em 0em 6em;
     padding: 10px;  
+    width:60%;
     
 }
 .active_field .title, .request_field .title , .decline_field .title  {
     text-decoration: underline;
+}
+}
+@media (max-width:750px){
+    hr {
+        width:100%;
+    }
 }
  

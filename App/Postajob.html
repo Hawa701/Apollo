@@ -89,11 +89,22 @@
             <!-- Proposals -->
 
             <!-- Tokens -->
-            <label for="job-token">Tokens Required</label>
+            <label for="job-token">Tokens Required to apply this job</label>
             <div class="display" >
-              <input type="text" disabled id="job-tokens" placeholder="10 tokens" />
+              <input type="text" id="job-tokens" value="10" />
+              
             </div>
             <!-- Tokens -->
+
+            <!-- Employment -->
+            <label for="job-employment">Employment</label>
+            <div class="display">
+              <select name="Employment" id="job-employment">
+                <option value="Contract" selected>Contract</option>
+                <option value="Full-Time">Full-Time</option>
+              </select>
+            </div>
+            <!-- Employment -->            
 
             <!-- Estimated date -->
             <label for="deadline">Estimated-date</label>
@@ -105,8 +116,8 @@
 
             <!-- Buttons -->
             <div class="buttons">
-              <button type='clear' class="clear btn">Clear</button>
-              <button type='submit' class="go btn">Submit</button>
+              <button class="clearbtn">Clear</button>
+              <button  class="gobtn" type='submit'>Submit</button>
             </div>
             <!-- Buttons -->
           </form>
