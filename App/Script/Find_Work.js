@@ -7,6 +7,7 @@ const rangeInput = document.querySelectorAll(".range-input input"); //targets th
 const priceInput = document.querySelectorAll(".price-input .field .value"); //targets the price input fields
 const progress = document.querySelector(".slider .progress"); //targets the pay progress bar (the blue part)
 const headerBtn = document.querySelector(".headerBtn");
+const prof = document.getElementById("profile-id");
 
 headerBtn.addEventListener("click", openApplyJob("68%"));
 function openApplyJob(wid) {
@@ -87,5 +88,6 @@ function clearFilters() {
     if (checkBoxes[i].type == "checkbox") {
       checkBoxes[i].checked = false;
     }
+    prof.checked = true;
   }
 }

@@ -11,33 +11,9 @@
 </head>
 
 <body>
-    <header class="header" id="header">
-        <div class="logo">
-            <a href="#">Apollo</a>
-        </div>
-
-        <div class="nav">
-            <ul class="links">
-                <li><a href="#">Find Work</a></li>
-                <li><a href="#">My Job</a></li>
-                <li><a href="#">Post a Job</a></li>
-                <li><a href="#">How it Works</a></li>
-                <!-- <li><a href="#">Message</a></li> -->
-            </ul>
-            <!-- <div class="notification">
-                <a href="#"><i class="fa-regular fa-bell"></i></a>
-            </div> -->
-        </div>
-
-        <div class="signInnUp">
-            <button class="login">Log In</button>
-            <button class="signup">Sign Up</button>
-        </div>
-        <!-- 
-        <div class="profile">
-            <a href="#"> H </a>
-        </div> -->
-    </header>
+    <?php
+    include('header.php');
+    ?>
 
     <section class="hero container">
         <div class="callToAction">

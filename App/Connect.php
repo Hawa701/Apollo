@@ -3,7 +3,7 @@
 class Connect
 {
     // private $host = 'localhost';
-    private $host = 'localhost';
+    private $host = 'localhost:3307';
     private $user = 'root';
     private $pw = '';
     private $db = 'apollo';

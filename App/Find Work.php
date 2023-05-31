@@ -1,6 +1,16 @@
 <?php
+// session_write_close();
+// session_start();
+// if (isset($_SESSION['Profile_ID'])) {
+//   $profile_ID = $_SESSION['Profile_ID'];
+// }
 
-$profileID = 1;       //logged in user id is stored here. If -1, then not logged in
+$current_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$url_parts = parse_url($current_url);
+if (isset($url_parts['query'])) {
+  parse_str($url_parts['query'], $query);
+  $profileID = $query['Profile_ID'];
+}
 
 include('Connect.php');
 $conn = new Connect;
@@ -441,6 +451,7 @@ function isChecked($value)
         <div class="filter" id="filter">
           <div class="title">
             <h2>Filter</h2>
+            <input style="display:none" id="profile-id" type="checkbox" name="Profile_ID" value="<?php echo $profileID ?>" checked>
             <span class="clear" id="clear">
               Clear all
               <i class="fa-regular fa-circle-xmark"></i>
@@ -654,7 +665,7 @@ function isChecked($value)
   </div>
 
   <!-- js link -->
-  <script src="./Script/Find_Work.js?v=9.5"></script>
+  <script src="./Script/Find_Work.js?v=9.6"></script>
 
 </body>
 

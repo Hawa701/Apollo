@@ -111,15 +111,15 @@ body {
   font-weight: 400;
 }
 
-.sign-up {
+.log-in {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 3.5rem;
+  margin-top: 10rem;
 }
 
-.sign-up-form {
+.log-in-form {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -130,158 +130,86 @@ input {
   background-color: var(--third-bg-color);
   height: 41px;
   border-radius: 8px;
-
   margin: 5px;
   margin-bottom: 1rem;
   padding: 0.5rem;
-
   font-size: 1rem;
   border: 1px solid #ccc;
+  /* color:red; */
 }
-
-.sign-up .name {
-  display: flex;
+#texts,
+#password {
+  margin-top: 10px;
+  width: 450px;
 }
-
-#email,
-#password,
-#confirm-password,
-#username {
-  width: 500px;
-}
-
-#fname,
-#lname {
-  width: 245px;
-}
-
-#country {
-  width: 500px;
-  height: 41px;
-  background-color: var(--third-bg-color);
-  padding: 0.5rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 1rem;
-  margin-top: 0.4rem;
-}
-
-#privacy-policy {
+#Remember {
   width: 50px;
   height: 17px;
   margin-right: -0.7rem;
 }
-
-.privacy-policy {
+.log-in #remfor {
+  width: 100%;
+  padding: 0 1rem;
   display: flex;
+  justify-content: space-between;
+  /* background-color: red; */
 }
-
-.privacy-policy p {
+.remember-forget label {
   font-size: 0.7rem;
 }
 
-.privacy-policy em {
+.remember-forget a {
   color: var(--third-text-color);
   font-size: 0.7rem;
 }
 
-.sign-up button {
+.log-in #loginbtn {
   background-color: var(--main-color);
   padding: 5px;
-  border: none;
   border-radius: 0.5rem;
-  width: 500px;
+  width: 450px;
   height: 41px;
   font-size: 1.3rem;
   color: var(--second-text-color);
-
+  border: none;
   font-weight: 500;
   margin-top: 1rem;
 }
 
-.sign-up button:hover {
+.log-in #loginbtn:hover {
   background-color: #0256fe;
 }
-
-.sign-up h1,
+.log-in h1,
 h2 {
   margin: 5px;
 }
 
-.sign-up h1 {
-  font-size: 1.9rem;
+.log-in h1 {
+  font-size: 2.5rem;
   font-weight: 700;
   color: var(--main-color);
 }
 
-.sign-up h1:hover {
+.log-in h1:hover {
   color: var(--main-text-color);
 }
 
-.sign-up h2 {
+.log-in h2 {
   margin-bottom: 1.2rem;
   font-weight: 400;
   font-size: 1.3rem;
   color: var(--main-color);
 }
 
-#login {
+#signup {
   color: var(--third-text-color);
   font-weight: 600;
-
   margin: 1.5rem auto;
 }
 
-#login a:hover {
+#signup a:hover {
   text-decoration: underline;
   font-weight: 800;
-}
-
-/* Alert Box CSS */
-.alert {
-  color: #9b211b;
-  display: none;
-  align-items: center;
-}
-
-.nameAlert {
-  display: flex;
-  justify-content: space-between;
-}
-
-#fnameAlert {
-  height: 13px;
-  width: 218px;
-  border-radius: 11px;
-  margin-top: -8px;
-  margin-left: -10px;
-}
-
-#lnameAlert {
-  height: 13px;
-  width: 218px;
-  border-radius: 11px;
-  margin-top: -8px;
-  margin-bottom: 4px;
-  margin-left: 40px;
-}
-
-#usernameAlert,
-#emailAlert,
-#passwordAlert,
-#confirm-passwordAlert {
-  display: none;
-  height: 13px;
-  width: 218px;
-  border-radius: 11px;
-  margin-top: -8px;
-  margin-right: 270px;
-}
-
-#privacy-policyAlert {
-  margin-top: -0.2rem;
-  margin-bottom: -0.5rem;
 }
 
 /* Show Password */
@@ -290,6 +218,12 @@ h2 {
   display: flex;
   align-items: center;
   margin-right: 0.8rem;
+}
+
+.error {
+  font-size: 1rem;
+  font-family: monospace;
+  color: red;
 }
 
 .far {
@@ -304,4 +238,13 @@ h2 {
 
 .passwords i:hover {
   color: var(--main-text-color);
+}
+
+@media (max-width: 800px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: 100vh;
+  }
 }

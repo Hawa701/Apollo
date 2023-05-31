@@ -4,12 +4,15 @@ $job_id = 2;
 $current_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $url_parts = parse_url($current_url);
 
-// Parse the query string
-parse_str($url_parts['query'], $query);
+if (isset($url_parts['query'])) {
+    parse_str($url_parts['query'], $query);
+    $profile_id = $query['Profile_ID'];
+}
 
+//^ parse_str($url_parts['query'], $query);
 // Get the job ID and profile ID
 // $job_id = $query['Job_ID'];
-$profile_id = $query['Profile_ID'];
+//^ $profile_id = $query['Profile_ID'];
 // Get the current date and time as a DateTime object
 // $current_date = new DateTime();
 
@@ -29,14 +32,15 @@ $result = mysqli_query($connect, $sql);
 // $row = mysqli_fetch_assoc($result);
 // echo $row['Job_Title'];
 
-function lookUpJob($id){
+function lookUpJob($id)
+{
     $conn = new Connect;
-$connect = $conn->getConnection();
-$sql2 = "SELECT * FROM job WHERE Job_ID = $id;";
-$result2 = mysqli_query($connect, $sql2);
-$row2 = mysqli_fetch_assoc($result2);
-// echo $row['Job_Title'];
-return $row2;
+    $connect = $conn->getConnection();
+    $sql2 = "SELECT * FROM job WHERE Job_ID = $id;";
+    $result2 = mysqli_query($connect, $sql2);
+    $row2 = mysqli_fetch_assoc($result2);
+    // echo $row['Job_Title'];
+    return $row2;
 }
 ?>
 
@@ -57,14 +61,10 @@ return $row2;
     <!-- box icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <!-- Header css link -->
-    <link rel="stylesheet" href="./Style/Header.css" />
-    <script src="./Server/Header.js"></script>
     <!-- css link -->
     <link rel="stylesheet" href="./Style/myJob.css" />
     <!-- icon link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>My Job</title>
 </head>
 
@@ -72,13 +72,9 @@ return $row2;
     <div class="wrapper">
 
         <!-- header design -->
-        <?php 
-        // include('header.php'); 
+        <?php
+        include('header.php');
         ?>
-        <!-- header end -->
-
-
-
 
         <div class="job-header">
             <h1 onclick="">Active Jobs</h1>
@@ -92,12 +88,12 @@ return $row2;
                 <div class="jobsList">
 
                     <?php
-                    while($row = mysqli_fetch_assoc($result)) {
+                    while ($row = mysqli_fetch_assoc($result)) {
                         $job_id = $row['Job_ID'];
                         $job = lookUpJob($job_id);
-                        if($job['Status'] == "Interviewing") {
+                        if ($job['Status'] == "Interviewing") {
                             // echo $job['Status'];
-                            ?>
+                    ?>
                             <div class="job" id="activeJob">
                                 <div class="job-title">
                                     <h3><?php echo $job['Job_Title']; ?></h3>
@@ -110,19 +106,19 @@ return $row2;
                                 </div>
                                 <hr />
                             </div>
-                            <?php
+                    <?php
                         }
                     }
                     ?>
                     <!-- first job end -->
 
 
-                   
+
 
                 </div>
                 <!-- jobs end -->
 
-                
+
 
                 <div class="num-nav">
                     <ol class="pagination">
@@ -153,15 +149,15 @@ return $row2;
 
                     <?php
                     $sql = "SELECT * FROM applied_jobs WHERE Profile_ID = $profile_id;";
-$result = mysqli_query($connect, $sql);
+                    $result = mysqli_query($connect, $sql);
                     $row = mysqli_fetch_assoc($result);
-                    while($row = mysqli_fetch_assoc($result)) {
-                        
+                    while ($row = mysqli_fetch_assoc($result)) {
+
                         $job_id = $row['Job_ID'];
                         $job = lookUpJob($job_id);
-                        if($job['Status'] == "Hired") {
+                        if ($job['Status'] == "Hired") {
                             // echo $job['Status'];
-                            ?>
+                    ?>
                             <div class="job" id="activeJob">
                                 <div class="job-title">
                                     <h3><?php echo $job['Job_Title']; ?></h3>
@@ -174,16 +170,16 @@ $result = mysqli_query($connect, $sql);
                                 </div>
                                 <hr />
                             </div>
-                            <?php
+                    <?php
                         }
                     }
-                
+
                     ?>
                     <!-- first job end -->
 
 
 
-                    
+
 
                 </div>
                 <!-- jobs end -->
