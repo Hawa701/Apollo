@@ -21,6 +21,18 @@ if (!$connect) {
   die("Connection failed: " . mysqli_connect_error());
 }
 
+function getToken($connect, $profileId) {
+  // Check connection
+             if (!$connect) {
+               die("Connection failed: " . mysqli_connect_error());
+             }else {
+               $query = "SELECT token FROM profile WHERE Profile_ID  = $profileId";
+               $result = mysqli_query($connect, $query);
+               $row = mysqli_fetch_assoc($result);
+               echo "<span class='token-amout'>{$row['token']}</span>"; // Using string interpolation
+             }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +57,7 @@ if (!$connect) {
     <link rel="stylesheet" href="./Style/Header.css" /> 
 
     <!-- css link -->
-    <link rel="stylesheet" href="./Style/add_tokens.css" />
+    <link rel="stylesheet" href="./Style/add_tokens.css?v=1.0" />
     <!-- icon link -->
     <link
       rel="stylesheet"
@@ -101,18 +113,7 @@ if (!$connect) {
           <div class="token-amout display" id="avilable-tokens">
 
               <?php
-              $conn = new Connect;
-              $connect = $conn->getConnection();
-              
-              // Check connection
-              if (!$connect) {
-                die("Connection failed: " . mysqli_connect_error());
-              }else {
-                $query = "SELECT token FROM profile WHERE Profile_ID  = 12";
-                $result = mysqli_query($connect, $query);
-                $row = mysqli_fetch_assoc($result);
-                echo "<span class='token-amout' style='font-weight: 300; font-size: 13px; padding: 5px 8px;'>{$row['token']}</span>"; // Using string interpolation
-              }
+              getToken($connect, 7);
               ?>
               
           </div>

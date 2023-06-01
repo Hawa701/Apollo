@@ -13,3 +13,5 @@ function closeJobStatus() {
   window.onload = function(){
     closeJobStatus();
   } */
+
+  // For search

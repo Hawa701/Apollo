@@ -29,7 +29,7 @@ body {
 .container {
   display: flex;
   align-items: stretch;
-  height: 100%;
+  height: 100vh;
 }
 
 .left {
@@ -44,7 +44,7 @@ body {
 .left .content .back-btn {
   background-color: transparent;
   border: none;
-
+   
   margin-left: 40px;
   margin-top: 35px;
 }
@@ -62,8 +62,8 @@ body {
 }
 
 .left .content .logo-image .logo {
-  animation: MoveUpDown 3s linear infinite;
-  z-index: 2;
+   animation: MoveUpDown 3s linear infinite;
+   z-index: 2;
 }
 
 .left .content .logo-image .shadow {
@@ -80,14 +80,14 @@ body {
 @keyframes MoveUpDown {
   0%,
   100% {
-    transform: translateY(0);
+      transform: translateY(0);
   }
   50% {
-    transform: translateY(-30px);
+      transform: translateY(-30px);
   }
 }
 
-.left .content .text-content {
+.left .content .text-content{
   color: var(--second-text-color);
   font-weight: 400;
   margin: 0.2rem;
@@ -130,28 +130,24 @@ input {
   background-color: var(--third-bg-color);
   height: 41px;
   border-radius: 8px;
-
+  
   margin: 5px;
   margin-bottom: 1rem;
   padding: 0.5rem;
 
   font-size: 1rem;
   border: 1px solid #ccc;
-}
+} 
 
 .sign-up .name {
   display: flex;
 }
 
-#email,
-#password,
-#confirm-password,
-#username {
+#email, #password, #confirm-password, #username {
   width: 500px;
 }
 
-#fname,
-#lname {
+#fname, #lname {
   width: 245px;
 }
 
@@ -170,7 +166,7 @@ input {
 #privacy-policy {
   width: 50px;
   height: 17px;
-  margin-right: -0.7rem;
+  margin-right: -0.7rem;  
 }
 
 .privacy-policy {
@@ -189,7 +185,6 @@ input {
 .sign-up button {
   background-color: var(--main-color);
   padding: 5px;
-  border: none;
   border-radius: 0.5rem;
   width: 500px;
   height: 41px;
@@ -204,8 +199,7 @@ input {
   background-color: #0256fe;
 }
 
-.sign-up h1,
-h2 {
+.sign-up h1, h2 {
   margin: 5px;
 }
 
@@ -237,6 +231,7 @@ h2 {
   text-decoration: underline;
   font-weight: 800;
 }
+ 
 
 /* Alert Box CSS */
 .alert {
@@ -267,10 +262,7 @@ h2 {
   margin-left: 40px;
 }
 
-#usernameAlert,
-#emailAlert,
-#passwordAlert,
-#confirm-passwordAlert {
+#usernameAlert, #emailAlert, #passwordAlert, #confirm-passwordAlert {
   display: none;
   height: 13px;
   width: 218px;
@@ -287,9 +279,9 @@ h2 {
 /* Show Password */
 
 .passwords {
-  display: flex;
-  align-items: center;
-  margin-right: 0.8rem;
+   display: flex;
+   align-items: center;
+   margin-right: 0.8rem;
 }
 
 .far {
@@ -305,3 +297,4 @@ h2 {
 .passwords i:hover {
   color: var(--main-text-color);
 }
+
