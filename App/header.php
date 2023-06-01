@@ -2,11 +2,15 @@
 session_start();
 if (isset($_SESSION['Profile_ID'])) {
   $profile_ID = $_SESSION['Profile_ID'];
+} else {
+  $profile_ID = -1;
 }
-if (isset($_SESSION['logged-in'])) {
-  echo "<script>
-          hideButtons();
-        </script>";
+
+function getFirstLetter()
+{
+  if (isset($_SESSION['Username'])) {
+    echo strtoupper(substr($_SESSION['Username'], 0, 1));
+  }
 }
 ?>
 
@@ -19,7 +23,7 @@ if (isset($_SESSION['logged-in'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- CSS link -->
-  <link rel="stylesheet" href="./Style/Header.css?v=1.2" />
+  <link rel="stylesheet" href="./Style/Header.css?v=1.5" />
 
   <!-- icon link -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -50,7 +54,27 @@ if (isset($_SESSION['logged-in'])) {
       </ul>
     </div>
 
-    <div class=" signInnUp" id="signInnUp">
+    <?php
+    if (isset($_SESSION['logged-in']) && $_SESSION['logged-in'] == true) {
+      echo "<div class=\"notifProf\" id=\"notifProf\">
+        <div class=\"notification\" id=\"notification\">
+          <a href=\"#\"><i class=\"fa-regular fa-message\"></i></i></a>
+        </div>
+        <div class=\"profile\" id=\"profile\">
+          <a href=\"#\">";
+      getFirstLetter();
+      echo "</a>
+        </div>
+      </div>";
+    } else {
+      echo "<div class=\"signInnUp\" id=\"signInnUp\">
+      <button class=\"login\" id=\"login\">Log In</button>
+      <button class=\"signup\" id=\"signup\">Sign Up</button>
+    </div>";
+    }
+    ?>
+    <!-- buttons and profile -->
+    <!-- <div class=" signInnUp" id="signInnUp">
       <button class=" login" id="login">Log In</button>
       <button class="signup" id="signup">Sign Up</button>
     </div>
@@ -59,9 +83,20 @@ if (isset($_SESSION['logged-in'])) {
       <div class="notification">
         <a href="#"><i class="fa-regular fa-message"></i></i></a>
       </div>
-      <div class="profile">
-        <a href="#">H</a>
+      <div class="profile" id="profile">
+        <a href="#">
+          <?php
+          getFirstLetter();
+          ?></a>
       </div>
+    </div> -->
+
+    <!-- drop down 2 -->
+    <div class="drop-down2" id="drop-down2">
+      <ul>
+        <li><a href="#">Profile</a></li>
+        <li><a href="./Logout.php">Log Out</a></li>
+      </ul>
     </div>
 
     <!-- menu -->
@@ -101,6 +136,6 @@ if (isset($_SESSION['logged-in'])) {
 </body>
 
 <!-- JS link -->
-<script src="./Script/Header.js?v=1.1"></script>
+<script src="./Script/Header.js?v=1.5"></script>
 
 </html>

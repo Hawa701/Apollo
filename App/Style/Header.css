@@ -154,7 +154,7 @@ header {
 
 /* notifProf */
 .header .notifProf {
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   gap: 1.3rem;
@@ -187,6 +187,42 @@ header {
   font-size: 1.4rem;
   color: var(--main-text-color);
   font-weight: 500;
+}
+
+/* drop down 2 */
+.header .drop-down2 {
+  display: none;
+  position: absolute;
+  top: 4rem;
+  right: 0;
+  width: 13rem;
+  height: 5rem;
+  background-color: var(--main-bg-color);
+  border-radius: 5px;
+  border-top-left-radius: unset;
+  border-top-right-radius: unset;
+  box-shadow: -1px 2px 1rem var(--third-bg-color);
+}
+.header .drop-down2.show {
+  display: block;
+}
+
+.header .drop-down2 ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+  padding-left: 1rem;
+  gap: 0.8rem;
+  height: 100%;
+  width: 100%;
+}
+.header .drop-down2 a {
+  font-size: 1rem;
+  color: var(--main-text-color);
+}
+.header .drop-down2 a:hover {
+  color: var(--main-color);
 }
 
 /* menu */
