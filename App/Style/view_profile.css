@@ -1,319 +1,319 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    outline: none;
-    scroll-behavior: smooth;
-    font-family: "Roboto", sans-serif;
-  }
-  
-  :root {
-    --main-color: #295dc5;
-    --second-main-color: #deecf0;
-  
-    --main-bg-color: #fff;
-    --second-bg-color: #ededed;
-    --third-bg-color: #c8c9ca;
-  
-    --main-text-color: #000;
-    --second-text-color: #fff;
-    --third-text-color: #737373;
-  }
-  
-  body {
-    background: var(--main-bg-color);
-    color: var(--main-text-color);
-  }
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+  scroll-behavior: smooth;
+  font-family: "Roboto", sans-serif;
+}
 
+:root {
+  --main-color: #295dc5;
+  --second-main-color: #deecf0;
+
+  --main-bg-color: #fff;
+  --second-bg-color: #ededed;
+  --third-bg-color: #c8c9ca;
+
+  --main-text-color: #000;
+  --second-text-color: #fff;
+  --third-text-color: #737373;
+}
+
+body {
+  background: var(--main-bg-color);
+  color: var(--main-text-color);
+}
 
 .profile-wrap {
-    border: 1px solid var(--third-bg-color);
-    margin: 35px 150px 0;
-    border-radius: 11px;
-    padding: 0 10px;
+  border: 1px solid var(--third-bg-color);
+  margin: 35px 150px 0;
+  border-radius: 11px;
+  padding: 0 10px;
 }
 
 .profile-wrap h1 {
-    font-size: 1.5rem;
-    font-weight: 400;
-    margin:11px;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 11px;
 }
 
 .edit-form {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    padding-top: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  padding-top: 0;
 }
 
-input, select {
-    width: 220px;
-    height: 27px;
-    margin-bottom: 8px;
-    border: 1.5px solid var(--main-color);
-    border-radius: 8px;
-    padding-left: 10px;
+input,
+select {
+  width: 220px;
+  height: 27px;
+  margin-bottom: 8px;
+  border: 1.5px solid var(--main-color);
+  border-radius: 8px;
+  padding-left: 10px;
 
-    font-size: 0.9rem;
-    font-weight: 300;
+  font-size: 0.9rem;
+  font-weight: 300;
 }
 
 label {
-    font-size: 0.9rem;
-    font-weight: 350;
-    margin-bottom: 5px;
+  font-size: 0.9rem;
+  font-weight: 350;
+  margin-bottom: 5px;
 }
 
 .right-side {
-    display: flex;
-    flex-direction: column;
-    padding: 25px;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
 }
 
 .middle-side {
-    border: 1px solid rgb(213, 213, 213);
-    border-radius: 11px;
-    display: flex;
-    flex-direction: column;
-    padding: 0 50px;
+  border: 1px solid rgb(213, 213, 213);
+  border-radius: 11px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 50px;
 
-    /* position: relative;
+  /* position: relative;
     right: 100px;
     bottom: 25px; */
 }
 
-.middle-side input, select {
-    width: 385px;
+.middle-side input,
+select {
+  width: 385px;
 }
 
 .left-side .readOnly {
-    display: flex;
-    width: 220px;
-    height: 27px;
-    margin-bottom: 8px;
-    border-bottom: 1.5px solid rgb(213, 213, 213);
-    padding-left: 10px;
+  display: flex;
+  width: 220px;
+  height: 27px;
+  margin-bottom: 8px;
+  border-bottom: 1.5px solid rgb(213, 213, 213);
+  padding-left: 10px;
 
-    font-size: 0.8rem;
-    font-weight: 300;
+  font-size: 0.8rem;
+  font-weight: 300;
 
-    color: var(--main-color);
-} 
+  color: var(--main-color);
+}
 
 .left-side {
-    display: flex;
-    flex-direction: column;
-    padding: 45px;
-    padding-top: 10px;
-    padding-left: 20px;
-    padding-right: 0;
-    border-right: 1.5px solid rgb(213, 213, 213);
-} 
+  display: flex;
+  flex-direction: column;
+  padding: 45px;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 0;
+  border-right: 1.5px solid rgb(213, 213, 213);
+}
 
 h3 {
-    font-size: 1.3rem;
-    font-weight: 400;
-    margin-bottom: 20px;
-    margin-top: 10px;
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 .save {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
 }
 
 .save button {
-    display: flex;
-    align-items: center;
-    color: var(--main-bg-color);
-    font-weight: 500;
-    border-radius: 20px;
-    padding: 5px 20px;
-    font-size: 15px;
-    border: 3px solid var(--main-color);
- 
-    cursor: pointer;
- }
- 
- .save-btn {
-    background-color: var(--main-color);
- }
- 
- .save-btn:hover {
-     background-color: var(--main-bg-color);
-     color: var(--main-text-color);
-     font-weight: 300;
- }
+  display: flex;
+  align-items: center;
+  color: var(--main-bg-color);
+  font-weight: 500;
+  border-radius: 20px;
+  padding: 5px 20px;
+  font-size: 15px;
+  border: 3px solid var(--main-color);
 
+  cursor: pointer;
+}
+
+.save-btn {
+  background-color: var(--main-color);
+}
+
+.save-btn:hover {
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+  font-weight: 300;
+}
 
 .right-side label {
-    font-size: 1.05rem;
-    font-weight: 300;
-    margin-bottom: 5px;
- }
+  font-size: 1.05rem;
+  font-weight: 300;
+  margin-bottom: 5px;
+}
 
-.buy-btn, .posted-jobs {
-    border: 1px solid var(--main-color);
-    background-color: var(--main-color);
-    color: var(--second-text-color);
-    margin-top: 5px;
-    margin-bottom: 40px;
-    border-radius: 11px;
-    display: flex;
-    justify-content: center;
+.buy-btn,
+.posted-jobs {
+  border: 1px solid var(--main-color);
+  background-color: var(--main-color);
+  color: var(--second-text-color);
+  margin-top: 5px;
+  margin-bottom: 40px;
+  border-radius: 11px;
+  display: flex;
+  justify-content: center;
 
-    padding: 5px 20px;
+  padding: 5px 20px;
 }
 
 .fullname {
-    display: flex;
+  display: flex;
 }
 
 .fullname input {
-    width: 180px;
+  width: 180px;
 }
 
-.fname, .lname {
-    display: flex;
-    flex-direction: column;
+.fname,
+.lname {
+  display: flex;
+  flex-direction: column;
 }
 
 .fname {
-    margin-right: 25px;
+  margin-right: 25px;
 }
 
-@media(max-width: 1291px) {
-    .right-side .buy-btn, .posted-jobs {
-        padding: 5px 10px;
-        width: 155px;
-    }
+@media (max-width: 1291px) {
+  .right-side .buy-btn,
+  .posted-jobs {
+    padding: 5px 10px;
+    width: 155px;
+  }
 
-    .profile-wrap {
-        border: 1px solid var(--third-bg-color);
-        margin: 0;
-        border-radius: 11px;
-        padding: 0;
-    }
-    
-    .profile-wrap h1 {
-        font-size: 1.5rem;
-        font-weight: 400;
-        margin:11px;
-    }
-    
-    .edit-form {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 10px;
-        padding-top: 0;
-    }
-    
-    .right-side {
-        display: flex;
-        flex-direction: column;
-        padding: 25px;
-    }
-    
-    .middle-side {
-        border: 1px solid rgb(213, 213, 213);
-        border-radius: 11px;
-        display: flex;
-        flex-direction: column;
-        padding: 0;
-        padding-left: 15px;
-    }
-    
-    .middle-side input, select {
-        width: 380px;
-    }
+  .profile-wrap {
+    border: 1px solid var(--third-bg-color);
+    margin: 0;
+    border-radius: 11px;
+    padding: 0;
+  }
 
-    .save button {
-        display: flex;
-        align-items: center;
-        padding: 5px 15px;
-     }
+  .profile-wrap h1 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 11px;
+  }
 
-    
-    .fullname {
-        display: flex;
-        flex-direction: column;
-    }
+  .edit-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    padding-top: 0;
+  }
 
-    .fullname input {
-        width: 380px;
-    }
+  .right-side {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+  }
+
+  .middle-side {
+    border: 1px solid rgb(213, 213, 213);
+    border-radius: 11px;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    padding-left: 15px;
+  }
+
+  .middle-side input,
+  select {
+    width: 380px;
+  }
+
+  .save button {
+    display: flex;
+    align-items: center;
+    padding: 5px 15px;
+  }
+
+  .fullname {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .fullname input {
+    width: 380px;
+  }
 }
 
+@media (max-width: 400px) {
+  .right-side .buy-btn,
+  .posted-jobs {
+    padding: 5px 10px;
+    width: 155px;
+  }
 
-@media(max-width: 400px) {
-    .right-side .buy-btn, .posted-jobs {
-        padding: 5px 10px;
-        width: 155px;
-    }
+  .profile-wrap {
+    border: 1px solid var(--third-bg-color);
+    margin: 0;
+    border-radius: 11px;
+    padding: 0;
+  }
 
-    .profile-wrap {
-        border: 1px solid var(--third-bg-color);
-        margin: 0;
-        border-radius: 11px;
-        padding: 0;
-    }
-    
-    .profile-wrap h1 {
-        font-size: 1.5rem;
-        font-weight: 400;
-        margin:11px;
-    }
-    
-    .edit-form {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 10px;
-        padding-top: 0;
-    }
-    
-    .right-side {
-        display: flex;
-        flex-direction: column;
-        padding: 25px;
-    }   
-    
-    .middle-side {
-        border: 1px solid rgb(213, 213, 213);
-        border-radius: 11px;
-        display: flex;
-        flex-direction: column;
-        padding: 0;
-        padding-left: 15px;
-    }
-    
-    .middle-side input, select {
-        width: 270px;
-    }
+  .profile-wrap h1 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 11px;
+  }
 
-    .save button {
-        display: flex;
-        align-items: center;
-        padding: 5px 15px;
-        margin-left: -75px;
-     }
+  .edit-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    padding-top: 0;
+  }
 
-    
-    .fullname {
-        display: flex;
-        flex-direction: column;
-    }
+  .right-side {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+  }
 
-    .fullname input {
-        width: 280px;
-    }
+  .middle-side {
+    border: 1px solid rgb(213, 213, 213);
+    border-radius: 11px;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    padding-left: 15px;
+  }
+
+  .middle-side input,
+  select {
+    width: 270px;
+  }
+
+  .save button {
+    display: flex;
+    align-items: center;
+    padding: 5px 15px;
+    margin-left: -75px;
+  }
+
+  .fullname {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .fullname input {
+    width: 280px;
+  }
 }
 
-
-
-@media(max-width: 1292px) {
-
+@media (max-width: 1292px) {
 }
