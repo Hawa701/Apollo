@@ -31,9 +31,10 @@ if (isset($_POST['emailusername']) && isset($_POST['passwords']))   {
         if(mysqli_num_rows($result) > 0){
             $row =mysqli_fetch_assoc($result);
             if ($row['password']==$password){
+                $_SESSION['logged-in'] = true;
                 $_SESSION['Profile_ID']=$row['Profile_ID'];
                 
-                header('Location: Postajob.php');
+                header('Location: index.php');
                 exit();
 
             }else{
