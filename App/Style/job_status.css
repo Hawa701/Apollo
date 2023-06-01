@@ -40,6 +40,7 @@ body {
     border-bottom: 1px solid rgb(213, 213, 213);
     padding: 0 0.8rem;
     padding-bottom: 20px;
+    text-align: justify;
 }
 
 .job-info {
@@ -58,13 +59,12 @@ body {
 }
 
 .left-container {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     /* width: 25%; */
 }
 
 .applicants {
-    
-    height: 500px;
+    height: 800px;
     padding: 15px 25px;
     border-left: 1px solid rgb(213, 213, 213);
 
@@ -183,8 +183,6 @@ body {
 
 .navigation {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     height: 75%;
 }
 
@@ -226,10 +224,11 @@ body {
 }
 
 
-/* search and sort design */
+/* search and sort design */ 
 
 .searchSort {
     display: flex;
+    justify-content: space-around;
     margin-top: 1.5rem;
 }
 
@@ -251,7 +250,6 @@ body {
 }
 
 .sort {
-    margin-left: 250px;
     display: flex;
 }
 
@@ -279,87 +277,7 @@ body {
     font-weight: 350;
 }
 
-/* profile style */
-
-.profile-wrapper {
-    display: flex;
-    flex-direction: column;
-}
-
-.profiles {
-    margin: 5px;
-    border-bottom: 1px solid rgb(213, 213, 213);
-    padding-bottom: 2px;
-}
-
-.profiles:hover {
-    background-color: var(--second-main-color);
-    border-radius: 11px;
-}
-
-.profile-header {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 5px;
-}
-
-.first-profile {
-    border-top: 1px solid rgb(213, 213, 213);
-}
-
-.third-profile {
-    border-bottom: none;
-}
-
-/* photo style */
-
-.photo {
-    display: flex;
-    z-index: 1;
-    margin-top: 15px;
-}
-
-.photo img {
-    border-radius: 50%;
-    border: 2px solid var(--main-color);
-}
-  
-.online-indicator {
-    margin-top: 35px;
-    margin-left: -12px;
-    width: 17px;
-    height: 17px;
-    border-radius: 50%;
-    background-color: green;
-    border: 2px solid var(--main-bg-color);
-    z-index: 2;
-} 
-
-/* profile info style */
-.profile-info {
-    font-size: 0.8rem;
-    font-weight: 300;
-
-    margin-top: 15px;
-    margin-left: 20px;
-}
-
-.profile-info .name {
-    color: var(--main-color);
-    margin-bottom: 5px;
-    font-weight: 400;
-}
-
-.profile-info .profession {
-    margin-bottom: 2.5px;
-    white-space: nowrap;
-
-}
-
-.profile-info .country {
-    font-size: 0.7rem;
-    color: var(--third-text-color);
-}
+/* profile style 
 
 /* media style */
 /* 
@@ -373,13 +291,13 @@ body {
     }
 } */
 
-/* actions style */
+/* actions style 
 
 @media (max-width: 1200px) {
 
     .left-container {
         font-size: 0.75rem;
-        /* width: 25%; */
+        /* width: 25%; 
     }
 
     .edit button, .delete button {
@@ -426,7 +344,7 @@ body {
 }
 }
 
-@media (max-width: 530px) { /* less than 450*/
+@media (max-width: 530px) { /* less than 450
     .profile-header .profile-info, .profile-header .actions, .profile-header .like, .profile-header .dislike, .profile-header .message, .profile-header .hire {
         margin: 0px;
         padding: 0px;
@@ -465,14 +383,92 @@ body {
     margin-right: 55px;
  }
 }
+*/
 
+.profile-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.profiles {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+    border-bottom: 1px solid rgb(213, 213, 213);
+    padding-bottom: 2px;
+}
+
+.profiles:hover {
+    background-color: var(--second-main-color);
+    border-radius: 11px;
+}
+
+/* photo style */
+
+.photo {
+    display: flex;
+    align-items: center;
+    z-index: 1;
+    margin-left: 5px;
+}
+
+.photo img {
+    border-radius: 50%;
+    border: 2px solid var(--main-color);
+}
+  
+.online-indicator {
+    margin-top: 35px;
+    margin-left: -12px;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background-color: green;
+    border: 2px solid var(--main-bg-color);
+    z-index: 2;
+} 
+
+/* profile info style */
+.profile-info, .price, .rating {
+    font-size: 0.8rem;
+    font-weight: 300;
+
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+.rating {
+    margin-top: 5px;
+}
+
+.bir, .rate {
+    color: var(--main-color);
+}
+
+.profile-info .name {
+    color: var(--main-color);
+    margin-bottom: 5px;
+    font-weight: 400;
+}
+
+.profile-info .profession {
+    margin-bottom: 2.5px;
+    white-space: nowrap;
+
+}
+
+.profile-info .country {
+    font-size: 0.7rem;
+    color: var(--third-text-color);
+}
+
+/* Buttons Style */
 
 
 .actions {
     display: flex;
     padding: 10px;
-    margin: 15px;
-    margin-left: 180px;
+    padding-top: 35px;
 }
 
 .actions .like, .actions .dislike {
@@ -522,14 +518,10 @@ body {
     color: var(--main-text-color);
 }
 
+
+
 /* profile body style */
 
-.body {
-    margin: 5px;
-    margin-left: 90px;
-
-    margin-top: 15px;
-}
 
 .body .price {
     font-size: 0.8rem;
@@ -548,12 +540,11 @@ body {
 }
 
 .body .cover-letter .cover-letter-content {
-
     color: var(--main-color);
 }
 
 .rating span {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 300;
 }
 
@@ -569,3 +560,55 @@ body {
     margin-bottom: -5px;
 }
 
+.body {
+    position: relative;
+    right: 160px;
+}
+
+@media (max-width: 400px) {
+    .job-status h1, .job-title {
+        font-size: 1.6rem;
+    }
+
+    .profiles {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .body {
+        position: relative;
+        right: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .job-status h1, .job-title {
+        font-size: 1.6rem;
+    }
+
+    .profiles {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .body {
+        position: relative;
+        right: 0;
+    }
+}
+
+@media (max-width: 1120px) {
+    .job-status h1, .job-title {
+        font-size: 1.6rem;
+    }
+
+    .profiles {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .body {
+        position: relative;
+        right: 0;
+    }
+}
