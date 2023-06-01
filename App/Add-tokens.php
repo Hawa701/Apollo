@@ -1,17 +1,17 @@
 <?php
-/*
-// Start the session
+
 session_start();
 
 // Check if the user is logged in
-if (isset($_SESSION['user_id'])) {
-  // User is logged in, do something
+if (isset($_SESSION['Profile_ID']) && $_SESSION['Profile_ID']) {
+  $profileId = $_SESSION['Profile_ID'];
 } else {
   // User is not logged in, redirect to login page
-  header('Location: sign_up.php');
+  header('Location: Login.php');
+// Exit the script to prevent further execution
   exit();
 }
-*/
+
 include('Connect.php');
 $conn = new Connect;
 $connect = $conn->getConnection();
@@ -23,14 +23,53 @@ if (!$connect) {
 
 function getToken($connect, $profileId) {
   // Check connection
-             if (!$connect) {
-               die("Connection failed: " . mysqli_connect_error());
-             }else {
-               $query = "SELECT token FROM profile WHERE Profile_ID  = $profileId";
-               $result = mysqli_query($connect, $query);
-               $row = mysqli_fetch_assoc($result);
-               echo "<span class='token-amout'>{$row['token']}</span>"; // Using string interpolation
-             }
+  if (!$connect) {
+    die("Connection failed: " . mysqli_connect_error());
+  } else {
+    $query = "SELECT token FROM profile WHERE Profile_ID = {$profileId}";
+    $result = mysqli_query($connect, $query);
+    $row = mysqli_fetch_assoc($result);
+    echo "<span class='token-amout'>{$row['token']}</span>"; // Using string interpolation
+  }
+}
+
+
+function buy($connect, $profileId){
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $amountToBuy = $_POST['amount-to-buy'];
+  $customAmount =isset($_POST['input-custom-amount']) ? $_POST['input-custom-amount'] : null; // Check if custom amount is set
+
+  // Calculate the total amount to be charged
+  if ($customAmount) {
+    $totalCharge = $customAmount;
+  } else {
+    $totalCharge = $amountToBuy;
+  }
+
+  // Update the user's token balance in the database
+    if ($customAmount) {
+      $query = "UPDATE profile SET token = token + {$customAmount} WHERE Profile_ID = {$profileId}"; // if it's custom amount
+    } else {
+      $query = "UPDATE profile SET token = token + {$amountToBuy} WHERE Profile_ID = {$profileId}"; // if it's default amount
+    }
+    $result = mysqli_query($connect, $query);
+
+  // Check if the query was successful
+  if ($result) {
+    header('Location: view_profile.php');
+    exit();
+  } else {
+
+    echo "Error updating token balance: " . mysqli_error($connect);
+  }
+}
+}
+
+// calling buy function when buy button is clicked
+
+if (isset($_POST['buy-btn'])) {
+  buy($connect, $profileId);
 }
 
 ?>
@@ -54,7 +93,7 @@ function getToken($connect, $profileId) {
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- Header css link -->
-    <link rel="stylesheet" href="./Style/Header.css" /> 
+    <link rel="stylesheet" href="./Style/Header.css?v=1.0" /> 
 
     <!-- css link -->
     <link rel="stylesheet" href="./Style/add_tokens.css?v=1.0" />
@@ -107,20 +146,20 @@ function getToken($connect, $profileId) {
       <div class="token-wrap">
         <h1>Buy Tokens</h1>
 
-        <form action="#" class="token-form">
+        <form action="#" class="token-form" method="post">
 
         <label for="avilable-tokens">Your avialable Tokens</label>
           <div class="token-amout display" id="avilable-tokens">
 
               <?php
-              getToken($connect, 7);
+              getToken($connect, $profileId);
               ?>
               
           </div>
 
           <label for="amount-to-buy">Select the amount to buy</label>
           <br>
-          <select name="" id="amount-to-buy">
+          <select name="amount-to-buy" id="amount-to-buy">
             <option value="10">10 for 75bir</option>
             <option value="20">20 for 150bir</option>
             <option value="40">40 for 300bir</option>
@@ -138,7 +177,7 @@ function getToken($connect, $profileId) {
           <div class="input">
             <label for="input-custom-amount">Custom amount</label>
           <br>
-            <input type="text" name="input" id="input-custom-amount" min="1" max="75000" step="1" maxlength="5">
+            <input type="text" name="input-custom-amount" id="input-custom-amount" min="1" max="75000" step="1" maxlength="5">
           <br>
           </div>
 
@@ -159,8 +198,8 @@ function getToken($connect, $profileId) {
           </div>
 
           <div class="buttons">
-            <button type="cancel" class="cancel-btn btn">Cancel</button>
-            <button type="submit" class="buy-btn btn">Buy Token</button>
+            <button type="cancel" class="cancel-btn btn" name="cancel-btn">Cancel</button>
+            <button type="submit" class="buy-btn btn" name="buy-btn">Buy Token</button>
           </div>
 
         </form> <!-- form end -->
