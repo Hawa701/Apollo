@@ -1,0 +1,147 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+  scroll-behavior: smooth;
+  font-family: "Roboto", sans-serif;
+}
+
+:root {
+  --main-color: #577cff;
+  --second-main-color: #f0e6de;
+
+  --main-bg-color: #fff;
+  --second-bg-color: #ededed;
+  --third-bg-color: #c8c9ca;
+
+  --main-text-color: #000;
+  --second-text-color: #fff;
+  --third-text-color: #737373;
+}
+
+::-webkit-scrollbar {
+  width: 7px; /* Width of the scrollbar */
+}
+::-webkit-scrollbar-thumb {
+  background: var(--second-bg-color);
+  border-radius: 10px;
+}
+
+body {
+  background-color: var(--second-bg-color);
+}
+
+#tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+#tags .tag {
+  font-size: 0.8rem;
+  background: var(--third-bg-color);
+  border-radius: 1rem;
+  padding: 0% 1rem;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  padding: 2rem 8%;
+}
+
+.wrapper .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.wrapper .container {
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+  min-height: 75vh;
+  padding: 2rem 3.4rem;
+  border-radius: 10px;
+  background-color: var(--main-bg-color);
+}
+
+.container .job {
+  width: 100%;
+}
+
+.container .title-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.title-block .deleteBtn {
+  width: 1.3rem;
+  background-color: var(--main-bg-color);
+  border: none;
+  text-align: right;
+  cursor: pointer;
+}
+
+.deleteBtn i {
+  font-size: 1.1rem;
+}
+
+.container .job-info {
+  width: 100%;
+  margin: 0.3rem 0 0.7rem;
+  font-size: 0.7rem;
+  color: var(--third-text-color);
+}
+
+.container .description {
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+  line-height: 1rem;
+  text-align: justify;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.container .apply-info {
+  font-size: 0.8rem;
+  display: flex;
+  gap: 2rem;
+  margin-top: 0.6rem;
+}
+
+.apply-info .text {
+  color: var(--third-text-color);
+}
+
+.text span {
+  color: var(--main-text-color);
+}
+
+.job hr {
+  margin: 1rem 0;
+  border: 1.2px solid var(--third-bg-color);
+}
+
+.container .no-result {
+  font-size: 0.8rem;
+  color: var(--third-text-color);
+}
+
+@media (max-width: 500px) {
+  .container .description {
+    text-align: unset;
+    -webkit-line-clamp: 5;
+  }
+}

@@ -37,15 +37,6 @@ function getFirstLetter()
       <a href="./index.php">Apollo</a>
     </div>
 
-    <div class="nav">
-      <ul class="links">
-        <li><a href="./Find Work.php?Profile_ID=<?php echo $profile_ID ?>">Find Work</a></li>
-        <li><a id="my-job">My Job</a></li>
-        <li><a href="#">Post a Job</a></li>
-        <li><a href="./How it works.php">How it Works</a></li>
-      </ul>
-    </div>
-
     <!-- drop down -->
     <div class="drop-down" id="drop-down">
       <ul>
@@ -56,6 +47,17 @@ function getFirstLetter()
 
     <?php
     if (isset($_SESSION['logged-in']) && $_SESSION['logged-in'] == true) {
+      // Links
+      echo "<div class=\"nav\">
+      <ul class=\"links\">
+        <li><a href=\"./Find Work.php?Profile_ID=$profile_ID\">Find Work</a></li>
+        <li><a id=\"my-job\">My Job</a></li>
+        <li><a href=\"\">Post a Job</a></li>
+        <li><a href=\"./How it works.php\">How it Works</a></li>
+      </ul>
+    </div>";
+
+      // Profile
       echo "<div class=\"notifProf\" id=\"notifProf\">
         <div class=\"notification\" id=\"notification\">
           <a href=\"#\"><i class=\"fa-regular fa-message\"></i></i></a>
@@ -66,30 +68,54 @@ function getFirstLetter()
       echo "</a>
         </div>
       </div>";
+
+      // drop down menu (for mobile)
+      echo "<div class=\"menu\" id=\"menu\">
+      <ul class=\"menu-links\">
+        <span class=\"user-option\">User</span>
+        <hr />
+        <li>
+          <a href=\"#\">Profile</a>
+        </li>
+        <li><a href=\"#\">Messages</a></li>
+
+        <span class=\"page-option\">Pages</span>
+        <hr />
+        <li><a href=\"./Find Work.php?Profile_ID=$profile_ID\">Find Work</a></li>
+        <li><a id=\"my-job2\">My Job</a></li>
+        <li><a href=\"\">Post a Job</a></li>
+        <li><a href=\"./How it works.php\">How it Works</a></li>
+        <span class=\"page-option\">Log Out</span>
+        <hr />
+        <li><a href=\"./Logout.php\">Log Out</a></li>
+      </ul>
+    </div>";
     } else {
+      // Links
+      echo "<div class=\"nav\">
+      <ul class=\"links\">
+        <li><a href=\"./Login.php\">Find Work</a></li>
+        <li><a id=\"my-job\" href=\"./Login.php\">My Job</a></li>
+        <li><a href=\"./Login.php\">Post a Job</a></li>
+        <li><a href=\"./Login.php\">How it Works</a></li>
+      </ul>
+    </div>";
+      // buttons
       echo "<div class=\"signInnUp\" id=\"signInnUp\">
       <button class=\"login\" id=\"login\">Log In</button>
       <button class=\"signup\" id=\"signup\">Sign Up</button>
     </div>";
+      //drop down (mobile)
+      echo "<div class=\"menu\" id=\"menu\" style=\"height:3rem\">
+      <ul class=\"menu-links\">
+        <li>
+          <a href=\"./Login.php\">Login</a>
+        </li>
+        <li><a href=\"./sign_up.php\">Sign Up</a></li>
+      </ul>
+    </div>";
     }
     ?>
-    <!-- buttons and profile -->
-    <!-- <div class=" signInnUp" id="signInnUp">
-      <button class=" login" id="login">Log In</button>
-      <button class="signup" id="signup">Sign Up</button>
-    </div>
-
-    <div class="notifProf" id="notifProf">
-      <div class="notification">
-        <a href="#"><i class="fa-regular fa-message"></i></i></a>
-      </div>
-      <div class="profile" id="profile">
-        <a href="#">
-          <?php
-          getFirstLetter();
-          ?></a>
-      </div>
-    </div> -->
 
     <!-- drop down 2 -->
     <div class="drop-down2" id="drop-down2">
@@ -104,26 +130,8 @@ function getFirstLetter()
       <i class="fa-solid fa-bars"></i>
     </div>
 
-    <div class="menu" id="menu">
-      <ul class="menu-links">
-        <span class="user-option">User</span>
-        <hr />
-        <li>
-          <a href="#">Profile</a>
-        </li>
-        <li><a href="#">Messages</a></li>
 
-        <span class="page-option">Pages</span>
-        <hr />
-        <li><a href="./Find Work.php?Profile_ID=<?php echo $profile_ID ?>">Find Work</a></li>
-        <li><a id="my-job2">My Job</a></li>
-        <li><a href="#">Post a Job</a></li>
-        <li><a href="./How it works.php">How it Works</a></li>
-        <span class="page-option">Log Out</span>
-        <hr />
-        <li><a href="./Logout.php">Log Out</a></li>
-      </ul>
-    </div>
+
 
     <!-- sub-menu -->
     <div class="sub-menu" id="sub-menu">
