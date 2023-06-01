@@ -133,7 +133,8 @@ if (isset($_POST['save-btn'])) {
 //   when the user cliks buy tokn it will go to the add token page
 
 if (isset($_POST['buy-btn'])) {
-  header('Location: Add-tokens.php');
+  $url = "Add-tokens.php?Profile_ID=" . urlencode($profileId);
+  header('Location:' . $url);
 }
 
 // when the user clicks view posted jobs it will go to posted job page

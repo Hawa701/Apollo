@@ -1,15 +1,10 @@
 <?php
 
-session_start();
-
-// Check if the user is logged in
-if (isset($_SESSION['Profile_ID']) && $_SESSION['Profile_ID']) {
-  $profileId = $_SESSION['Profile_ID'];
-} else {
-  // User is not logged in, redirect to login page
-  header('Location: Login.php');
-// Exit the script to prevent further execution
-  exit();
+$current_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$url_parts = parse_url($current_url);
+if (isset($url_parts['query'])) {
+  parse_str($url_parts['query'], $query);
+  $profileId = $query['Profile_ID'];
 }
 
 include('Connect.php');
@@ -21,7 +16,8 @@ if (!$connect) {
   die("Connection failed: " . mysqli_connect_error());
 }
 
-function getToken($connect, $profileId) {
+function getToken($connect, $profileId)
+{
   // Check connection
   if (!$connect) {
     die("Connection failed: " . mysqli_connect_error());
@@ -34,20 +30,21 @@ function getToken($connect, $profileId) {
 }
 
 
-function buy($connect, $profileId){
+function buy($connect, $profileId)
+{
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $amountToBuy = $_POST['amount-to-buy'];
-  $customAmount =isset($_POST['input-custom-amount']) ? $_POST['input-custom-amount'] : null; // Check if custom amount is set
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $amountToBuy = $_POST['amount-to-buy'];
+    $customAmount = isset($_POST['input-custom-amount']) ? $_POST['input-custom-amount'] : null; // Check if custom amount is set
 
-  // Calculate the total amount to be charged
-  if ($customAmount) {
-    $totalCharge = $customAmount;
-  } else {
-    $totalCharge = $amountToBuy;
-  }
+    // Calculate the total amount to be charged
+    if ($customAmount) {
+      $totalCharge = $customAmount;
+    } else {
+      $totalCharge = $amountToBuy;
+    }
 
-  // Update the user's token balance in the database
+    // Update the user's token balance in the database
     if ($customAmount) {
       $query = "UPDATE profile SET token = token + {$customAmount} WHERE Profile_ID = {$profileId}"; // if it's custom amount
     } else {
@@ -55,15 +52,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     $result = mysqli_query($connect, $query);
 
-  // Check if the query was successful
-  if ($result) {
-    header('Location: view_profile.php');
-    exit();
-  } else {
+    // Check if the query was successful
+    if ($result) {
+      $url = "view_profile.php?Profile_ID=" . urlencode($profileId);
+      header('Location:' . $url);
+      exit();
+    } else {
 
-    echo "Error updating token balance: " . mysqli_error($connect);
+      echo "Error updating token balance: " . mysqli_error($connect);
+    }
   }
-}
 }
 
 // calling buy function when buy button is clicked
@@ -76,69 +74,37 @@ if (isset($_POST['buy-btn'])) {
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- font link -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- font link -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
 
 
-    <!-- box icons -->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <!-- box icons -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <!-- Header css link -->
-    <link rel="stylesheet" href="./Style/Header.css?v=1.0" /> 
+  <!-- Header css link -->
+  <link rel="stylesheet" href="./Style/Header.css?v=1.0" />
 
-    <!-- css link -->
-    <link rel="stylesheet" href="./Style/add_tokens.css?v=1.0" />
-    <!-- icon link -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <title>Add Tokens</title>
-  </head>
-  <body>
+  <!-- css link -->
+  <link rel="stylesheet" href="./Style/add_tokens.css?v=1.0" />
+  <!-- icon link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Add Tokens</title>
+</head>
 
-    <div class="wrapper">
+<body>
 
-       <!-- header design -->
-       <header class="header" id="header">
-        <div class="logo">
-            <a href="#">Apollo</a>
-        </div>
+  <div class="wrapper">
 
-        <div class="nav">
-            <ul class="links">
-                <li><a href="#">Find Work</a></li>
-                <li><a href="#">My Job</a></li>
-                <li><a href="#">Post a Job</a></li>
-                <li><a href="#">How it Works</a></li>
-                <!-- <li><a href="#">Message</a></li> -->
-            </ul>
-            <!-- <div class="notification">
-                <a href="#"><i class="fa-regular fa-bell"></i></a>
-            </div> -->
-        </div>
-
-        <div class="signInnUp">
-            <button class="login">Log In</button>
-            <button class="signup">Sign Up</button>
-        </div>
-        <!-- 
-        <div class="profile">
-            <a href="#"> H </a>
-        </div> -->
-    </header> <!-- header end -->
+    <?php
+    include('header.php');
+    ?>
 
     <!-- Section design -->
     <section class="section">
@@ -148,13 +114,13 @@ if (isset($_POST['buy-btn'])) {
 
         <form action="#" class="token-form" method="post">
 
-        <label for="avilable-tokens">Your avialable Tokens</label>
+          <label for="avilable-tokens">Your avialable Tokens</label>
           <div class="token-amout display" id="avilable-tokens">
 
-              <?php
-              getToken($connect, $profileId);
-              ?>
-              
+            <?php
+            getToken($connect, $profileId);
+            ?>
+
           </div>
 
           <label for="amount-to-buy">Select the amount to buy</label>
@@ -176,9 +142,9 @@ if (isset($_POST['buy-btn'])) {
 
           <div class="input">
             <label for="input-custom-amount">Custom amount</label>
-          <br>
+            <br>
             <input type="text" name="input-custom-amount" id="input-custom-amount" min="1" max="75000" step="1" maxlength="5">
-          <br>
+            <br>
           </div>
 
           <label for="amount-tobe-charged">You account will be charged</label>
@@ -208,10 +174,11 @@ if (isset($_POST['buy-btn'])) {
 
     </section> <!-- section end -->
 
-    </div> <!-- wrapper end -->
-  
-     <!-- js link -->
-     <script src="./Script/add tokens.js"></script>
-     <script src="./Script/Find Work.js"></script>
+  </div> <!-- wrapper end -->
+
+  <!-- js link -->
+  <script src="./Script/add tokens.js"></script>
+  <script src="./Script/Find Work.js"></script>
 </body>
+
 </html>
