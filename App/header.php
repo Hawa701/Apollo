@@ -23,7 +23,7 @@ function getFirstLetter()
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- CSS link -->
-  <link rel="stylesheet" href="./Style/Header.css?v=1.5" />
+  <link rel="stylesheet" href="./Style/Header.css?v=1.9" />
 
   <!-- icon link -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -42,6 +42,7 @@ function getFirstLetter()
       <ul>
         <li><a href="./myJobs.php?Profile_ID=<?php echo $profile_ID ?>">Applied Jobs</a></li>
         <li><a href="./SavedJobs.php?Profile_ID=<?php echo $profile_ID ?>">Saved Jobs</a></li>
+        <li><a href="./Proposal.php?Profile_ID=<?php echo $profile_ID ?>">My Proposals</a></li>
       </ul>
     </div>
 
@@ -52,7 +53,8 @@ function getFirstLetter()
       <ul class=\"links\">
         <li><a href=\"./Find Work.php?Profile_ID=$profile_ID\">Find Work</a></li>
         <li><a id=\"my-job\">My Job</a></li>
-        <li><a href=\"\">Post a Job</a></li>
+        <li><a href=\"./Postajob.php?Profile_ID=$profile_ID\">Post a Job</a>
+</li>
         <li><a href=\"./How it works.php\">How it Works</a></li>
       </ul>
     </div>";
@@ -116,7 +118,7 @@ function getFirstLetter()
     </div>";
     }
     ?>
-    <!-- <a href=""></a> -->
+
     <!-- drop down 2 -->
     <div class="drop-down2" id="drop-down2">
       <ul>
@@ -138,6 +140,7 @@ function getFirstLetter()
       <ul>
         <li><a href="./myJobs.php?Profile_ID=<?php echo $profile_ID ?>">Applied Jobs</a></li>
         <li><a href="./saved_jobs.php">Saved Jobs</a></li>
+        <li><a href="./Proposal.php?Profile_ID=<?php echo $profile_ID ?>">Proposals</a></li>
       </ul>
     </div>
   </header>
