@@ -198,10 +198,13 @@ function applyJob($pId, $jId)
   $conn = new Connect;
   $connect = $conn->getConnection();
 
-  $updateQuery = "UPDATE `profile` p
+  $updateToken = "UPDATE `profile` p
     JOIN job j ON p.Profile_ID = $pId
     SET p.token = p.token - j.Token
     WHERE j.Job_ID = $jId";
+
+  $addProposal = "UPDATE job SET proposals = proposals + 1 WHERE Job_ID = $jId";
+  $subProposal = "UPDATE job SET proposals = proposals - 1 WHERE Job_ID = $jId";
 
   //checks if job already exists in table or not
   $checkQuery = "SELECT * FROM applied_jobs WHERE Profile_ID = $pId AND Job_ID = $jId";
@@ -211,6 +214,7 @@ function applyJob($pId, $jId)
   if ($count > 0) {
     $query = "CALL withdrawJob($pId, $jId)";
     mysqli_query($connect, $query);
+    mysqli_query($connect, $subProposal);
   } else {
     $query1 = "SELECT token FROM `profile` WHERE Profile_ID = $pId";
     $result = $connect->query($query1);
@@ -222,14 +226,24 @@ function applyJob($pId, $jId)
     $row = $result->fetch_assoc();
     $jobToken = $row['Token'];
 
-    if ($profileToken - $jobToken < 0) {
+    $query3 = "SELECT `Status` FROM job WHERE Job_ID = $jId";
+    $result = $connect->query($query3);
+    $row = $result->fetch_assoc();
+    $jobStatus = $row['Status'];
+
+    if ($jobStatus == "Hired") {
+      echo "<script>
+          alert(\"Sorry, this job has already hired!\");
+        </script>";
+    } else if ($profileToken - $jobToken < 0) {
       echo "<script>
           alert(\"Sorry, you don't have enough tokens!\");
         </script>";
     } else {
       $query = "CALL applyJob($pId, $jId)";
       mysqli_query($connect, $query);
-      mysqli_query($connect, $updateQuery);
+      mysqli_query($connect, $updateToken);
+      mysqli_query($connect, $addProposal);
     }
   }
 
