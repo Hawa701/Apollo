@@ -1,0 +1,106 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: "Roboto", sans-serif;
+}
+
+.container {
+    display: flex;
+    max-width: 1450px;
+    margin: 0 auto;
+    font-family: roboto;
+}
+
+.messageList {
+    position: sticky;
+    top: 0;
+    width: 30%;
+    border-right: 2px solid black;
+}
+
+.messaging {
+    width: 70%;
+    height: 100vh;
+}
+
+.messaging form {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #D9D9D9;
+    padding: 30px;
+}
+
+.input {
+    object-fit: contain;
+    width: 55%;
+    padding: 8px 0 8px 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+button {
+    background-color: #577cff;
+    color: white;
+    padding: 8px 40px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+}
+
+.heading {
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #F3F3F3;
+    padding: 20px;
+}
+
+.zoom {
+    background-color: #577cff;
+    color: white;
+    padding: 8px 40px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+}
+
+#chat-messages {
+    width: fit-content;
+    padding-left: 25px;
+}
+
+.message {
+    background-color: #D9D9D9;
+    padding: 8px 30px;
+    margin-top: 5px;
+    border-radius: 0 0 0 20px;
+}
+
+.timestamp {
+    float: right;
+    margin-top: -20px;
+    /* padding-top: 10px; */
+    /* width: fit-content; */
+}
+
+.person {
+    cursor: pointer;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    margin-right: 30px;
+    /* border: 1px solid red; */
+    border-bottom: 1px solid black;
+}
+
+.noMessage {
+    text-align: center;
+}
