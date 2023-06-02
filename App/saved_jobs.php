@@ -1,4 +1,15 @@
 <?php
+
+$current_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$url_parts = parse_url($current_url);
+if (isset($url_parts['query'])) {
+  parse_str($url_parts['query'], $query);
+  $profileID = $query['Profile_ID'];
+} else {
+  $profileID = 11;
+}
+
+
 include('Connect.php');
 $conn = new Connect;
 $connect = $conn->getConnection();
@@ -7,15 +18,7 @@ if (!$connect) {
   die("Connection failed: " . mysqli_connect_error());
 }
 
-$profileId = null;
-$jobId = null;
-$jobTitle = null;
-$jobDescription = null;
-$jobPayment = null;
-$jobExperience = null;
-$jobDate = null;
-$jobProposal = null;
-$jobToken = null;
+// $profileId = $query['Profile_ID'] ?? 1;  // Set default of 11 if missing
 
 // pagination 
 $currentPage = isset($_GET['page']) ? $_GET['page'] : 1; //get the current page number from the URL parameter, or default to 1
@@ -25,11 +28,14 @@ $offset = ($currentPage - 1) * 3; //the LIMIT offset needed for the MySQL query 
 $query = "SELECT * FROM saved_jobs LIMIT 3 OFFSET $offset"; //Construct the query with LIMIT and OFFSET
 
 
-function getJobTitle($connect, $jobId)
+
+function getJobTitle($connect, $profile_ID)
 {
-  $query = "SELECT job.Job_Title FROM job 
-                              JOIN saved_jobs ON job.Job_ID = saved_jobs.Job_ID 
-                              WHERE saved_jobs.Job_ID = $jobId";
+  $query = "SELECT job.Job_Title
+            FROM job
+            INNER JOIN saved_jobs ON job.Job_ID = saved_jobs.Job_ID
+            WHERE saved_jobs.Profile_ID = $profile_ID";
+
   $result = mysqli_query($connect, $query);
 
   if ($result && mysqli_num_rows($result) > 0) {
@@ -42,11 +48,11 @@ function getJobTitle($connect, $jobId)
 }
 
 
-function getJobInfo($connect, $jobId)
+function getJobInfo($connect, $profile_ID)
 {
   $query = "SELECT job.Payment, job.Experience, job.Date, job.Token, job.Estimated_Time FROM job 
-                  JOIN saved_jobs ON job.Job_ID = saved_jobs.Job_ID 
-                  WHERE saved_jobs.Job_ID = $jobId";
+            INNER JOIN saved_jobs ON job.Job_ID = saved_jobs.Job_ID
+            WHERE saved_jobs.Profile_ID = $profile_ID";
   $result = mysqli_query($connect, $query);
 
   if ($result && mysqli_num_rows($result) > 0) {
@@ -61,11 +67,11 @@ function getJobInfo($connect, $jobId)
   }
 }
 
-function getJobDescription($connect, $jobId)
+function getJobDescription($connect, $profile_ID)
 {
   $query = "SELECT job.Description FROM job 
-                           JOIN saved_jobs ON job.Job_ID = saved_jobs.Job_ID 
-                           WHERE saved_jobs.Job_ID = $jobId";
+            INNER JOIN saved_jobs ON job.Job_ID = saved_jobs.Job_ID
+            WHERE saved_jobs.Profile_ID = $profile_ID";
   $result = mysqli_query($connect, $query);
 
   if ($result && mysqli_num_rows($result) > 0) {
@@ -77,11 +83,11 @@ function getJobDescription($connect, $jobId)
 }
 
 // gets proposals and tokens
-function getJobTime($connect, $jobId)
+function getJobTime($connect, $profile_ID)
 {
   $query = "SELECT job.Proposals, job.Token FROM job 
-                           JOIN saved_jobs ON job.Job_ID = saved_jobs.Job_ID 
-                           WHERE saved_jobs.Job_ID = $jobId";
+            INNER JOIN saved_jobs ON job.Job_ID = saved_jobs.Job_ID
+            WHERE saved_jobs.Profile_ID = $profile_ID";
   $result = mysqli_query($connect, $query);
 
   if ($result && mysqli_num_rows($result) > 0) {
@@ -94,11 +100,11 @@ function getJobTime($connect, $jobId)
 }
 
 
-function postedOn($connect, $jobId)
+function postedOn($connect, $profile_ID)
 {
   $query = "SELECT job.Date FROM job 
-                            JOIN saved_jobs ON job.Job_ID = saved_jobs.Job_ID 
-                            WHERE saved_jobs.Job_ID = $jobId";
+            INNER JOIN saved_jobs ON job.Job_ID = saved_jobs.Job_ID
+            WHERE saved_jobs.Profile_ID = $profile_ID";
   $result = mysqli_query($connect, $query);
 
   if ($result && mysqli_num_rows($result) > 0) {
@@ -109,11 +115,11 @@ function postedOn($connect, $jobId)
   }
 }
 
-function getPrice($connect, $jobId)
+function getPrice($connect, $profile_ID)
 {
   $query = "SELECT job.Payment  FROM job 
-                  JOIN saved_jobs ON job.Job_ID = saved_jobs.Job_ID 
-                  WHERE saved_jobs.Job_ID = $jobId";
+            INNER JOIN saved_jobs ON job.Job_ID = saved_jobs.Job_ID
+            WHERE saved_jobs.Profile_ID = $profile_ID";
   $result = mysqli_query($connect, $query);
 
   if ($result && mysqli_num_rows($result) > 0) {
@@ -124,11 +130,11 @@ function getPrice($connect, $jobId)
   }
 }
 
-function getExperience($connect, $jobId)
+function getExperience($connect, $profile_ID)
 {
   $query = "SELECT job.Experience FROM job 
-    JOIN saved_jobs ON job.Job_ID = saved_jobs.Job_ID 
-    WHERE saved_jobs.Job_ID = $jobId";
+            INNER JOIN saved_jobs ON job.Job_ID = saved_jobs.Job_ID
+            WHERE saved_jobs.Profile_ID = $profile_ID";
   $result = mysqli_query($connect, $query);
 
   if ($result && mysqli_num_rows($result) > 0) {
@@ -138,6 +144,96 @@ function getExperience($connect, $jobId)
     echo "<h3> No Job Saved</h3>";
   }
 }
+
+function getTags($jobId) {
+    $conn = new Connect;
+    $connect = $conn->getConnection();
+    $sql = "CALL `getTags`($jobId)";
+    $result = $connect->query($sql);
+
+  if ($result->num_rows > 0) {
+    echo "<div id=\"tags\">";
+    while ($row = $result->fetch_assoc()) {
+      $tagName = $row['Tag_Name'];
+      echo "<span class=\"tag\">" . $tagName . "</span>";
+    }
+    echo "</div>";
+  }
+}
+
+function loadSavedJobs($profile_ID)
+{
+  $conn = new Connect;
+  $connect = $conn->getConnection();
+  $query = "SELECT job.*
+            FROM job
+            INNER JOIN saved_jobs ON job.Job_ID = saved_jobs.Job_ID
+            WHERE saved_jobs.Profile_ID = $profile_ID";
+
+  $result = mysqli_query($connect, $query);
+  $queryResult = mysqli_num_rows($result);
+
+  if ($queryResult > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+      $jobId = $row['Job_ID'];
+      $jobTitle = $row['Job_Title'];
+      $jobDescription = $row['Description'];
+      $payment = $row['Payment'];
+      $experience = $row['Experience'];
+      $estTime = $row['Estimated_Time'];
+      $date = $row['Date'];
+      $proposals = $row['Proposals'];
+      $token = $row['Token'];
+
+      echo "
+      <div class='first-job'>
+
+      <div class='job-title'>
+        ".getJobTitle($connect, $profile_ID)."
+
+      <form class=\"title-block\" method=\"post\">
+        <button class=\"deleteBtn\" name=\"deleteBtn\" value=\"$jobId\">
+        <img src='https://img.icons8.com/small/25/22C3E6/filled-trash.png'/> 
+        </button>
+      </form>
+    
+      <div class='job-info'>
+        ".getJobInfo($connect, $profile_ID)."
+      </div>
+    
+      <div class='job-description' onclick='openApplyJob()'>
+        ".getJobDescription($connect, $profile_ID)."
+      </div>
+    
+      
+    
+      <div class='time'>
+        ".getJobTime($connect, $profile_ID)."
+      </div>
+    
+      <hr />
+    
+    </div> <!-- first job end -->
+
+           ";
+    }
+  } else {
+    echo "<p> Sorry, There are no Saved Jobs!.";
+  }
+} // ".getTags($jobId)."
+
+
+function deleteJob($profile_ID, $jobID) {
+    $conn = new Connect;
+    $connect = $conn->getConnection();
+    
+    $deleteQuery = "DELETE FROM saved_jobs
+                    WHERE Job_ID = $jobID 
+                    AND Profile_ID = $profile_ID";
+    mysqli_query($connect, $deleteQuery);
+  }
+
+  
 
 ?>
 
@@ -182,132 +278,16 @@ function getExperience($connect, $jobId)
 
         <div class="jobs">
 
-          <div class="first-job">
+          <?php
+               loadSavedJobs($profile_ID);
 
-            <div class="job-title">
-              <?php
-              getJobTitle($connect, 2);
-              ?>
-              <div class="delete-job" onclick="">
-                <img src="https://img.icons8.com/small/25/22C3E6/filled-trash.png" />
-              </div>
-            </div>
-
-            <div class="job-info">
-              <?php
-              getJobInfo($connect, 2);
-              ?>
-            </div>
-
-            <div class="job-description" onclick="openApplyJob()">
-              <?php
-              getJobDescription($connect, 2);
-              ?>
-            </div>
-
-            <div class="tags">
-              <span class="tag">PHP</span>
-              <span class="tag">JS</span>
-              <span class="tag">HTML</span>
-              <span class="tag">CSS</span>
-            </div>
-
-            <div class="time">
-              <?php
-              getJobTime($connect, 2);
-              ?>
-            </div>
-
-            <hr />
-
-          </div> <!-- first job end -->
-
-
-          <div class="second-job">
-
-            <div class="job-title">
-              <?php
-              getJobTitle($connect, 2);
-              ?>
-              <div class="delete-job" onclick="">
-                <img src="https://img.icons8.com/small/25/22C3E6/filled-trash.png" />
-              </div>
-            </div>
-
-            <div class="job-info">
-              <?php
-              getJobInfo($connect, 2);
-              ?>
-            </div>
-
-            <div class="job-description" onclick="openApplyJob()">
-              <?php
-              getJobDescription($connect, 2);
-              ?>
-            </div>
-
-            <div class="tags">
-              <span class="tag">PHP</span>
-              <span class="tag">JS</span>
-              <span class="tag">HTML</span>
-              <span class="tag">CSS</span>
-            </div>
-
-            <div class="time">
-              <?php
-              getJobTime($connect, 2);
-              ?>
-            </div>
-
-            <hr />
-
-          </div> <!-- second job end -->
-
-
-          <div class="third-job">
-
-            <div class="job-title">
-              <?php
-              getJobTitle($connect, 2);
-              ?>
-              <div class="delete-job" onclick="">
-                <img src="https://img.icons8.com/small/25/22C3E6/filled-trash.png" />
-              </div>
-            </div>
-
-            <div class="job-info">
-              <?php
-              getJobInfo($connect, 2);
-              ?>
-            </div>
-
-            <div class="job-description" onclick="openApplyJob()">
-              <?php
-              getJobDescription($connect, 2);
-              ?>
-            </div>
-
-            <div class="tags">
-              <span class="tag">PHP</span>
-              <span class="tag">JS</span>
-              <span class="tag">HTML</span>
-              <span class="tag">CSS</span>
-            </div>
-
-            <div class="time">
-              <?php
-              getJobTime($connect, 2);
-              ?>
-            </div>
-
-          </div> <!-- third job end -->
-
+               if (isset($_POST['deleteBtn'])) {
+                $jobID = $_POST['deleteBtn'];
+                deleteJob($profileID, $jobID);
+              }
+          ?>
 
         </div> <!-- jobs end -->
-
-        <div class="line">
-          <hr />
-        </div>
 
 
         <!-- Generate the page links by looping from 1 to $totalPages -->
@@ -321,9 +301,6 @@ function getExperience($connect, $jobId)
 
       </div> <!-- job container end -->
 
-
-
-
       <!-- apply jobs design -->
       <div class="apply-job" id="apply-job">
         <div class="top">
@@ -335,17 +312,17 @@ function getExperience($connect, $jobId)
             <h3>Job 1</h3>
             <h4>
               <?php
-              getJobTitle($connect, 2);
+              getJobTitle($connect, $profile_ID);
               ?>
             </h4>
             <?php
-            postedOn($connect, 2);
+            postedOn($connect, $profile_ID);
             ?>
           </div>
           <div class="info two">
             <p>
               <?php
-              getJobDescription($connect, 2);
+              getJobDescription($connect, $profile_ID);
               ?>
             </p>
 
@@ -357,13 +334,13 @@ function getExperience($connect, $jobId)
           <div class="info four">
             <div class="price">
               <?php
-              getPrice($connect, 2);
+              getPrice($connect, $profile_ID);
               ?>
               <span>Fixed Price</span>
             </div> </br>
             <div class="ex-level">
               <?php
-              getExperience($connect, 2);
+              getExperience($connect, $profile_ID);
               ?>
             </div>
 
