@@ -41,7 +41,7 @@ function getFirstLetter()
     <div class="drop-down" id="drop-down">
       <ul>
         <li><a href="./myJobs.php?Profile_ID=<?php echo $profile_ID ?>">Applied Jobs</a></li>
-        <li><a href="./saved_jobs.php">Saved Jobs</a></li>
+        <li><a href="./SavedJobs.php?Profile_ID=<?php echo $profile_ID ?>">Saved Jobs</a></li>
       </ul>
     </div>
 
@@ -116,11 +116,11 @@ function getFirstLetter()
     </div>";
     }
     ?>
-
+    <!-- <a href=""></a> -->
     <!-- drop down 2 -->
     <div class="drop-down2" id="drop-down2">
       <ul>
-        <li><a href="#">Profile</a></li>
+        <li><a href="./view_profile.php?Profile_ID=<?php echo $profile_ID ?>">Profile</a></li>
         <li><a href="./Logout.php">Log Out</a></li>
       </ul>
     </div>
