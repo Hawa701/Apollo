@@ -1,15 +1,24 @@
 <?php
 // Insert new chat message into the database
 // include('Connect.php');
-include('send-message.php');
 include('get-messages.php');
+include('send-message.php');
 date_default_timezone_set('Africa/Addis_Ababa');
 $current_time = date("h:i A");
 // $Profile_ID = 1;
+$current_urls = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$url_part = parse_url($current_urls);
 
-$current_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+// Parse the query string
+parse_str($url_part['query'], $query);
 
+// Get the job ID and profile ID
+$getter = $query['Reciver_ID'];
+$sender = $query['Sender_ID'];
 $ID;
+
+echo $getter;
+echo $sender;
 
 ?>
 
@@ -92,12 +101,12 @@ WHERE cm.sender_ID = $Profile_ID OR cm.reciever_ID = $Profile_ID;";
                 ?>
             </div>
 
-            <form id="chat-form" method="post">
-                <input type="hidden" name="sender_id" value="1">
-                <input type="hidden" name="receiver_id" value="2">
-                <input class="input" type="text" name="message" placeholder="Enter your message">
-                <button type="submit">Send</button>
-            </form>
+           <form id="chat-form" method="post">
+    <input type="hidden" name="sender_id" value="<?php echo $sender; ?>">
+            <input type="hidden" name="receiver_id" value="<?php echo $getter; ?>">
+            <input class="input" type="text" name="message" placeholder="Enter your message">
+            <button type="submit">Send</button>
+        </form>
         </section>
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -118,7 +127,8 @@ WHERE cm.sender_ID = $Profile_ID OR cm.reciever_ID = $Profile_ID;";
             event.preventDefault();
             $.post("send-message.php", $(this).serialize(), function(data) {
                 alert(data);
-                refreshChatMessages();
+                alert('sent');
+                // refreshChatMessages();
             });
             $(this).trigger("reset");
         });

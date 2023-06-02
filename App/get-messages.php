@@ -21,6 +21,9 @@ $sql = "SELECT * FROM chat_messages where (reciever_ID = $reciever_ID and sender
 
 $result = mysqli_query($connect, $sql);
 
+$test = mysqli_fetch_assoc($result);
+echo end($test);
+
 // if (mysqli_num_rows($result) > 0) {
 //     // Output each chat message as a HTML block
 //     while ($row = mysqli_fetch_assoc($result)) {
