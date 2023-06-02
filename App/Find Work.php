@@ -1,9 +1,4 @@
 <?php
-// session_write_close();
-// session_start();
-// if (isset($_SESSION['Profile_ID'])) {
-//   $profile_ID = $_SESSION['Profile_ID'];
-// }
 
 $current_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $url_parts = parse_url($current_url);
@@ -14,7 +9,7 @@ if (isset($url_parts['query'])) {
 
 include('Connect.php');
 $conn = new Connect;
-$input = null;            //holds search input. If set, displays search result. Else, all job is displayed
+$input = null;
 $sanitized_input = null;  //holds the sanitized input
 $selectedJob;             //holds the selected job id
 if (isset($_POST['headerClicked'])) {
@@ -357,16 +352,40 @@ function applyJob($pId, $jId)
 {
   $conn = new Connect;
   $connect = $conn->getConnection();
+
+  $updateQuery = "UPDATE `profile` p
+    JOIN job j ON p.Profile_ID = $pId
+    SET p.token = p.token - j.Token
+    WHERE j.Job_ID = $jId";
+
   $checkQuery = "SELECT * FROM applied_jobs WHERE Profile_ID = $pId AND Job_ID = $jId";
   $result = mysqli_query($connect, $checkQuery);
   $count = $result->num_rows;
+
   if ($pId != -1) {
     if ($count > 0) {
       $query = "CALL withdrawJob($pId, $jId)";
       mysqli_query($connect, $query);
     } else {
-      $query = "CALL applyJob($pId, $jId)";
-      mysqli_query($connect, $query);
+      $query1 = "SELECT token FROM `profile` WHERE Profile_ID = $pId";
+      $result = $connect->query($query1);
+      $row = $result->fetch_assoc();
+      $profileToken = $row['token'];
+
+      $query2 = "SELECT Token FROM job WHERE Job_ID = $jId";
+      $result = $connect->query($query2);
+      $row = $result->fetch_assoc();
+      $jobToken = $row['Token'];
+
+      if ($profileToken - $jobToken < 0) {
+        echo "<script>
+          alert(\"Sorry, you don't have enough tokens!\");
+        </script>";
+      } else {
+        $query = "CALL applyJob($pId, $jId)";
+        mysqli_query($connect, $query);
+        mysqli_query($connect, $updateQuery);
+      }
     }
   } else {
     echo "<script>
@@ -435,12 +454,13 @@ function isChecked($value)
 
 <body>
 
+  <!-- <a href=\"./JobDetail.php?Job_ID=$jobId&Profile_ID=$profileID\" target=\"_blank\"> -->
+
   <div class="wrapper">
-    <!-- header design -->
+
     <?php
     include('header.php');
     ?>
-
 
 
     <!-- section design -->

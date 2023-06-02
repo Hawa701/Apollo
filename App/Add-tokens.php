@@ -1,17 +1,12 @@
 <?php
-/*
-// Start the session
-session_start();
 
-// Check if the user is logged in
-if (isset($_SESSION['user_id'])) {
-  // User is logged in, do something
-} else {
-  // User is not logged in, redirect to login page
-  header('Location: sign_up.php');
-  exit();
+$current_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$url_parts = parse_url($current_url);
+if (isset($url_parts['query'])) {
+  parse_str($url_parts['query'], $query);
+  $profileId = $query['Profile_ID'];
 }
-*/
+
 include('Connect.php');
 $conn = new Connect;
 $connect = $conn->getConnection();
@@ -21,85 +16,95 @@ if (!$connect) {
   die("Connection failed: " . mysqli_connect_error());
 }
 
-function getToken($connect, $profileId) {
+function getToken($connect, $profileId)
+{
   // Check connection
-             if (!$connect) {
-               die("Connection failed: " . mysqli_connect_error());
-             }else {
-               $query = "SELECT token FROM profile WHERE Profile_ID  = $profileId";
-               $result = mysqli_query($connect, $query);
-               $row = mysqli_fetch_assoc($result);
-               echo "<span class='token-amout'>{$row['token']}</span>"; // Using string interpolation
-             }
+  if (!$connect) {
+    die("Connection failed: " . mysqli_connect_error());
+  } else {
+    $query = "SELECT token FROM profile WHERE Profile_ID = {$profileId}";
+    $result = mysqli_query($connect, $query);
+    $row = mysqli_fetch_assoc($result);
+    echo "<span class='token-amout'>{$row['token']}</span>"; // Using string interpolation
+  }
+}
+
+
+function buy($connect, $profileId)
+{
+
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $amountToBuy = $_POST['amount-to-buy'];
+    $customAmount = isset($_POST['input-custom-amount']) ? $_POST['input-custom-amount'] : null; // Check if custom amount is set
+
+    // Calculate the total amount to be charged
+    if ($customAmount) {
+      $totalCharge = $customAmount;
+    } else {
+      $totalCharge = $amountToBuy;
+    }
+
+    // Update the user's token balance in the database
+    if ($customAmount) {
+      $query = "UPDATE profile SET token = token + {$customAmount} WHERE Profile_ID = {$profileId}"; // if it's custom amount
+    } else {
+      $query = "UPDATE profile SET token = token + {$amountToBuy} WHERE Profile_ID = {$profileId}"; // if it's default amount
+    }
+    $result = mysqli_query($connect, $query);
+
+    // Check if the query was successful
+    if ($result) {
+      $url = "view_profile.php?Profile_ID=" . urlencode($profileId);
+      header('Location:' . $url);
+      exit();
+    } else {
+
+      echo "Error updating token balance: " . mysqli_error($connect);
+    }
+  }
+}
+
+// calling buy function when buy button is clicked
+
+if (isset($_POST['buy-btn'])) {
+  buy($connect, $profileId);
 }
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- font link -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- font link -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
 
 
-    <!-- box icons -->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <!-- box icons -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <!-- Header css link -->
-    <link rel="stylesheet" href="./Style/Header.css" /> 
+  <!-- Header css link -->
+  <link rel="stylesheet" href="./Style/Header.css?v=1.0" />
 
-    <!-- css link -->
-    <link rel="stylesheet" href="./Style/add_tokens.css?v=1.0" />
-    <!-- icon link -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <title>Add Tokens</title>
-  </head>
-  <body>
+  <!-- css link -->
+  <link rel="stylesheet" href="./Style/add_tokens.css?v=1.0" />
+  <!-- icon link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Add Tokens</title>
+</head>
 
-    <div class="wrapper">
+<body>
 
-       <!-- header design -->
-       <header class="header" id="header">
-        <div class="logo">
-            <a href="#">Apollo</a>
-        </div>
+  <div class="wrapper">
 
-        <div class="nav">
-            <ul class="links">
-                <li><a href="#">Find Work</a></li>
-                <li><a href="#">My Job</a></li>
-                <li><a href="#">Post a Job</a></li>
-                <li><a href="#">How it Works</a></li>
-                <!-- <li><a href="#">Message</a></li> -->
-            </ul>
-            <!-- <div class="notification">
-                <a href="#"><i class="fa-regular fa-bell"></i></a>
-            </div> -->
-        </div>
-
-        <div class="signInnUp">
-            <button class="login">Log In</button>
-            <button class="signup">Sign Up</button>
-        </div>
-        <!-- 
-        <div class="profile">
-            <a href="#"> H </a>
-        </div> -->
-    </header> <!-- header end -->
+    <?php
+    include('header.php');
+    ?>
 
     <!-- Section design -->
     <section class="section">
@@ -107,20 +112,20 @@ function getToken($connect, $profileId) {
       <div class="token-wrap">
         <h1>Buy Tokens</h1>
 
-        <form action="#" class="token-form">
+        <form action="#" class="token-form" method="post">
 
-        <label for="avilable-tokens">Your avialable Tokens</label>
+          <label for="avilable-tokens">Your avialable Tokens</label>
           <div class="token-amout display" id="avilable-tokens">
 
-              <?php
-              getToken($connect, 7);
-              ?>
-              
+            <?php
+            getToken($connect, $profileId);
+            ?>
+
           </div>
 
           <label for="amount-to-buy">Select the amount to buy</label>
           <br>
-          <select name="" id="amount-to-buy">
+          <select name="amount-to-buy" id="amount-to-buy">
             <option value="10">10 for 75bir</option>
             <option value="20">20 for 150bir</option>
             <option value="40">40 for 300bir</option>
@@ -137,9 +142,9 @@ function getToken($connect, $profileId) {
 
           <div class="input">
             <label for="input-custom-amount">Custom amount</label>
-          <br>
-            <input type="text" name="input" id="input-custom-amount" min="1" max="75000" step="1" maxlength="5">
-          <br>
+            <br>
+            <input type="text" name="input-custom-amount" id="input-custom-amount" min="1" max="75000" step="1" maxlength="5">
+            <br>
           </div>
 
           <label for="amount-tobe-charged">You account will be charged</label>
@@ -159,8 +164,8 @@ function getToken($connect, $profileId) {
           </div>
 
           <div class="buttons">
-            <button type="cancel" class="cancel-btn btn">Cancel</button>
-            <button type="submit" class="buy-btn btn">Buy Token</button>
+            <button type="cancel" class="cancel-btn btn" name="cancel-btn">Cancel</button>
+            <button type="submit" class="buy-btn btn" name="buy-btn">Buy Token</button>
           </div>
 
         </form> <!-- form end -->
@@ -169,10 +174,11 @@ function getToken($connect, $profileId) {
 
     </section> <!-- section end -->
 
-    </div> <!-- wrapper end -->
-  
-     <!-- js link -->
-     <script src="./Script/add tokens.js"></script>
-     <script src="./Script/Find Work.js"></script>
+  </div> <!-- wrapper end -->
+
+  <!-- js link -->
+  <script src="./Script/add tokens.js"></script>
+  <script src="./Script/Find Work.js"></script>
 </body>
+
 </html>
