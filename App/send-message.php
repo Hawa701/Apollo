@@ -14,6 +14,17 @@ if (isset($_POST['sender_id']) && isset($_POST['receiver_id']) && isset($_POST['
     $sql4 = "INSERT INTO `chat_messages` (`chat_ID`, `sender_ID`, `reciever_ID`, `message`, `timestamp`) VALUES (NULL, '$sender_id', '$receiver_id', '$message', current_timestamp())";
     if (mysqli_query($connect2, $sql4)) {
         echo "Message sent successfully";
+        // $to = "recipient@email.com";
+        // $subject = "Test Email";
+        // $message = "This is a test email.";
+        // $headers = "From: sender@email.com";
+
+        // // Send email
+        // if (mail($to, $subject, $message, $headers)) {
+        //     echo "Email sent successfully.";
+        // } else {
+        //     echo "Email sending failed.";
+        // }
     } else {
         echo "Error: " . $sql4 . "<br>" . mysqli_error($connect2);
     }
