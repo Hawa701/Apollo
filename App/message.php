@@ -17,9 +17,6 @@ $getter = $query['Reciver_ID'];
 $sender = $query['Sender_ID'];
 $ID;
 
-echo $getter;
-echo $sender;
-
 ?>
 
 <!DOCTYPE html>
@@ -86,7 +83,7 @@ WHERE cm.sender_ID = $Profile_ID OR cm.reciever_ID = $Profile_ID;";
                         $name = $row2['Firstname'];
 
                         if($sender_id == $Profile_ID|| $receiver_id == $Profile_ID){
-                        echo "<div class='chat-message'>";
+                        echo "<div class='chat-message '>";
                         $sender_name = ($sender_id == $Profile_ID) ? 'You' : $name;
                          echo "<span class='sender'><br>" . $sender_name . "</span>";
                         echo "<div class='message'>" . $message . "</div>";
@@ -127,7 +124,7 @@ WHERE cm.sender_ID = $Profile_ID OR cm.reciever_ID = $Profile_ID;";
             event.preventDefault();
             $.post("send-message.php", $(this).serialize(), function(data) {
                 alert(data);
-                alert('sent');
+                // alert('sent');
                 // refreshChatMessages();
             });
             $(this).trigger("reset");
