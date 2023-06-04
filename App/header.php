@@ -62,7 +62,7 @@ function getFirstLetter()
       // Profile
       echo "<div class=\"notifProf\" id=\"notifProf\">
         <div class=\"notification\" id=\"notification\">
-          <a href=\"#\"><i class=\"fa-regular fa-message\"></i></i></a>
+          <a href=\"#\"><i class=\"fa-regular fa-bell\"></i></i></a>
         </div>
         <div class=\"profile\" id=\"profile\">
           <a href=\"#\">";

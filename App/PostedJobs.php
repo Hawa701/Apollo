@@ -6,7 +6,7 @@ if (isset($url_parts['query'])) {
   parse_str($url_parts['query'], $query);
   $profileID = $query['Profile_ID'];
 } else {
-  $profileID = 11;
+  $profileID = -1;
 }
 
 include('Connect.php');
@@ -55,7 +55,9 @@ function loadPostedJobs($profileID)
       echo "<div class=\"job\">
 
         <form class=\"title-block\" method=\"post\">
-          <h3>$jobTitle</h3>
+          <button class=\"job-title\" name=\"headerClick\" value=\"$jobId\">
+            <h3>$jobTitle</h3>
+          </button>
           <button class=\"deleteBtn\" name=\"deleteBtn\" value=\"$jobId\">
             <i class=\"fa-solid fa-trash\"></i>
           </button>
@@ -104,6 +106,14 @@ function deleteJob($pId, $jId)
   mysqli_query($connect, $deleteQuery);
 }
 
+function openJobstatus($pId, $jId)
+{
+}
+
+if (isset($_POST['headerClick'])) {
+  $jobID = $_POST['headerClick'];
+  header("Location:job_status.php?Profile_ID=$profileID&Job_ID=$jobID");
+}
 ?>
 
 <!DOCTYPE html>
@@ -115,7 +125,7 @@ function deleteJob($pId, $jId)
   <meta name="viewport" content="width=device-width, initial-scale=1.1" />
 
   <!-- CSS Link -->
-  <link rel="stylesheet" href="./Style/PostedJobs.css?v=1.0" />
+  <link rel="stylesheet" href="./Style/PostedJobs.css?v=1.2" />
 
   <!-- Font link -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -144,6 +154,8 @@ function deleteJob($pId, $jId)
         $jobID = $_POST['deleteBtn'];
         deleteJob($profileID, $jobID);
       }
+
+
       ?>
 
     </div>

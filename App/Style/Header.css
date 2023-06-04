@@ -89,7 +89,7 @@ header {
   top: 4rem;
   left: 19rem;
   width: 13rem;
-  height: 5rem;
+  height: 7rem;
   background-color: var(--main-bg-color);
   border-radius: 5px;
   border-top-left-radius: unset;
@@ -286,7 +286,7 @@ header {
   top: 13.7rem;
   right: 45%;
   width: 36%;
-  height: 3.2rem;
+  height: 4.5rem;
   padding: 0.5rem;
   background-color: var(--main-bg-color);
   border-radius: 5px;

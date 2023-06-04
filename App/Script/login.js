@@ -1,16 +1,9 @@
-    const texts = document.querySelector('#texts');
-    const password = document.querySelector('#password');
-    const backbtn = document.querySelector('#back-btn');
-    const loginbtn = document.querySelector('#loginbtn');
-    let emailpattern = new RegExp('[a-zA-Z0-9]+@[a-z]+\.[a-z]{2,3}');// email pattern that uses small & capital letter & . & @
+const texts = document.querySelector("#texts");
+const password = document.querySelector("#password");
+const backbtn = document.querySelector("#back-btn");
+const loginbtn = document.querySelector("#loginbtn");
+let emailpattern = new RegExp("[a-zA-Z0-9]+@[a-z]+.[a-z]{2,3}"); // email pattern that uses small & capital letter & . & @
 
-
-    backbtn.addEventListener('click', function(){
-        window.history.back();
-    })
-
-
-    
 /*     
 loginbtn.addEventListener('click', function(e) {
         if(!emailpattern.test(texts.value) || texts.value == ''){
@@ -23,22 +16,17 @@ loginbtn.addEventListener('click', function(e) {
         }
         
 })   
- */    
+ */
 
+// password toggle
+const icon = document.querySelector("#togglePassword");
 
-
-
- // password toggle
- const icon = document.querySelector('#togglePassword');
- 
- icon.addEventListener('click', function () {
-    if (password.getAttribute('type') === 'password'){
-        password.setAttribute('type', 'text');
-        icon.style.color='#000'   
-    }
-    else{
-        password.setAttribute('type', 'password');
-        icon.style.color='#737373'
-    } 
-    
+icon.addEventListener("click", function () {
+  if (password.getAttribute("type") === "password") {
+    password.setAttribute("type", "text");
+    icon.style.color = "#000";
+  } else {
+    password.setAttribute("type", "password");
+    icon.style.color = "#737373";
+  }
 });

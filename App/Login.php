@@ -17,7 +17,7 @@
 
       <div class="content">
 
-        <button class="back-btn" id="back-btn"><img src="https://img.icons8.com/ios-filled/25/FFFFFF/back.png" /> </button>
+        <button class="back-btn" id="back-btn"></button>
 
         <div class="logo-image">
           <img src="image/signin-image.png" alt="" class="logo">
@@ -78,4 +78,4 @@
 </body>
 
 </html>
-<script src="Script/login.js?v=1.0"></script>
+<script src="Script/login.js?v=1.3"></script>

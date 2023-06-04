@@ -178,6 +178,7 @@ function loadJobInfo($profileID, $JobId)
     while ($row = mysqli_fetch_assoc($result)) {
       $jobId = $row['Job_ID'];
       $jobTitle = $row['Job_Title'];
+      $jobPosition = $row['Job_Position'];
       $jobDescription = $row['Description'];
       $payment = $row['Payment'];
       $experience = $row['Experience'];
@@ -200,7 +201,7 @@ function loadJobInfo($profileID, $JobId)
             
             <div class=\"info one\">
                   <h3>" . $jobTitle . "</h3>
-                  <h4>Front-End Development</h4>
+                  <h4>$jobPosition</h4>
                   <p>" . $date . "</p>
                 </div>
                 <div class=\"info two\">

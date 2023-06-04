@@ -84,6 +84,14 @@ body {
   width: 100%;
 }
 
+.container .job-title {
+  width: 90%;
+  text-align: left;
+  background-color: var(--main-bg-color);
+  border: none;
+  font-size: 1.2rem;
+}
+
 .title-block .deleteBtn {
   width: 1.3rem;
   background-color: var(--main-bg-color);
@@ -93,7 +101,7 @@ body {
 }
 
 .deleteBtn i {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 .container .job-info {

@@ -1,0 +1,123 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto';
+    font-weight: 400;
+}
+:root {
+    --main-color: #295dc5;
+    --second-main-color: #deecf0;
+  
+    --main-bg-color: #fff;
+    --second-bg-color: #ededed;
+    --third-bg-color: #c8c9ca;
+  
+    --main-text-color: #000;
+    --second-text-color: #fff;
+    --third-text-color: #737373;
+  }
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+h1 {
+    font-size: 1.7em;
+    color:var(--main-text-color);
+}
+.container {
+    max-width: 1022px;
+    margin: 1.5rem auto;
+}
+
+.mainContainer {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid rgb(213, 213, 213);
+    border-radius: 10px;
+    padding: 25px;
+    margin-top: 30px;
+    margin-bottom: 300px;
+}
+
+.jobDetails {
+    width: 90%;
+
+}
+
+.jobTitle h2 {
+    color:var(--main-color) ;
+    margin-bottom: 25px;
+    font-size: 2rem;
+    font-family: monospace;
+}
+.jobTitle p{
+    font-size: 0.9rem;
+    font-family: sans-serif;
+    color: var(--main-text-color);
+}
+.jobDescription {
+    border-top: 1px solid rgb(213, 213, 213);
+    border-bottom: 1px solid rgb(213, 213, 213);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.jobDescription span{
+    text-decoration: underline;
+    color:var(--main-text-color);
+    font-family: monospace;
+    font-size: 1.5rem;
+    letter-spacing: 0.51px;
+}
+.jobDescription p{
+    color: var(--main-text-color) ;
+    font-family: monospace;
+    font-size:1.2rem;
+}
+.jobPriceExpertise {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    border-bottom: 1px solid rgb(213, 213, 213);
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+}
+
+.jobPriceExpertise div {
+    margin-bottom: 25px;
+    max-width: 200px;
+    text-align: center;
+}
+
+.jobPriceExpertise div h4 {
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.jobPriceExpertise div p {
+    font-weight: 400;
+}
+
+
+@media(max-width: 769px) {
+    h1 {
+        text-align: center;
+    }
+}
+
+@media(max-width: 426px) {
+    .mainContainer {
+        flex-direction: column;
+    }
+    .jobDetails {
+        width: 100%;
+        border-right: none;
+    }
+    .jobActions {
+        width: 100%;
+        text-align: center;
+    }
+}

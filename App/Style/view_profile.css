@@ -186,7 +186,7 @@ h3 {
   margin-right: 25px;
 }
 
-@media (max-width: 1291px) {
+@media (max-width: 1200px) {
   .right-side .buy-btn,
   .posted-jobs {
     padding: 5px 10px;
