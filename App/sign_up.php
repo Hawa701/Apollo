@@ -98,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 
   <!-- css link -->
-  <link rel="stylesheet" href="./Style/Sign_Up.css?v=1.0" />
+  <link rel="stylesheet" href="./Style/Sign_Up.css?v=1.1" />
   <!-- icon link -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Sign Up</title>
@@ -205,7 +205,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
   </div> <!-- container end-->
 
-  <script src="./Script/sign_up.js?v=1.1"></script>
+  <script src="./Script/sign_up.js?v=1.2"></script>
 </body>
 
 </html>

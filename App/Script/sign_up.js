@@ -45,10 +45,9 @@ function validateForm() {
   const usernamePattern = /^[a-zA-Z0-9_]{3,20}$/;
   //  user-Name must contain only letters, numbers, and underscores, and is between 3 and 20 characters long.
 
-  const passwordPattern =
-    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+~\-=`{}[\]:";'<>?,.\/]).{8,20}$/;
+  const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
 
-  // password to have at least one digit, one lowercase letter, one uppercase letter, and one special character, and to be between 8 and 20 characters long.
+  // password to have at least one digit, one lowercase letter, one uppercase letter and to be between 8 and 20 characters long.
 
   let isValid = true;
 
@@ -66,7 +65,7 @@ function validateForm() {
 
   if (!passwordPattern.test(passwordInput.value)) {
     alert(
-      "Password must be between 8 and 20 characters and contain at least one digit, one lowercase letter, one uppercase letter, and one special character."
+      "Password must be between 8 and 20 characters and contain at least one digit, one lowercase letter and one uppercase letter."
     );
     isValid = false; // prevent form submission
   }

@@ -2,18 +2,21 @@
 
 $current_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $url_parts = parse_url($current_url);
+
 if (isset($url_parts['query'])) {
   parse_str($url_parts['query'], $query);
   $profileID = $query['Profile_ID'];
-  $jobID = $query['Job_ID'];
+  $jobID = $query['Job_ID']; 
 } else {
   $profileID = -1;
+  $jobID = -1;
 }
 
 // echo "profile $profileID";
 // echo "job $jobID";
 
 include('Connect.php');
+include('job_status_functions.php');
 
 $conn = new Connect;
 $connect = $conn->getConnection();
@@ -23,312 +26,26 @@ if (!$connect) {
 }
 
 
-
-function getJobTitle($connect, $jobId)
-{
-  $query = "SELECT job.Job_Title FROM job 
-                              JOIN applied_jobs ON job.Job_ID = applied_jobs.Job_ID 
-                              WHERE applied_jobs.Job_ID = $jobId";
-  $result = mysqli_query($connect, $query);
-
-  if ($result && mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
-    echo "{$row['Job_Title']}";
-  } else {
-    // echo "<style> .first-job { display: none; } </style>";
-    echo "<h3> No Job Saved</h3>";
-  }
-}
-
-function getJobInfo($connect, $jobId)
-{
-  $query = "SELECT job.Payment, job.Experience, job.Date, job.Token, job.Estimated_Time FROM job 
-                  JOIN applied_jobs ON job.Job_ID = applied_jobs.Job_ID 
-                  WHERE applied_jobs.Job_ID = $jobId";
-  $result = mysqli_query($connect, $query);
-
-  if ($result && mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
-    echo "<span> Payment: <span class='content payment'>{$row['Payment']}</span></span> <br> 
-                             <span>Skill: <span class='content skill'>{$row['Experience']}</span></span> <br>
-                             <span>Est. Time: <span class='content time'>{$row['Estimated_Time']}</span></span> <br>
-                             <span>Posted On: <span class='content posted'>{$row['Date']}</span></span> <br>
-                             <span>Tokens To Apply: <span class='content tokens'>{$row['Token']}</span></span> <br>  
-                             ";
-  } else {
-    echo "<h3> No Job Saved</h3>";
-  }
-}
-
-function getJobDescription($connect, $jobId)
-{
-  $query = "SELECT job.Description FROM job 
-                           JOIN applied_jobs ON job.Job_ID = applied_jobs.Job_ID 
-                           WHERE applied_jobs.Job_ID = $jobId";
-  $result = mysqli_query($connect, $query);
-
-  if ($result && mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
-    echo "{$row['Description']}";
-  } else {
-    echo "<h3> No Job Saved</h3>";
-  }
-}
-
-// gets proposals and tokens
-function getJobTime($connect, $jobId)
-{
-  $query = "SELECT job.Proposals, job.Token FROM job 
-                           JOIN applied_jobs ON job.Job_ID = applied_jobs.Job_ID  
-                           WHERE applied_jobs.Job_ID = $jobId";
-  $result = mysqli_query($connect, $query);
-
-  if ($result && mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
-    echo "<div class='proposal'>Proposal: <span>Less than <span>{$row['Proposals']}</span></span></div>
-                        <div class='tokens'>Tokens To Apply: <span>{$row['Token']}</span></div>";
-  } else {
-    echo "<h3> No Job Saved</h3>";
-  }
-}
-
-
-function postedOn($connect, $jobId)
-{
-  $query = "SELECT job.Date FROM job 
-                            JOIN applied_jobs ON job.Job_ID = applied_jobs.Job_ID  
-                            WHERE applied_jobs.Job_ID = $jobId";
-  $result = mysqli_query($connect, $query);
-
-  if ($result && mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
-    echo "<p>Posted On - <span>{$row['Date']}</span></p>";
-  } else {
-    echo "<h3> No Job Saved</h3>";
-  }
-}
-
-function getPrice($connect, $jobId)
-{
-  $query = "SELECT job.Payment  FROM job 
-                  JOIN applied_jobs ON job.Job_ID = applied_jobs.Job_ID 
-                  WHERE applied_jobs.Job_ID = $jobId";
-  $result = mysqli_query($connect, $query);
-
-  if ($result && mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
-    echo "<h4>\${$row['Payment']}</h4>";
-  } else {
-    echo "<h3> No Job Saved</h3>";
-  }
-}
-
-function getExperience($connect, $jobId)
-{
-  $query = "SELECT job.Experience FROM job 
-    JOIN applied_jobs ON job.Job_ID = applied_jobs.Job_ID 
-    WHERE applied_jobs.Job_ID = $jobId";
-  $result = mysqli_query($connect, $query);
-
-  if ($result && mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
-    echo "<h4>{$row['Experience']}</h4>";
-  } else {
-    echo "<h3> No Job Saved</h3>";
-  }
-}
-
-function getToken($connect, $jobId)
-{
-  $query = "SELECT job.Token FROM job 
-    JOIN applied_jobs ON job.Job_ID = applied_jobs.Job_ID 
-    WHERE applied_jobs.Job_ID = $jobId";
-  $result = mysqli_query($connect, $query);
-
-  if ($result && mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
-    echo "{$row['Token']}";
-  } else {
-    echo "<h3> No Job Saved</h3>";
-  }
-}
-
-
-function noOfProposals($connect, $jobId)
-{
-  $query = "SELECT job.Proposals FROM job 
-    JOIN applied_jobs ON job.Job_ID = applied_jobs.Job_ID 
-    WHERE applied_jobs.Job_ID = $jobId";
-  $result = mysqli_query($connect, $query);
-
-  if ($result && mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
-    echo "{$row['Proposals']}";
-  } else {
-    echo "<h3> No Job Saved</h3>";
-  }
-}
-
-
-function profileInfo($connect, $profile_ID)
-{
-  $query = "SELECT  profile.Firstname, profile.Lastname, profile.Profession, profile.Country  FROM profile 
-    JOIN applied_jobs ON profile.Profile_ID = applied_jobs.Profile_ID 
-    WHERE applied_jobs.Profile_ID = $profile_ID";
-  $result = mysqli_query($connect, $query);
-
-  if ($result && mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
-    echo " 
-         <div class='profile-info'>
-         <div class='name'>{$row['Firstname']} {$row['Lastname']}</div>
-         <div class='profession'>{$row['Profession']}</div>
-         <div class='country'>{$row['Country']}</div>
-         </div>
-         ";
-  } else {
-    echo "<h3> No Profile Found!</h3>";
-  }
-}
-
-
-function getPricePerHour($connect, $profile_ID)
-{
-  $query = "SELECT profile.PricePerHour FROM profile 
-    JOIN applied_jobs ON profile.Profile_ID = applied_jobs.Profile_ID 
-    WHERE applied_jobs.Profile_ID = $profile_ID";
-  $result = mysqli_query($connect, $query);
-
-  if ($result && mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
-    echo "
-         <div class='price'>Price/hr - <span class='bir'>
-         {$row['PricePerHour']}
-                  </span>bir</div> 
-         ";
-  } else {
-    echo "<h3> No Profile Found!</h3>";
-  }
-}
-
-
-function getProfileExperience($connect, $profile_ID)
-{
-  $query = "SELECT profile.Experience_Level FROM profile 
-    JOIN applied_jobs ON profile.Profile_ID = applied_jobs.Profile_ID 
-    WHERE applied_jobs.Profile_ID = $profile_ID";
-  $result = mysqli_query($connect, $query);
-
-  if ($result && mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
-    echo "
-         <div class='rating'>
-       <span>
-         Experience - <span class='rate'>
-         {$row['Experience_Level']}
-         </span> 
-       </span>
-       </div>
-         ";
-  } else {
-    echo "<h3> No Profile Found!</h3>";
-  }
-}
-
-function addPerson($connect, $profileID)
-{
-
-  $query = "SELECT  profile.Firstname, profile.Lastname, profile.Profession, profile.Country, profile.PricePerHour, profile.Experience_Level  FROM profile 
-  JOIN applied_jobs ON profile.Profile_ID = applied_jobs.Profile_ID 
-  WHERE applied_jobs.Profile_ID = $profileID";
-  $result = mysqli_query($connect, $query);
-
-  if ($result && mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
-
-    echo " 
-    <div class='profiles'>
-        <div class='photo'>
-         
-          <div class='online-indicatr'></div>
-        </div>
-
-
-      <div class='body'>
-
-            <div class='profile-info'>
-              <div class='name'>{$row['Firstname']} {$row['Lastname']}</div>    
-              <div class='profession'>{$row['Profession']}</div>
-              <div class='country'>{$row['Country']}</div>
-            </div>
-
-            <div class='price'>Price/hr - <span class='bir'>
-                 {$row['PricePerHour']}
-                                          </span>bir</div> 
-
-            <div class='rating'>
-                <span>
-                    Experience - <span class='rate'>
-                       {$row['Experience_Level']}
-                                  </span> 
-                 </span>
-            </div>
-
-      </div> <!-- body end -->
-
-      <div class='actions'>
-        <button class='message btn' name='message'>Message</button>
-        <button class='hire btn' name='hire'>Hire</button>        
-      </div>
-  </div>  <!-- profiles end -->   
-             ";
-  } else {
-    echo "<h3> No Profile Found!</h3>";
-  }
-}
-
-
-// search
-function search($connect)
-{
-  if (isset($_POST['submit'])) {
-    $searchTerm = mysqli_real_escape_string($connect, $_POST['search']); // Escape the POST data before using it in SQL queries.
-
-    $query = "SELECT profile.Profile_ID FROM profile JOIN applied_jobs 
-              ON applied_jobs.Profile_ID = profile.Profile_ID
-              WHERE profile.Firstname LIKE '%$searchTerm%' OR profile.Profession LIKE '%$searchTerm%'";
-
-    $results = mysqli_query($connect, $query);
-    if (mysqli_num_rows($results) > 0) {
-      while ($row = mysqli_fetch_assoc($results)) {
-        addPerson($connect, $row['Profile_ID']);
-      }
-    } else {
-      echo "<h3>No Results Found!</h3>";
-    }
-  }
-}
-
-function hire($connect, $profileID)
-{
-  if (isset($_POST['hire'])) {
-
-    $query = "UPDATE job
-              SET   Status = 'hired'
-              FROM job
-              JOIN Saved_jobs ON job.Job_ID = Saved_jobs.Job_ID 
-              WHERE Saved_jobs.Profile_ID = $profileID";
-
-    if (mysqli_query($connect, $query)) {
-      echo "Hired Sucessfully";
-    } else {
-      echo "Error!" . mysqli_error($connect);
-    }
-  }
-}
-
 if (isset($_POST['hire'])) {
-  hire($connect, $profileID);
+  $profileID = $_POST['Reciver_ID'];
+  hire($connect, $profileID, $jobID); 
+}
+
+// when the message buttons is cliked the send and the resiver id is sent
+if(isset($_GET['message'])) {
+  $receiverId = $query['Reciver_ID'];
+  header("Location: http://localhost/App/message.php?Sender_ID=$profileID&Reciver_ID=$receiverId");
+}
+
+if(isset($_POST['delete-btn'])) {
+
+  deleteJob($connect, $jobID);
+  header('Location: index.php');
+}
+
+// updating and validations
+if (isset($_POST['save'])) {
+  editJob($connect, $jobID);
 }
 
 ?>
@@ -353,7 +70,7 @@ if (isset($_POST['hire'])) {
   <link rel="stylesheet" href="./Style/Header.css?v=1.0" />
 
   <!-- css link -->
-  <link rel="stylesheet" href="./Style/job_status.css?v=1.3" />
+  <link rel="stylesheet" href="./Style/job_status.css?v=1.15" />
   <!-- icon link -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Job Status</title>
@@ -379,17 +96,16 @@ if (isset($_POST['hire'])) {
         <!-- left side design -->
         <div class="left-container" id="left-container">
 
+    <form method="post" class="job-form">
           <div class="job-description">
             <div class="job-title">
-              <h3>
                 <?php
-                getJobTitle($connect, 2);
+                getJobTitle($connect, $jobID);
                 ?>
-              </h3>
             </div>
             <p>
               <?php
-              getJobDescription($connect, 2);
+              getJobDescription($connect, $jobID);
               ?>
             </p>
           </div> <!-- job description end -->
@@ -399,20 +115,21 @@ if (isset($_POST['hire'])) {
 
             <span>
               <?php
-              getJobInfo($connect, 2);
+              getJobInfo($connect, $jobID);
               ?>
             </span>
           </div> <!-- job info end -->
 
           <div class="edit-delete">
-            <div class="edit">
-              <button>Edit Job </button>
-            </div>
-
-            <div class="delete">
-              <button>Delete Job</button>
-            </div>
-          </div> <!-- edit delete end -->
+                <div class="edit">
+                  <button name="edit-btn" class="edit-btn" id="edit-btn">Edit</button>      
+                </div>
+       
+                <div class="delete">
+                  <button name="delete-btn" class="delete-btn">Delete Job</button>
+                </div>  
+            </div> <!-- edit delete end -->
+    </form> <!-- form end -->
 
         </div> <!-- left container end -->
 
@@ -423,7 +140,7 @@ if (isset($_POST['hire'])) {
               <ul class="links">
                 <li><a href="#">All Proposals (<span class="noOf-proposals">
                       <?php
-                      noOfProposals($connect, $jobID);
+                      noOfProfiles($connect, $jobID);
                       ?>
                     </span>)</a></li>
               </ul>
@@ -433,10 +150,10 @@ if (isset($_POST['hire'])) {
           <div class="searchSort">
             <!-- HTML code with search input and image -->
             <div class="search">
-              <form method="POST" class="search">
+            <form method="POST" class="search">
                 <input type="text" placeholder="search for freelancers" name="search">
                 <div class="search-img"><button type="submit" name="submit" class="submit-btn"><img width="30" height="32" src="https://img.icons8.com/ios-filled/25/22C3E6/google-web-search.png" alt="google-web-search" /></button></div>
-              </form>
+            </form>
             </div>
 
             <!-- <div class="sort">
@@ -453,24 +170,86 @@ if (isset($_POST['hire'])) {
 
             <?php
 
-            if (isset($_POST['submit'])) {
-              search($connect);
-            } else {
-              addPerson($connect, $profileID);
-            }
+              if (isset($_POST['submit'])) {
+                 search($connect, $jobID);
+              } else {
+                addPerson($connect, $jobID, $profileID);
+              }
 
             ?>
-
-
 
           </div> <!-- Profile wrapper end -->
 
         </div> <!-- applicants end -->
       </div> <!-- main content end -->
     </div> <!-- job status end -->
+
+
+ <!-- Edit form  -->
+<div class="edit-form" id="edit">
+
+          <div class="edit_header">
+            <h1>Edit Job</h1>
+            <a href="#" class="exit" id="exit" name="exit" onclick="exitEdit()"><img width="25" height="25" src="https://img.icons8.com/ios/25/22C3E6/close-window--v1.png" alt="close-window--v1"/></a>
+          </div>
+
+          <p class="errors">  </p>
+
+    <form action="" method="post" class="edit-job">
+
+      <div class="left">
+        <label for="job-title">Job Title</label>
+        <input type='text' name='title' class='job-title' id="job-title" value='<?php getJobTitleOnly($connect,$jobID) ?>'> 
+
+        <label for="job-position">Job Position</label>
+        <input type='text' name='position' class='job-position' id="job-position" value='<?php getJobPosition($connect,$jobID) ?>'> 
+
+        <label for="job-description">Job Description</label>
+        <textarea name='decscription' class='job-description' id="job-description"><?php getJobDescriptionOnly($connect,$jobID) ?> </textarea>
+
+        <label for="payment">Pyament</label>
+        <input type='text' name='payment' class='payment' id="payment" value='<?php getPriceOnly($connect,$jobID) ?>'> 
+
+        <label for="experience">Experience</label>
+        <select name="job-experience" id="experience">
+          <option value="entry-Level">Entry Level</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="expert">expert</option>
+        </select>
+
+        <label for="token">Token To Apply</label>
+        <input type='text' name='tokens' class='tokens' value='<?php getToken($connect, $jobID) ?>'>
+
+        <label for="employment">Employment</label>
+        <select name="job-Employment" id="employment">
+          <option value="contract">Contract</option>
+          <option value="full-time">Full Time</option>
+        </select>
+
+        <label for="Est">Estimated Time</label>
+        <input type='date' name='estimateddate' class='est' value='<?php getEstimatedtime($connect, $jobID) ?>'>
+      </div>
+
+      <div class="right">
+          <div class="status">
+            <label for="status">Job Status</label>
+            <select name="status" id="status">
+              <option value="interviewing">Interviewing</option>
+              <option value="hired">Hired</option>
+            </select>
+          </div>
+
+          <div class="btn">
+            <button class='save' name='save'>Save</button> 
+          </div> 
+      </div>
+  
+
+</form> <!-- edit form end -->
+
   </div> <!-- wrapper end -->
 
-  <script src='./Script/job_status.js'></script>
+  <script src='./Script/job_status.js?v1.3'></script>
 </body>
 
 </html>
