@@ -32,7 +32,7 @@ function getToken($connect, $profileId)
 
 function viewProfile($connect, $profileId)
 {
-  $query = "SELECT  profile.Firstname, profile.Lastname, profile.Username, profile.Email, profile.Experience_Level, profile.PricePerHour, profile.Profession, profile.Country  FROM profile
+  $query = "SELECT  profile.Firstname, profile.Lastname, profile.Username, profile.Email, profile.token, profile.Experience_Level, profile.PricePerHour, profile.Profession, profile.Country  FROM profile
               WHERE profile.Profile_ID = $profileId";
 
   $result = mysqli_query($connect, $query);
@@ -40,37 +40,150 @@ function viewProfile($connect, $profileId)
   if ($result && mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
     echo "
-                <h3>View Profile</h3>
+    <div class='view'>
+          
+    <div class='all-header'>
 
-                <label for='firstname'>First Name</label>
-                <div class='firstname readOnly' id='firstname'> {$row['Firstname']} </div>
+    </div>
 
-                <label for='lastname'>Last Name</label>
-                <div class='lastname readOnly' id='lastname'> {$row['Lastname']} </div>
+    <div class='view_middle'>
+       <div class='profile-view'>
+        <div class='flex'>
+          <label for='firstname'>First Name:</label>
+          <div class='firstname readOnly' id='firstname'> {$row['Firstname']} </div>
+        </div>
 
-                <label for='username'>User Name</label>
-                <div class='username readOnly' id='username'> {$row['Username']} </div>
+        <div class='flex'>
+          <label for='lastname'>Last Name:</label>
+          <div class='lastname readOnly' id='lastname'> {$row['Lastname']} </div>
+        </div>
 
-                <label for='email'>Email</label>
-                <div class='email readOnly' id='email'> {$row['Email']} </div>
+        <div class='flex'>
+          <label for='username'>User Name:</label>
+          <div class='username readOnly' id='username'> {$row['Username']} </div>
+        </div>
 
-                <label for='profession'>Profession</label>
-                <div class='profession readOnly' id='profession'> {$row['Profession']} </div>
+        <div class='flex'>
+          <label for='email'>Email:</label>
+          <div class='email readOnly' id='email'> {$row['Email']} </div>
+        </div>
 
-                <label for='experience'>Experience</label>
-                <div class='experience readOnly' id='experience'> {$row['Experience_Level']} </div>
+        <div class='flex'>
+          <label for='profession'>Profession:</label>
+         <div class='profession readOnly' id='profession'> {$row['Profession']} </div>
+        </div>
 
-                <label for='priceperhour'>Priceperhour</label>
-                <div class='priceperhour readOnly' id='priceperhour'> {$row['PricePerHour']} </div>
+        <div class='flex'>
+          <label for='experience'>Experience:</label>
+          <div class='experience readOnly' id='experience'> {$row['Experience_Level']} </div>
+        </div>
 
-                <label for='country'>Country</label>
-                <div class='country readOnly' id='country'> {$row['Country']} </div>               
+        <div class='flex'>
+          <label for='priceperhour'>Priceperhour:</label>
+          <div class='priceperhour readOnly' id='priceperhour'> {$row['PricePerHour']} </div>
+        </div>
+
+        <div class='flex'>
+          <label for='country'>Country:</label>
+          <div class='country readOnly' id='country'> {$row['Country']} </div>
+        </div>
+       </div>
+
+      <div class='payment'>
+        <form class='edit-form' method='post'>
+          <label for='current-tokens' class='current-tokens'>Current Token: <span>{$row['token']}</span> </label>
+
+          <button class='buy-btn' name='buy-btn'>Buy Token</button>
+
+          <label for='posted-jobs'>View Your Posted Jobs</label>
+          <button class='posted-jobs' name='posted-jobs'>Posted Jobs</button>
+        </form>
+
+      </div> <!-- payment end -->
+
+    </div>  <!-- view middle end -->
+
+     
+</div> <!-- view end -->               
             ";
   } else {
     echo "Error!";
   }
 }
 
+function viewUpdatingSection($connect, $profileId) {
+  $query = "SELECT  profile.Firstname, profile.Lastname, profile.Username, profile.Email, profile.token, profile.Experience_Level, profile.PricePerHour, profile.Profession, profile.Country  FROM profile
+              WHERE profile.Profile_ID = $profileId";
+
+  $result = mysqli_query($connect, $query);
+
+  if ($result && mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+
+    echo "
+        <form class='edit-form' method='post'>
+        <div class='update'>
+          <div class='all-header'></div>
+          <div class='update-middle'>
+            <div class='fullname'>
+              <div class='fname'>
+                <label for='update-firstname'>Update First Name</label>
+                <input type='text' name='firstname' id='update-firstname' value='{$row["Firstname"]}'>
+              </div>
+              <div class='lname'>
+                <label for='update-lastname'>Update Last Name</label>
+                <input type='text' name='lastname' id='update-lastname' value='{$row["Lastname"]}'>
+              </div>
+            </div>
+            <div class='username'>
+              <label for='update-username'>Update User Name</label>
+              <input type='text' name='username' id='update-username' value='{$row["Username"]}'>
+            </div>
+            <div class='email'>
+              <label for='update-email'>Update Email</label>
+              <input type='text' name='email' id='update-email' value='{$row["Email"]}'>
+            </div>
+            <div class='more-info'>
+              <div class='profession'>
+                <label for='update-profession'>Update Profession</label>
+                <input type='text' name='profession' id='update-profession' value='{$row["Profession"]}'>
+              </div>
+
+              <div class='exp'>
+              <label for='update-experience'>Update Experience Level</label>
+              <select name='experience' id='update-experience'>
+                <option value='beginner'" . ($row['Experience_Level'] == 'beginner' ? ' selected' : '') . ">Beginner</option>
+                <option value='intermediate'" . ($row['Experience_Level'] == 'intermediate' ? ' selected' : '') . ">Intermediate</option>
+                <option value='expert'" . ($row['Experience_Level'] == 'expert' ? ' selected' : '') . ">Expert</option>
+              </select>
+             </div>
+
+              <div class='pr_hr'>
+                <label for='update-priceperhour'>Update Price Per Hour</label>
+                <input type='text' name='priceperhour' id='update-priceperhour' value='{$row["PricePerHour"]}'>
+              </div>
+            </div>
+            <label for='update-country'>Update Your Country</label>
+            <select name='country' id='update-country' class='update-country'>
+              <option value='Ethiopia' " . ($row['Country'] == 'Ethiopia' ? 'selected' : '') . ">Ethiopia</option>
+              <option value='Kenya'" . ($row['Country'] == 'Kenya' ? ' selected' : '') . ">Kenya</option>
+              <option value='Eritrea'" . ($row['Country'] == 'Eritrea' ? ' selected' : '') . ">Eritrea</option>
+              <option value='Somalia'" . ($row['Country'] == 'Somalia' ? ' selected' : '') . ">Somalia</option>
+              <option value='Djibouti'" . ($row['Country'] == 'Djibouti' ? ' selected' : '') . ">Djibouti</option>
+              <option value='Sudan'" . ($row['Country'] == 'Sudan' ? ' selected' : '') . ">Sudan</option>
+              <option value='South Sudan'" . ($row['Country'] == 'South Sudan' ? ' selected' : '') . ">South Sudan</option>
+            </select>
+            <div class='save'>
+              <button class='save-btn' name='save-btn'>Save</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    ";
+  } else {
+    echo "Error!";
+  }
+}
 function updateProfile($connect, $profileId)
 {
   // Get input values
@@ -167,7 +280,7 @@ if (isset($_POST['posted-jobs'])) {
   <link rel="stylesheet" href="./Style/Header.css" />
 
   <!-- css link -->
-  <link rel="stylesheet" href="./Style/view_profile.css?v=1.5" />
+  <link rel="stylesheet" href="./Style/view_profile.css?v=1.7" />
   <!-- icon link -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>View Profile</title>
@@ -175,103 +288,50 @@ if (isset($_POST['posted-jobs'])) {
 
 <body>
 
-  <div class="wrapper">
+<div class="wrapper">
 
     <?php
     include('header.php');
     ?>
 
+<div class="main-container">
 
-    <!-- Section design -->
-    <section class="section">
+<h1>Profile View</h1>
 
-      <div class="profile-wrap">
-        <h1>Edit Profile</h1>
+<div class="main-content">
 
-        <form class="edit-form" method="post">
+  <div class="sidenav">
+    <a href="#">View Profile</a>
+    <a href="#">Edit Profile</a>
+  </div> 
 
-          <div class='left-side'>
+  <div class="sections">
+    <section class="view-section">
 
-            <?php
-            viewProfile($connect, $profileId);
-            ?>
+      <?php
+        viewProfile($connect, $profileId);
+      ?>
 
-          </div> <!-- left side end -->
+    </section> <!-- view section end -->
 
-          <div class="middle-side">
+    <section class="update-section">
 
-            <h3>Update Profile</h3>
-            <div class="fullname">
-              <div class="fname">
-                <label for="update-firstname">Update First Name</label>
-                <input type="text" name="firstname" id="update-firstname">
-              </div>
+      <?php
+        viewUpdatingSection($connect, $profileId);
+      ?>
 
-              <div class="lname">
-                <label for="update-lastname">Update Last Name</label>
-                <input type="text" name="lastname" id="update-lastname">
-              </div>
-            </div>
+    </section> <!-- update section end -->
 
-            <label for="update-username">Update User Name</label>
-            <input type="text" name="username" id="update-username">
+  </div> <!-- sections send -->
+  
+</div>
 
-            <label for="update-email">Update Email</label>
-            <input type="text" name="email" id="update-email">
+</div>
 
-            <label for="update-profession">Update Profession</label>
-            <input type="text" name="profession" id="update-profession">
-
-            <label for="update-experience">Update Experience Level</label>
-            <select name="experience" id="update-experience">
-              <option value="beginner">Beginner</option>
-              <option value="intermediate">Intermediate</option>
-              <option value="expert">Expert</option>
-            </select>
-
-            <label for="update-priceperhour">Update Price Per Hour</label>
-            <input type="text" name="priceperhour" id="update-priceperhour">
-
-            <label for="update-country">Update Your Country</label>
-            <select name="country" id="update-country" class="update-country">
-              <option value="Ethiopia" selected>Ethiopia</option>
-              <option value="Kenya">Kenya</option>
-              <option value="Eritrea">Eritrea</option>
-              <option value="Somalia">Somalia</option>
-              <option value="Djibouti">Djibouti</option>
-              <option value="Sudan">Sudan</option>
-              <option value="South Sudan">South Sudan</option>
-            </select>
-
-            <div class="save">
-              <button class="save-btn" name="save-btn">Save</button>
-            </div>
-          </div> <!-- middle side end -->
-
-          <div class="right-side">
-            <label for="current-tokens" class="current-tokens">Current Token:
-              <?php
-              getToken($connect, $profileId);
-              ?>
-            </label>
-
-            <button class="buy-btn" name="buy-btn">Buy Token</button>
-
-            <label for="posted-jobs">View Your Posted Jobs</label>
-            <button class="posted-jobs" name="posted-jobs">Posted Jobs</button>
-
-          </div> <!-- right side end -->
-
-        </form> <!-- form end -->
-
-      </div> <!-- profile wrap end -->
-
-    </section> <!-- section end -->
-
-  </div> <!-- wrapper end -->
+</div> <!-- wrapper end-->
 
   <!-- js link -->
-  <script src="./Script/view_profile.js"></script>
+  <script src="./Script/view_profile.js?v=1.2"></script>
 </body>
 
 </html>
