@@ -32,10 +32,24 @@ function getToken($connect, $profileId)
 
 function buy($connect, $profileId)
 {
-
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $query = "SELECT * FROM `profile` WHERE profile.Profile_ID = $profileId";
+    $result = mysqli_query($connect, $query);
+    $queryResult = mysqli_num_rows($result);
+  
+    if ($queryResult > 0) {
+      $row = mysqli_fetch_assoc($result);
+
+        $fname = $row['Firstname'];
+        $lname = $row['Lastname'];
+        $email = $row['Email'];
+        $username = $row['Username'];
+      }
+
     $amountToBuy = $_POST['amount-to-buy'];
-    $customAmount = isset($_POST['input-custom-amount']) ? $_POST['input-custom-amount'] : null; // Check if custom amount is set
+    $amountCharged = $_POST['amoutCharged'];
+    $customAmount = isset($_POST['input-custom-amount']) ? $_POST['input-custom-amount'] : null;
 
     // Calculate the total amount to be charged
     if ($customAmount) {
@@ -44,22 +58,64 @@ function buy($connect, $profileId)
       $totalCharge = $amountToBuy;
     }
 
-    // Update the user's token balance in the database
+    // if the transaction is successfull this query will add token to the users account
     if ($customAmount) {
       $query = "UPDATE profile SET token = token + {$customAmount} WHERE Profile_ID = {$profileId}"; // if it's custom amount
     } else {
       $query = "UPDATE profile SET token = token + {$amountToBuy} WHERE Profile_ID = {$profileId}"; // if it's default amount
     }
-    $result = mysqli_query($connect, $query);
 
-    // Check if the query was successful
-    if ($result) {
-      $url = "view_profile.php?Profile_ID=" . urlencode($profileId);
-      header('Location:' . $url);
-      exit();
+    $tx_ref = 'Apollo-' . rand(1000, 9999);
+    
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+      CURLOPT_URL => 'https://api.chapa.co/v1/transaction/initialize',
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_ENCODING => '',
+      CURLOPT_MAXREDIRS => 10,
+      CURLOPT_TIMEOUT => 0,
+      CURLOPT_FOLLOWLOCATION => true,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => 'POST',
+      CURLOPT_POSTFIELDS =>'{
+        "amount":"'.$amountCharged.'",
+        "currency": "ETB",
+        "email": "'.$email.'",
+        "first_name": "'.$fname.'",
+        "last_name": "'.$lname.'",
+        "phone_number": "0953859805",
+        "tx_ref": "'.$tx_ref.'",
+        "callback_url": "http://localhost/app/view_profile.php?Profile_ID='.$profileId.'",
+        "return_url": "http://localhost/app/view_profile.php?Profile_ID='.$profileId.'",
+        "customization[title]": "Buying Apollo Token",
+        "customization[description]": "Give us your money :)"
+        }',
+      CURLOPT_HTTPHEADER => array(
+        'Authorization: Bearer CHASECK_TEST-jemo02JnnrUo4NknnTHa3BWCNRnPe9wY',
+        'Content-Type: application/json'
+      ),
+      ));
+    
+    $response = curl_exec($curl);
+    $responseObj = json_decode($response, true);
+    curl_close($curl);
+
+    echo "$response. $fname . $lname . $username";
+
+    if ($responseObj['status'] === 'success') {
+
+      $result = mysqli_query($connect, $query);
+
+        // Check if the query was successful
+        if ($result) {
+          echo "Successfully Added Token To you Account";
+        } else {
+          echo "Error updating token balance: " . mysqli_error($connect);
+        }
+
+      header('Location: '.$responseObj['data']['checkout_url']);
     } else {
-
-      echo "Error updating token balance: " . mysqli_error($connect);
+        echo "Error initiating transaction: ";
     }
   }
 }
@@ -147,8 +203,8 @@ if (isset($_POST['buy-btn'])) {
             <br>
           </div>
 
-          <label for="amount-tobe-charged">You account will be charged</label>
-          <div class="account-charge display" id="amoutCharged"></div>
+          <label for="amount-tobe-charged">You account will be charged</label> <br>
+          <input type="text" class="account-charge display" id="amoutCharged" name="amoutCharged" value="" readonly> <br>
 
           <label for="new-balance">Your new Token balance will be</label>
           <div class="account-balance display" id="accountBalance">
@@ -177,8 +233,7 @@ if (isset($_POST['buy-btn'])) {
   </div> <!-- wrapper end -->
 
   <!-- js link -->
-  <script src="./Script/add tokens.js"></script>
-  <script src="./Script/Find Work.js"></script>
+  <script src="./Script/add tokens.js?v=1.1"></script>
 </body>
 
 </html>

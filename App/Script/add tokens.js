@@ -27,7 +27,7 @@ function showCustom(e){
           myInput.style.display = 'none';
           tokenWrap.style.height = '620px';
 
-          accountCharge.innerHTML = (parseInt(e.target.value)*7.5) + ' bir';
+          accountCharge.value = (parseInt(e.target.value)*7.5);
         }
 }
 
@@ -62,7 +62,7 @@ window.onload =  function() {
 
 
   inputAmount.addEventListener('keyup',function(e){
-    accountCharge.innerHTML = (parseInt(e.target.value)*7.5) + ' bir';
+    accountCharge.value = (parseInt(e.target.value)*7.5);
    
     newToken(e);
   })
