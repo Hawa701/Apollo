@@ -15,8 +15,8 @@ if (isset($_POST['sender_id']) && isset($_POST['receiver_id']) && isset($_POST['
     if (mysqli_query($connect2, $sql4)) {
         echo "Message sent successfully";
         // $to = "recipient@email.com";
-        // $subject = "Test Email";
-        // $message = "This is a test email.";
+        // $subject = "You have an email on Apollo";
+        // $message = "Message:" .$message.;
         // $headers = "From: sender@email.com";
 
         // // Send email
