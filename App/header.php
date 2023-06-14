@@ -62,7 +62,7 @@ function getFirstLetter()
       // Profile
       echo "<div class=\"notifProf\" id=\"notifProf\">
         <div class=\"notification\" id=\"notification\">
-          <a href=\"#\"><i class=\"fa-regular fa-bell\"></i></i></a>
+          <a href=\"./message.php?Sender_ID=$profile_ID&Reciver_ID=$profile_ID\"><i class=\"fa-regular fa-message\"></i></i></a>
         </div>
         <div class=\"profile\" id=\"profile\">
           <a href=\"#\">";
@@ -77,15 +77,15 @@ function getFirstLetter()
         <span class=\"user-option\">User</span>
         <hr />
         <li>
-          <a href=\"#\">Profile</a>
+          <a href=\"./view_profile.php?Profile_ID=$profile_ID\">Profile</a>
         </li>
-        <li><a href=\"#\">Messages</a></li>
+        <li><a href=\"./message.php?Sender_ID=$profile_ID&Reciver_ID=$profile_ID\">Messages</a></li>
 
         <span class=\"page-option\">Pages</span>
         <hr />
         <li><a href=\"./Find Work.php?Profile_ID=$profile_ID\">Find Work</a></li>
         <li><a id=\"my-job2\">My Job</a></li>
-        <li><a href=\"\">Post a Job</a></li>
+        <li><a href=\"./Postajob.php?Profile_ID=$profile_ID\">Post a Job</a></li>
         <li><a href=\"./How it works.php\">How it Works</a></li>
         <span class=\"page-option\">Log Out</span>
         <hr />
@@ -118,6 +118,7 @@ function getFirstLetter()
     </div>";
     }
     ?>
+    <!-- <a href="./message.php?Sender_ID=$profile_ID&Reciver_ID=$profile_ID"></a> -->
 
     <!-- drop down 2 -->
     <div class="drop-down2" id="drop-down2">

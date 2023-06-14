@@ -42,7 +42,7 @@ function loadSavedJobs($profileID)
     $suffix = 1;
     while ($row = mysqli_fetch_assoc($result)) {
       $jobId = $row['Job_ID'];
-      loadJob($jobId, $suffix);
+      loadJob($jobId, $suffix, $profileID);
       $suffix++;
     }
   } else {
@@ -50,7 +50,7 @@ function loadSavedJobs($profileID)
   }
 }
 
-function loadJob($jobId, $suffix)
+function loadJob($jobId, $suffix, $profileID)
 {
   $conn = new Connect;
   $connect = $conn->getConnection();
@@ -72,7 +72,7 @@ function loadJob($jobId, $suffix)
     $token = $row['Token'];
 
     echo "<div class=\"job\">
-
+    <a style='color:black' href='http://localhost/apollo/App/Apply%20Job.php?profileId=" . $profileID . "&jobId=" . $jobId . "'>
         <form class=\"title-block\" method=\"post\">
           <h3>$jobTitle</h3>
           <button class=\"unsaveBtn\" name=\"unsaveBtn\" value=\"$jobId\">
@@ -106,6 +106,7 @@ function loadJob($jobId, $suffix)
         </div>
 
         <hr />
+        </a>
       </div>";
   }
 }

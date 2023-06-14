@@ -1,669 +1,660 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    font-family: "Roboto", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
 }
 
 :root {
-    --main-color: #577CFF;
-    --second-main-color: #deecf0;
-    --main-bg-color: #fff;
-    --second-bg-color: #ededed;
-    --third-bg-color: #c8c9ca;
-    --main-text-color: #000;
-    --second-text-color: #fff;
-    --third-text-color: #737373;
-}
-
-body {
+  --main-color: #577cff;
+  --second-main-color: #deecf0;
+  --main-bg-color: #fff;
+  --second-bg-color: #ededed;
+  --third-bg-color: #c8c9ca;
+  --main-text-color: #000;
+  --second-text-color: #fff;
+  --third-text-color: #737373;
 }
 
 .job-status {
-    background-color: var(--main-bg-color);
-    margin: 15px auto;
-    max-width: 1200px;
-    /* max-height: 650px; */
-    border-radius: 11px;
-    padding: 10px 15px;
+  background-color: var(--main-bg-color);
+  margin: 15px auto;
+  max-width: 1200px;
+  /* max-height: 650px; */
+  border-radius: 11px;
+  padding: 10px 15px;
 
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    z-index: 1;
+  z-index: 1;
 }
 
-.job-description  {
-    border-bottom: 1px solid rgb(213, 213, 213);
-    padding: 0 0.8rem;
-    padding-bottom: 20px;
-    text-align: justify;
+.job-description {
+  border-bottom: 1px solid rgb(213, 213, 213);
+  padding: 0 0.8rem;
+  padding-bottom: 20px;
+  text-align: justify;
 }
 
 .job-info {
-    padding: 0 0.8rem;
-    border-bottom: 1px solid rgb(213, 213, 213);
-    padding-bottom: 20px;
+  padding: 0 0.8rem;
+  border-bottom: 1px solid rgb(213, 213, 213);
+  padding-bottom: 20px;
 }
 
 .edit-delete {
-    padding: 0.8rem;
-    padding-bottom: 0;
+  padding: 0.8rem;
+  padding-bottom: 0;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .left-container {
-    font-size: 0.9rem;
-    /* width: 25%; */
+  font-size: 0.9rem;
+  /* width: 25%; */
 }
 
 .applicants {
-    min-height: 565px;
-    height: auto;
-    padding: 15px 25px;
-    border-left: 1px solid rgb(213, 213, 213);
+  min-height: 565px;
+  height: auto;
+  padding: 15px 25px;
+  border-left: 1px solid rgb(213, 213, 213);
 }
-
 
 .main-content {
-    display: grid;
-    grid-template-columns: 25% 75%; 
+  display: grid;
+  grid-template-columns: 25% 75%;
 
-   border: var(--third-bg-color) 1px solid; 
-   padding: 10px 15px;
-   padding-bottom: 2px;
-   border-radius: 11px;
+  border: var(--third-bg-color) 1px solid;
+  padding: 10px 15px;
+  padding-bottom: 2px;
+  border-radius: 11px;
 
-   margin-top: -6px;
+  margin-top: -6px;
 }
-
-
 
 /* buttons style */
 
+.edit button,
+.delete button {
+  color: var(--main-bg-color);
+  font-weight: 500;
+  border-radius: 20px;
+  padding: 5px 20px;
+  font-size: 15px;
+  border: 3px solid var(--main-color);
 
-.edit button, .delete button {
-   color: var(--main-bg-color);
-   font-weight: 500;
-   border-radius: 20px;
-   padding: 5px 20px;
-   font-size: 15px;
-   border: 3px solid var(--main-color);
-
-   cursor: pointer;
+  cursor: pointer;
 }
 
 .delete button {
-   background-color: var(--main-color);
+  background-color: var(--main-color);
 }
 
 .delete button:hover {
-    background-color: var(--main-bg-color);
-    color: var(--main-text-color);
-    font-weight: 300;
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+  font-weight: 300;
 }
 
 .edit button {
-   color: #577CFF;
-   margin-right: 15px;
-   width: 102px;
-   border: 3px solid #577cff;
-   background-color: transparent;
+  color: #577cff;
+  margin-right: 15px;
+  width: 102px;
+  border: 3px solid #577cff;
+  background-color: transparent;
 }
 
 .edit button:hover {
-   background-color: var(--main-color);
-   color: var(--main-bg-color);
+  background-color: var(--main-color);
+  color: var(--main-bg-color);
 }
 
 /* buttons style end */
 
 .job-status h1 {
-    font-size: 1.7rem;
-    font-weight: 400;
+  font-size: 1.7rem;
+  font-weight: 400;
 
-    margin-bottom: 25px;
-    margin-top: -10px;
+  margin-bottom: 25px;
+  margin-top: -10px;
 }
 
 .job-title {
-    border-bottom: 1px solid rgb(213, 213, 213);
-    padding-bottom: 5px;
+  border-bottom: 1px solid rgb(213, 213, 213);
+  padding-bottom: 5px;
 }
 
 /* text area */
 .job-title textarea {
-    margin-top: 1.1rem;
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: var(--main-text-color);
+  margin-top: 1.1rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--main-text-color);
 
-    border: none;
-    border-radius: 8px;
-    resize: none;
+  border: none;
+  border-radius: 8px;
+  resize: none;
 
-    padding: 5px;
-    padding-bottom: 0;
+  padding: 5px;
+  padding-bottom: 0;
 
-    width: 265px;
-    height: 65px;
+  width: 265px;
+  height: 65px;
 
-    overflow-y: auto;
-    scrollbar-width: none;
+  overflow-y: auto;
+  scrollbar-width: none;
 }
 
 .job-description p textarea {
-    width: 265px;
-    height: auto;
-    min-height: 200px;
-    padding: 5px;
-    margin-top: 1.1rem;
-    font-size: 16px;
-    color: var(--main-color);
-    border: none;
-    border-radius: 8px;
-    resize: none;
+  width: 265px;
+  height: auto;
+  min-height: 200px;
+  padding: 5px;
+  margin-top: 1.1rem;
+  font-size: 16px;
+  color: var(--main-color);
+  border: none;
+  border-radius: 8px;
+  resize: none;
 
-    overflow-y: auto;
-    scrollbar-width: thin;
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 .job-status textarea {
-    font-weight: 300;
+  font-weight: 300;
 }
 
 /* Job Info */
 
 .job-info h3 {
-    margin-bottom: 0.4rem;
-    padding-top: 10px;
+  margin-bottom: 0.4rem;
+  padding-top: 10px;
 }
 
-.job-info span, .tokens, input {
-    font-size: 0.85rem;
-    font-weight: 300;
+.job-info span,
+.tokens,
+input {
+  font-size: 0.85rem;
+  font-weight: 300;
 
-    margin-bottom: 0.8rem;
+  margin-bottom: 0.8rem;
 }
 
 input {
-    margin-bottom: 0.3rem;
-    color: var(--main-color);
-    width: 125px;
-    padding: 2px;
-    padding-left: 5px;
-    border-radius: 0.2rem;
-    border: none;
+  margin-bottom: 0.3rem;
+  color: var(--main-color);
+  width: 125px;
+  padding: 2px;
+  padding-left: 5px;
+  border-radius: 0.2rem;
+  border: none;
 }
 
 /* Applicants style */
 
 .navigation {
-    display: flex;
+  display: flex;
 }
 
 .navigation .links {
-    display: flex;
-    font-size: 0.9rem;
-    gap: 2rem;
+  display: flex;
+  font-size: 0.9rem;
+  gap: 2rem;
 }
 
-
 .links a {
-    color: var(--main-text-color);
-    font-weight: 400;
+  color: var(--main-text-color);
+  font-weight: 400;
 }
 
 .links a span {
-    color: var(--main-color);
+  color: var(--main-color);
 }
 
 .navigation .links a::after {
-    content: "";
-    position: absolute;
-    background: var(--main-color);
-    left: 0;
-    height: 2px;
-    width: 0;
-    bottom: -13px;
-    transition: 0.1s;
+  content: "";
+  position: absolute;
+  background: var(--main-color);
+  left: 0;
+  height: 2px;
+  width: 0;
+  bottom: -13px;
+  transition: 0.1s;
 }
 
 .navigation .links a:hover,
 .navigation .links .active {
-    color: var(--main-color);
+  color: var(--main-color);
 }
 
 .navigation .links a:hover::after,
 .navigation .links .active::after {
-    width: 100%;
+  width: 100%;
 }
 
-
-/* search and sort design */ 
+/* search and sort design */
 
 .searchSort {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1.5rem;
 }
 
 .search {
-    display: flex;
-    padding: 0.2rem;
+  display: flex;
+  padding: 0.2rem;
 }
 
 .search input {
-    height: 27.5px;
-    width: 250px;
-    border: 0.5px solid var(--main-color);
-    border-radius: 2px;
+  height: 27.5px;
+  width: 250px;
+  border: 0.5px solid var(--main-color);
+  border-radius: 2px;
 }
 
 .search-img {
-    margin-left: -3.5px;
-    margin-top: -2.3px;
+  margin-left: -3.5px;
+  margin-top: -2.3px;
 }
 
 .sort {
-    display: flex;
+  display: flex;
 }
 
 .sort select {
-    height: 27.5px;
-    width: 200px;
-    margin-left: 5px;
+  height: 27.5px;
+  width: 200px;
+  margin-left: 5px;
 
-    font-size: 0.9rem;
-    font-weight: 380;
+  font-size: 0.9rem;
+  font-weight: 380;
 
-    background-color: transparent;
-    border-radius: 2px;
-    border: 1px var(--main-color) solid;
-    padding-left: 10px;
+  background-color: transparent;
+  border-radius: 2px;
+  border: 1px var(--main-color) solid;
+  padding-left: 10px;
 }
 
 .search input {
-    padding-left: 10px;
+  padding-left: 10px;
 }
 
 .sort label {
-    margin-top: 4.8px;
-    font-size: 0.85rem;
-    font-weight: 350;
+  margin-top: 4.8px;
+  font-size: 0.85rem;
+  font-weight: 350;
 }
 
 /* profile style  */
 
 .profile-wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 435px;
-    height: auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 435px;
+  height: auto;
 
-    overflow-y: auto;
-    box-sizing: content-box;
-    scrollbar-width: none; 
+  overflow-y: auto;
+  box-sizing: content-box;
+  scrollbar-width: none;
 }
 
 .profiles {
-    display: flex;
-    justify-content: space-between;
-    margin: 5px;
-    border-bottom: 0.1px solid rgb(213, 213, 213);
-    padding-bottom: 2px;
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+  border-bottom: 0.1px solid rgb(213, 213, 213);
+  padding-bottom: 2px;
 }
 
 .profiles:hover {
-    background-color: var(--second-main-color);
-    border-radius: 11px;
+  background-color: var(--second-main-color);
+  border-radius: 11px;
 }
 
 /* photo style */
 
 .photo {
-    display: flex;
-    align-items: center;
-    z-index: 1;
-    margin-left: 5px;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  margin-left: 5px;
 }
 
 .photo img {
-    border-radius: 50%;
-    border: 2px solid var(--main-color);
+  border-radius: 50%;
+  border: 2px solid var(--main-color);
 }
-  
+
 .online-indicator {
-    margin-top: 35px;
-    margin-left: -12px;
-    width: 17px;
-    height: 17px;
-    border-radius: 50%;
-    background-color: green;
-    border: 2px solid var(--main-bg-color);
-    z-index: 2;
-} 
+  margin-top: 35px;
+  margin-left: -12px;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background-color: green;
+  border: 2px solid var(--main-bg-color);
+  z-index: 2;
+}
 
 /* profile info style */
-.profile-info, .price, .rating {
-    font-size: 0.8rem;
-    font-weight: 300;
+.profile-info,
+.price,
+.rating {
+  font-size: 0.8rem;
+  font-weight: 300;
 
-    margin-top: 15px;
-    margin-left: 20px;
+  margin-top: 15px;
+  margin-left: 20px;
 }
 
 .rating {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
-.bir, .rate {
-    color: var(--main-color);
+.bir,
+.rate {
+  color: var(--main-color);
 }
 
 .profile-info .name {
-    color: var(--main-color);
-    margin-bottom: 5px;
-    font-weight: 400;
+  color: var(--main-color);
+  margin-bottom: 5px;
+  font-weight: 400;
 }
 
 .profile-info .profession {
-    margin-bottom: 2.5px;
-    white-space: nowrap;
-
+  margin-bottom: 2.5px;
+  white-space: nowrap;
 }
 
 .profile-info .country {
-    font-size: 0.7rem;
-    color: var(--third-text-color);
+  font-size: 0.7rem;
+  color: var(--third-text-color);
 }
 
 /* Buttons Style */
 
-
 .actions {
-    display: flex;
-    padding: 10px;
-    padding-top: 35px;
+  display: flex;
+  padding: 10px;
+  padding-top: 35px;
 }
 
-.actions .like, .actions .dislike {
-    margin-right: 20px;
-    border-radius: 50%;
-    border: 1.7px solid var(--main-color);
-    height: 22px;
-    width: 22px;
-    margin-top: 4px;
-    padding: 1px;
+.actions .like,
+.actions .dislike {
+  margin-right: 20px;
+  border-radius: 50%;
+  border: 1.7px solid var(--main-color);
+  height: 22px;
+  width: 22px;
+  margin-top: 4px;
+  padding: 1px;
 }
 
-.actions .like:hover, .actions .dislike:hover {
-    border: 2px solid #0337f3;
+.actions .like:hover,
+.actions .dislike:hover {
+  border: 2px solid #0337f3;
 }
 
-.actions .message, .actions .hire {
-   color: var(--main-bg-color);
-   font-weight: 400;
-   border-radius: 20px;
-   padding: 5px 10px;
-   font-size: 12px;
-   border: 2px solid #577cff;
+.actions .message,
+.actions .hire {
+  color: var(--main-bg-color);
+  font-weight: 400;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 12px;
+  border: 2px solid #577cff;
 
-   width: 82px;
-   height: 30px;
-   cursor: pointer;
+  width: 82px;
+  height: 30px;
+  cursor: pointer;
 }
 
 .actions .message {
-    margin-right: 20px;
-    background-color: transparent;
-    color: var(--main-color);
+  margin-right: 20px;
+  background-color: transparent;
+  color: var(--main-color);
 }
 
 .actions .hire {
-    background-color: var(--main-color);
+  background-color: var(--main-color);
 }
 
 .actions .message:hover {
-    background-color: var(--main-color);
-    color: var(--main-bg-color);
+  background-color: var(--main-color);
+  color: var(--main-bg-color);
 }
 
 .actions .hire:hover {
-    background-color: var(--main-bg-color);
-    color: var(--main-text-color);
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
 }
-
-
 
 /* profile body style */
 
-
 .body .price {
-    font-size: 0.8rem;
-    font-weight: 300;
-    margin-bottom: 5px;
+  font-size: 0.8rem;
+  font-weight: 300;
+  margin-bottom: 5px;
 }
 
 .body .price .bir {
-    color: var(--main-color);
-    font-weight: 600;
+  color: var(--main-color);
+  font-weight: 600;
 }
 
 .body .cover-letter span {
-    font-size: 0.8rem;
-    font-weight: 300;
+  font-size: 0.8rem;
+  font-weight: 300;
 }
 
 .body .cover-letter .cover-letter-content {
-    color: var(--main-color);
+  color: var(--main-color);
 }
 
 .rating span {
-    font-size: 0.8rem;
-    font-weight: 300;
+  font-size: 0.8rem;
+  font-weight: 300;
 }
 
 .rating .rate {
-    color: var(--main-color);
+  color: var(--main-color);
 }
 
 .rating .five {
-    font-size: 0.65rem;
+  font-size: 0.65rem;
 }
 
 .rating span img {
-    margin-bottom: -5px;
+  margin-bottom: -5px;
 }
 
 .body {
-    position: relative;
-    right: 160px;
+  position: relative;
+  right: 160px;
 }
-
 
 /* Job Edit style */
 
-
 .edit-job .left {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .edit-job .right {
-    margin-left: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .edit-form {
-    border: 1px solid rgb(213, 213, 213);
-    padding: 15px;
-    border-radius: 11px;
+  border: 1px solid rgb(213, 213, 213);
+  padding: 15px;
+  border-radius: 11px;
 
-    margin: 25px 200px;
-    margin-left: 180px;
+  margin: 25px 200px;
+  margin-left: 180px;
 }
 
 .edit-job {
-    display: flex;
+  display: flex;
 }
 
 .edit-job #status {
-    width: 200px;
+  width: 200px;
 }
 
-.edit-job  input, .edit-job select, .edit-job   textarea {
-    width: 350px;
-    height: 28px;
-    border-radius: 5px;
-    border: 1px solid var(--third-bg-color);
-    margin-top: 8px;
-    margin-bottom: 8px;
+.edit-job input,
+.edit-job select,
+.edit-job textarea {
+  width: 350px;
+  height: 28px;
+  border-radius: 5px;
+  border: 1px solid var(--third-bg-color);
+  margin-top: 8px;
+  margin-bottom: 8px;
 
-    font-size: 0.9rem;
-    font-weight: 300;
+  font-size: 0.9rem;
+  font-weight: 300;
 
-    padding-left: 10px;
-}
-
-.edit-job select {
+  padding-left: 10px;
 }
 
 .edit-job h1 {
-    font-size: 1.8rem;
-    font-weight: 400;
-    margin-bottom: 15px;
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 15px;
 }
 
 .edit-job label {
-    font-size: 1rem;
-    font-weight: 350;
+  font-size: 1rem;
+  font-weight: 350;
 }
 
 .edit-job textarea {
-    resize: none;
-    min-height: 100px;
-    height: auto;
-    padding-top: 3px;
+  resize: none;
+  min-height: 100px;
+  height: auto;
+  padding-top: 3px;
 
-    overflow-y: auto;
-    scrollbar-width: thin;
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 .edit-job .btn {
-    display: flex;
-    justify-content: center;
-    width: 237px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  width: 237px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .edit-job button {
-    color: var(--main-bg-color);
-    font-weight: 400;
-    border-radius: 20px;
-    padding: 5px 10px;
-    font-size: 12px;
-    border: 2px solid var(--main-color);
- 
-    width: 82px;
-    height: 30px;
-    cursor: pointer;
- }
- 
- .edit-job .clear {
-     background-color: transparent;
-     color: var(--main-color);
- }
- 
- .edit-job .save {
-     background-color: var(--main-color);
-     margin-left: 25px;
- }
- 
- .edit-job .save:hover {
-     background-color: var(--main-bg-color);
-     color: var(--main-color);
- }
- 
- .edit-job .clear:hover {
-     background-color: var(--main-color);
-     color: var(--second-text-color);
- }
+  color: var(--main-bg-color);
+  font-weight: 400;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 12px;
+  border: 2px solid var(--main-color);
 
- .edit-job .status {
-    display: flex;
-    flex-direction: column;
- }
+  width: 82px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.edit-job .clear {
+  background-color: transparent;
+  color: var(--main-color);
+}
+
+.edit-job .save {
+  background-color: var(--main-color);
+  margin-left: 25px;
+}
+
+.edit-job .save:hover {
+  background-color: var(--main-bg-color);
+  color: var(--main-color);
+}
+
+.edit-job .clear:hover {
+  background-color: var(--main-color);
+  color: var(--second-text-color);
+}
+
+.edit-job .status {
+  display: flex;
+  flex-direction: column;
+}
 
 .edit-form {
-    display: none;
-    position: absolute;
-    left: 304px;
-    bottom: -20px;
+  display: none;
+  position: absolute;
+  left: 167px;
+  top: 65px;
 
-    width: 870px;
-    background-color: var(--main-bg-color);
-    z-index: 2;
+  width: 870px;
+  background-color: var(--main-bg-color);
+  z-index: 2;
 }
 
 .edit_header {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 0px;
- }
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0px;
+}
 
- .edit-form .errors {
-    font-size: 0.7rem;
-    font-weight: 500;
-    color: red;
-    margin: 2px auto;
- }
- 
+.edit-form .errors {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: red;
+  margin: 2px auto;
+}
 
 @media (max-width: 400px) {
-    .main-content {
-        display: flex;
-        flex-direction: column;
-    }
+  .main-content {
+    display: flex;
+    flex-direction: column;
+  }
 
-    .applicants {
-        height: auto;
-
-    }
+  .applicants {
+    height: auto;
+  }
 }
 
 @media (max-width: 1200px) {
-    .main-content {
-        display: flex;
-        flex-direction: column;
-    }
+  .main-content {
+    display: flex;
+    flex-direction: column;
+  }
 
-    .applicants {
-        height: auto;
-    }
+  .applicants {
+    height: auto;
+  }
 }
 
 @media (max-width: 1120px) {
-    .job-status h1, .job-title {
-        font-size: 1.6rem;
-    }
+  .job-status h1,
+  .job-title {
+    font-size: 1.6rem;
+  }
 
-    .profiles {
-        display: flex;
-        flex-direction: column;
-    }
+  .profiles {
+    display: flex;
+    flex-direction: column;
+  }
 
-    .body {
-        position: relative;
-        right: 0;
-    }
-} 
+  .body {
+    position: relative;
+    right: 0;
+  }
+}
